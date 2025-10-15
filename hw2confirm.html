@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+    Name: Francisco Fuentes
+    File: hw2confirm.html
+    Date Created: 2025-09-13
+    Date Updated:
+    Purpose: MIS 3371 Homework 2... Confirmation page for HTML form.
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Evergreen Cardiovascular Clinic Intake Form Successful</title>
+        <link rel="icon" type="image" href="./freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png">
+        <link rel="stylesheet" href="hw1.css">
+    </head>
+    <body>
+        <!-- Header Section -->
+        <div id="header">
+        <header>
+            <table width="100%">
+                <tr>
+                    <td align="left"><img id="logo" src="./freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Medical Clinic" height="200" width="200"></td>
+                    <td align="center"></td>
+                    <td align="right" id="todaysdate"><b>Today's Date:<span id="today"></span></b></td>
+                </tr>
+            </table>
+        </header>
+        </div>
+        <!-- Body --> 
+        <div id="page2">
+            <h1>Form Submitted Successfully!</h1>
+            <a href="./hw1.html" target="_self"><button>Go Back</button></a>
+        </div>
+        <!-- Footer Section -->
+        <div class="footer">
+        <footer>
+            <table width="100%">
+                <tr>
+                    <td align="left">
+                        <a href="mailto:someone@example.com"><b>Contact Us</b></a>
+                        <div id="socialhandles">
+                            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+                            <a href="https://x.com/?lang=en" target="_blank">Twitter/X</a>
+                        </div>
+                        <img id="Instagram_icon"
+                                src="./Instagram_icon.png"
+                                alt="HeartCare Medical Clinic Instagram"
+                                width="30px"
+                                height="30px">
+                        <img id="X_Twitter_icon"
+                                src="./vecteezy_x-twitter-icon-logo-symbol_53986348.png"
+                                alt="HeartCare Medical Clinic X/Twitter"
+                                width="30px"
+                                height="30px">
+                    </td>
+                    <td align="right">
+                        <p>Created by Francisco Fuentes<br>MIS 3371</p>
+                    </td>
+                </tr>
+            </table>
+        </footer>
+        </div>
+
+        <!-- JavaScript code for the localedate in the header -->
+        <script>
+            const d = new Date();
+            let text = d.toLocaleDateString();
+            document.getElementById("today").innerHTML = text;
+        </script>
+    </body>
+</html>
