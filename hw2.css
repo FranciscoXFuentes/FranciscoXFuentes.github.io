@@ -1,0 +1,124 @@
+/*
+   Name: Francisco Fuentes
+   File: hw2.css
+   Date Created: 2025-09-22
+   Date Updated:
+   Purpose: MIS 3371 Homework 2... Using CSS to style a patient intake form.
+*/
+
+form {
+      display: grid;
+      justify-content: center;
+      place-items: left;
+      text-align: left;
+}
+
+body {
+   background-color: #D8DFE6;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #2C3E50;
+   margin: auto;
+}
+
+#wrapper {
+   /* Form formatting */
+   min-height: 100dvh;
+   display: grid;
+   grid-template-rows: auto 1fr auto;
+   grid-template-columns: minmax(0, 1fr);
+}
+
+/* Header */
+header {
+   background-color: #2C3E50;
+   color: white;
+}
+
+/* Label and Input padding */
+label, input, textarea {
+   margin-top: .75rem;
+   margin-bottom: .75rem;
+}
+
+#patient_description {
+   height: 25%;
+   width: 100%;
+}
+
+/* radio button horizontal display */
+input[type="radio"] {
+   display: flexbox;
+}
+
+/* slider styling */
+input[type="range"] {
+   width: 100%;
+}
+
+/* placeholder color */
+input::placeholder {
+   color: #777777;
+   opacity: 1;
+}
+/* Submission buttons centering and color */
+#formsubmissionbuttons {
+   place-items: center;
+}
+
+#submitButton {
+      background-color: #4A8BF2;
+}
+
+/* Footer */
+footer {
+   background-color: #2C3E50;
+   color: white;
+   display: grid;
+   bottom:0vh;
+}
+/* header color */
+h3 {
+   color: #4A8BF2;
+}
+
+/* Checkbox Orientation */
+#diagnosis_checkboxes {
+   display: flexbox;
+}
+
+/* Header date display */
+#todaysdate {
+   vertical-align: bottom;
+}
+
+/* Footer social media links display */
+#socialhandles {
+   display: grid;
+}
+
+/* Footer hyperlink colors */
+a:link {
+  color: #66D9A5;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #A5E3CD;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #4A8BF2;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: #3A6DCC;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* margin spacing for overlapping issues */
+.medicalandhealth {
+   margin-bottom: 2.5rem;
+}
