@@ -1,127 +1,233 @@
 <!DOCTYPE html>
 <!--
     Name: Francisco Fuentes
-    File: index.html
-    Date Created: 2025-10-15
-    Date Updated:
-    Purpose: MIS 3371 Homework 2... Updating the patient intake form to show data inputs.
+    File: hw2.html
+    Date: 2025-10-15
+    Date Last Modified: 2025-10-15
+    Purpose: MIS 3371... Adding data validation and data review functionality to the patient intake form.
 -->
-
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <title>Evergreen Cardiovascular Center Intake Form</title>
-        <link rel="icon" type="image" href="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png">
-        <!-- CSS file -->
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
         <link rel="stylesheet" href="hw2.css">
-        <!-- JavaScript file -->
-         <script src="hw2.js"></script>
+        <script src="hw2.js" defer></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     </head>
     <body>
-    <div class="wrapper">
         <!-- Header Section -->
-        <div id="header">
-        <header>
-            <table width="100%">
+        <div class ="header">
+            <table align="center" width="95%">
                 <tr>
-                    <td align="left"><img id="logo" src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Medical Clinic" height="200" width="200"></td>
-                    <td align="center"><h1>Evergreen Cardiovascular Center <br> Patient Intake Form</h1></td>
-                    <td align="right" id="todaysdate"><b>Today's Date:<span id="today"></span></b></td>
+                    <td align="left">
+                        <img src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="150" height="150">
+                    </td>
+                    <td align="center">
+                        <h1>Evergreen Cardiovascular Center</h1>
+                        <h2>Patient Intake Form</h2>
+                    </td>
+                    <td align="right" id="todaysdate">
+                        <b>Today's Date:<span id="today"></span></b>
+                    </td>
                 </tr>
             </table>
-        </header>
         </div>
-        <!-- Form begins here -->
-        <div class="form-container">
-            <form action="./hw2confrim.html" method="post">
-                <!-- Personal Info Section -->
-                <h3>Personal Information</h3>
-                <div class="personalinfo">
-                    <label>Full Name</label><br>
-                    <input type="text"
-                            placeholder="First Name"
-                            id="fname"
-                            name="fname"
-                            minlength="2"
-                            maxlength="30"
-                            required>
-                    <input type="text"
-                            placeholder="MI"
-                            id="minitial"
-                            name="minitial"
-                            maxlength="1"
-                            size="2">
-                    <input type="text"
-                            placeholder="Last Name"
-                            id="lname"
-                            name="lname"
-                            maxlength="30"
-                            minlength="2"
-                            required><br>
-                    <label for="dateofbirth">Date of Birth</label><br>
-                    <input type="date"
-                            id="dateofbirth"
-                            name="dateofbirth"
-                            required><br>
-                    <label for="socialsecurity">Social Security Number</label><br>
-                    <input type="password"
-                            id="socialsecurity"
-                            name="socialsecurity"
-                            maxlength="11"
-                            minlength="9"
-                            required><br>
-                    <label>Gender</label><br>
-                    <input type="radio"
-                            id="maleGender"
-                            name="patient_gender"
-                            value="Male"
-                            required>
-                    <label for="maleGender">Male</label>
-                    <input type="radio"
-                            id="femaleGender"
-                            name="patient_gender"
-                            value="Female">
-                    <label for="femaleGender">Female</label>
-                    <input type="radio"
-                            id="otherGender"
-                            name="patient_gender"
-                            value="Other">
-                    <label for="otherGender">Other</label><br>
-                </div>
-                <!-- Contact Info Section -->
-                <h3>Contact Information</h3>
-                <div class="contactinfo">
-                    <label for="addr1">Address Line 1</label><br>
-                    <input type="text"
-                            id="addr1"
-                            name="addr1"
-                            placeholder="123 Main Street"
-                            maxlength="30"
-                            minlength="5"
-                            required><br>
-                    <label for="addr2">Address Line 2</label><br>
-                    <input type="text"
-                            id="addr2"
-                            name="addr2"
-                            placeholder="123 Main Street"
-                            maxlength="30"
-                            minlength="5"><br>
-                    <table>
-                        <tr>
-                            <td><label>City</label></td>
-                            <td><label>State</label></td>
-                            <td><label>Zip Code</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text"
+        <!-- Form Section -->
+         <div class ="body">
+            <form name="intakeForm" id="intakeForm" action="hw2submitted.html" method="post">
+                <table class="form-group" align="center">
+                    <!--Personal Information Section-->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Personal Information</h3></th>
+                    </tr>
+                    <tr class="name-group">
+                        <td colspan="2" align="left">
+                            <label for="fname">Full name</label>
+                        </td>
+                    </tr>
+                    <tr class="name-group">
+                        <td>
+                            <!--First name validation testing-->
+                            <input type="text" 
+                                    id="firstname" 
+                                    name="firstname" 
+                                    pattern="[A-Za-z\s'\-]{2,30}"
+                                    placeholder="First Name" 
+                                    minlength="2" 
+                                    maxlength="30" 
+                                    required
+                                    oninvalid="this.setCustomValidity('First Name not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkfirstname()"
+                                    title="First name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
+                            <input type="text" 
+                                    id="minitial" 
+                                    name="minitial" 
+                                    placeholder="MI" 
+                                    minlength="1" 
+                                    maxlength="1"
+                                    size="2"
+                                    pattern="[A-Za-z]{0,1}"
+                                    oninvalid="this.setCustomValidity('Middle Initial not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkminitial()"
+                                    title="Middle initial should be a single letter.">
+                            <input type="text" 
+                                    id="lastname" 
+                                    name="lastname" 
+                                    placeholder="Last Name" 
+                                    minlength="2" 
+                                    maxlength="30" 
+                                    required
+                                    pattern="[A-Za-z\s'\-]{2,30}"
+                                    oninvalid="this.setCustomValidity('Last Name not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checklastname()"
+                                    title="Last name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
+                        </td>
+                        <td class="error_messages"><span id="name_message"></span></td>
+                    </tr>
+                    <!--DOB input field-->
+                    <tr class="dob-group">
+                        <td colspan="2" align="left">
+                            <label for="dob">Date of Birth</label>
+                        </td>
+                    </tr>
+                    <tr class="dob-group">
+                        <td>
+                            <input type="date" 
+                                    id="dob" 
+                                    name="dob" 
+                                    required
+                                    oninvalid="this.setCustomValidity('Date of Birth not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkdob()"
+                                    title="Your date of birth must be between 120 years ago and today.">
+                        </td>
+                        <td class="error_messages"><span id="dob_message"></span></td>
+                    </tr>
+                    <!--SSN input field-->
+                    <tr class="ssn-group">
+                        <td colspan="2" align="left">
+                            <label for="ssn">Social Security Number</label>
+                        </td>
+                    </tr>
+                    <tr class="ssn-group">
+                        <td>
+                            <input type="password" 
+                                    id="ssn" 
+                                    name="ssn" 
+                                    placeholder="SSN (###-##-####)" 
+                                    maxlength="11"
+                                    minlength="9" 
+                                    required
+                                    pattern="\d{3}-?\d{2}-?\d{4}"
+                                    oninvalid="this.setCustomValidity('SSN not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkssn()"
+                                    title="SSN must be in the format ###-##-#### or #########">
+                        </td>
+                        <td class="error_messages"><span id="ssn_message"></span></td>
+                    </tr>
+                    <!--Gender radio selection-->
+                    <tr class="gender-group">
+                        <td colspan="2" align="left">
+                            <label for="gender">Gender</label>
+                        </td>
+                    </tr>
+                    <tr class="gender-group">
+                        <td>
+                            <input type="radio"
+                                    id="maleGender"
+                                    name="patient_gender"
+                                    value="Male"
+                                    required
+                                    onchange="checkgender()">
+                            <label for="maleGender">Male</label>
+                            <input type="radio"
+                                    id="femaleGender"
+                                    name="patient_gender"
+                                    value="Female"
+                                    onchange="checkgender()">
+                            <label for="femaleGender">Female</label>
+                            <input type="radio"
+                                    id="otherGender"
+                                    name="patient_gender"
+                                    value="Other"
+                                    onchange="checkgender()">
+                            <label for="otherGender">Other</label>
+                        </td>
+                        <td class="error_messages"><span id="gender_message"></span></td>
+                    </tr>
+                    <!--Contact Information Section-->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Contact Information</h3></th>
+                    </tr>
+                    <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="address">Address Line 1</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
+                                    id="addr1"
+                                    name="addr1"
+                                    placeholder="123 Main Street"
+                                    maxlength="30"
+                                    minlength="5"
+                                    required
+                                    title="Address must be between 5 and 30 characters."
+                                    oninvalid="this.setCustomValidity('Address not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkaddress1()">
+                        
+                        </td>
+                        <td class="error_messages"><span id="addr1_message"></span></td>
+                    </tr>
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="address2">Address Line 2</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
+                                    id="addr2"
+                                    name="addr2"
+                                    placeholder="Apt, Suite, etc."
+                                    maxlength="30"
+                                    minlength="0"
+                                    title="Address must be between 5 and 30 characters."
+                                    oninvalid="this.setCustomValidity('Address not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkaddress2()">
+                        
+                        </td>
+                        <td class="error_messages"><span id="addr2_message"></span></td>
+                    </tr>
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="city">City, </label><label for="state">State, </label><label for="zip">Zip Code</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
                                         id="city"
                                         name="city"
                                         maxlength="30"
                                         minlength="2"
-                                        required>
-                            </td>
+                                        placeholder="City"
+                                        required
+                                        title="City must be between 2 and 30 characters."
+                                        oninvalid="this.setCustomValidity('City not valid')"
+                                        oninput="this.setCustomValidity('')"
+                                        onblur="checkcity()">
                             <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
-                            <td><select name="stateAbbreviation" id="stateAbbreviation" required>
+                            <select name="stateAbbreviation" id="stateAbbreviation" required>
                                     <option value="AL">AL</option>
                                     <option value="AK">AK</option>
                                     <option value="AR">AR</option>
@@ -179,174 +285,318 @@
                                     <option value="PR">PR</option>
                                     <option value="UM">UM</option>
                                     <option value="VI">VI</option>
-                                </select>
-                            <td><input type="text"
+                            </select>
+                            <input type="text"
                                         id="zip"
                                         name="zip"
                                         maxlength="10"
                                         minlength="5"
-                                        required>
-                            </td>
-                        </tr>
-                    </table><br>
-                    <label for="phone">Phone Number</label><br>
-                    <input type="text"
-                            id="phone"
-                            name="phone"
-                            minlength="10"
-                            maxlength="10"
-                            required><br>
-                    <label for="email">Email Address</label><br>
-                    <input type="email"
-                            id="email"
-                            name="email"
-                            placeholder="example@email.com"
-                            minlength="5"
-                            maxlength="40"
-                            required><br>
-                </div>
-                <!-- Medical & Health Section -->
-                <h3>Medical & Health Information</h3>
-                <div class="medicalandhealth">
-                    <label>Do you currently have insurance?</label><br>
-                    <input type="radio"
-                                    id="insured"
+                                        placeholder="Zip Code"
+                                        required
+                                        pattern="\d{5}(-\d{4})?"
+                                        oninvalid="this.setCustomValidity('Zip Code not valid')"
+                                        oninput="this.setCustomValidity('')"
+                                        onblur="checkzip()"
+                                        title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
+                        </td>
+                        <td class="error_messages"><span id="city_message"></span><br><span id="state_message"><br></span><span id="zip_message"></span></td>
+                    </tr>
+                    <!-- Phone number and Email input fields -->
+                    <tr class="contact-group">
+                        <td colspan="2" align="left">
+                            <label for="phone">Phone Number</label>
+                        </td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td>
+                            <input type="text"
+                                    id="phone"
+                                    name="phone"
+                                    minlength="10"
+                                    maxlength="10"
+                                    placeholder="1234567890"
+                                    required
+                                    pattern="\d{10}"
+                                    oninvalid="this.setCustomValidity('Phone Number not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkphone()"
+                                    title="Phone number must be 10 digits long and contain only numbers.">
+                        </td>
+                        <td class="error_messages"><span id="phone_message"></span></td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td colspan="2" align="left">
+                            <label for="email">Email Address</label>
+                        </td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td>
+                            <input type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    maxlength="50"
+                                    minlength="5"
+                                    required
+                                    oninvalid="this.setCustomValidity('Email not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkemail()"
+                                    title="Email must be a valid email address between 5 and 50 characters.">
+                        </td>
+                        <td class="error_messages"><span id="email_message"></span></td>
+                    </tr>
+                    <!-- Medical & Health Information Section -->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Medical & Health Information</h3></th>
+                    </tr>
+                    <!-- Insurance radio selection -->
+                    <tr class="insurance-group">
+                        <td colspan="2" align="left">
+                            <label for="insurance_status">Do you currently have health insurance?</label>
+                        </td>
+                    </tr>
+                    <tr class="insurance-group">
+                        <td>
+                            <input type="radio"
+                                    id="insuranceYes"
                                     name="insurance_status"
-                                    value="insured"
-                                    required>
-                    <label for="insured">Yes</label>
-                    <input type="radio"
-                                    id="nonInsured"
+                                    value="Yes"
+                                    required
+                                    onchange="checkinsurance()">
+                            <label for="insuranceYes">Yes</label>
+                            <input type="radio"
+                                    id="insuranceNo"
                                     name="insurance_status"
-                                    value="non insured">
-                    <label for="nonInsured">No</label><br>
-                    <!-- Change the size for this text box -->
-                    <label for="patient_description">Describe your symptoms and/or the reason for your visit today.</label><br>
-                    <textarea id="patient_description" name="patient_description" rows="3" cols="50" placeholder="Write something..." required></textarea><br>
-                    <label>On a scale from 1 through 10, how would you describe how you're feeling today?</label><br>
-                    <input type="range"
-                                    id="feelingScale"
-                                    name="feelingScale"
+                                    value="No"
+                                    onchange="checkinsurance()">
+                            <label for="insuranceNo">No</label>
+                        </td>
+                        <td class="error_messages"><span id="insurance_message"></span></td>
+                    </tr>
+                    <!--Text Area/symptoms section-->
+                    <tr class="textarea-group">
+                        <td colspan="2" align="left">
+                            <label for="visit_reason">Please describe your symptoms and/or the reason for your visit today.</label>
+                        </td>
+                    </tr>
+                    <tr class="textarea-group">
+                        <td>
+                            <textarea id="visit_reason"
+                                        name="visit_reason"
+                                        rows="3"
+                                        cols="50"
+                                        maxlength="500"
+                                        minlength="2"
+                                        placeholder="Enter your symptoms and/or reason for visit here..."
+                                        required
+                                        title="Description must be between 2 and 500 characters long."
+                                        oninvalid="this.setCustomValidity('Description not valid')"
+                                        oninput="this.setCustomValidity('')"
+                                        onblur="checktextarea()"></textarea>
+                        </td>
+                        <td class="error_messages"><span id="visit_reason_message"></span></td>
+                    </tr>
+                    <!-- Slider for pain level -->
+                    <tr class="slider-group">
+                        <td colspan="2" align="left">
+                            <label for="pain_level">On a scale of 1 to 10, how would you rate your current pain level?</label>
+                        </td>
+                    </tr>
+                    <tr class="slider-group">
+                        <td colspan="2" align="center">
+                            <input type="range"
+                                    id="pain_level"
+                                    name="pain_level"
                                     min="1"
-                                    max="10"><br>
-                    <label>Have you recently been diagnosed with any of the following? Check all that apply.</label><br>
-                    <!-- Checkbox table -->
-                    <div class="diagnosis_checkboxes">
-                    <!-- <table>
-                        <tr>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis1"
-                                        name="recDiagnosis1"
-                                        value="Diabetes">
-                                <label for="recDiagnosis1">Diabetes</label>
-                            <!-- </td>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis2"
-                                        name="recDiagnosis2"
-                                        value="Hypertension">
-                                <label for="recDiagnosis2">Hypertension</label>
-                            <!-- </td>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis3"
-                                        name="recDiagnosis3"
-                                        value="Heart Disease">
-                                <label for="recDiagnosis3">Heart Disease</label>
-                            <!-- </td>
-                        </tr>
-                        <tr>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis4"
-                                        name="recDiagnosis4"
-                                        value="Asthma">
-                                <label for="recDiagnosis4">Asthma</label>
-                            <!-- </td>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis5"
-                                        name="recDiagnosis5"
-                                        value="Depression or Anxiety">
-                                <label for="recDiagnosis5">Depression or Anxiety</label>
-                            <!-- </td>
-                            <td> -->
-                                <input type="checkbox"
-                                        id="recDiagnosis6"
-                                        name="recDiagnosis6"
-                                        value="None">
-                                <label for="recDiagnosis6">None of the above</label>
-                            <!-- </td>
-                        </tr>
-                    </table> -->
-                    </div><br>
-                    <label>Are you vaccinated?</label><br>
-                    <input type="radio"
-                            id="vaccinated"
-                            name="isVaccinated"
-                            value="Yes"
-                            required>
-                    <label for="vaccinated">Yes</label>
-                    <input type="radio"
-                            id="unvaccinated"
-                            name="isVaccinated"
-                            value="No">
-                    <label for="unvaccinated">No</label><br>
-                </div>
-                <!-- Account Information Section -->
-                <div class="accountinfo">
-                <h3>Account Information</h3><br>
+                                    max="10"
+                                    value="5"
+                                    oninput="this.nextElementSibling.value = this.value">
+                            <output>5</output>
+                        </td>
+                    </tr>
+                    <!-- Checkboxes for recent diagnoses -->
+                    <tr colspan="2" align="left">
+                        <td>
+                            <label for="diagnosis_checkboxes">Have you recently been diagnosed with any of the following? Check all that apply.</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" id="diagnosis_checkboxes">
+                            <input type="checkbox"
+                                    id="diabetes"
+                                    name="diagnosis"
+                                    value="Diabetes"
+                                    onchange="checkdiagnosis()">
+                            <label for="diabetes">Diabetes</label><br>
+                            <input type="checkbox"
+                                    id="hypertension"
+                                    name="diagnosis"
+                                    value="Hypertension"
+                                    onchange="checkdiagnosis()">
+                            <label for="hypertension">Hypertension</label><br>
+                            <input type="checkbox"
+                                    id="heartDisease"
+                                    name="diagnosis"
+                                    value="Heart Disease"
+                                    onchange="checkdiagnosis()">
+                            <label for="heartDisease">Hear Disease</label><br>
+                            <input type="checkbox"
+                                    id="asthma"
+                                    name="diagnosis"
+                                    value="Asthma"
+                                    onchange="checkdiagnosis()">
+                            <label for="asthma">Asthma</label><br>
+                            <input type="checkbox"
+                                    id="deppressionOrAnxiety"
+                                    name="diagnosis"
+                                    value="Depression or Anxiety"
+                                    onchange="checkdiagnosis()">
+                            <label for="deppressionOrAnxiety">Depression or Anxiety</label><br>
+                            <input type="checkbox"
+                                    id="noneofTheAbove"
+                                    name="diagnosis"
+                                    value="None"
+                                    onchange="checkdiagnosis()">
+                            <label for="noneofTheAbove">None of the above</label><br>
+                        </td>
+                        <td class="error_messages" ><span id="diagnosis_message"></span></td>
+                    </tr>
+                    <!-- Vaccination radio selection -->
+                    <tr>
+                        <td colspan="2" align="left">
+                            <label for="isVaccinated">Have you been vaccinated?</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio"
+                                    id="vaccinatedYes"
+                                    name="isVaccinated"
+                                    value="Yes"
+                                    required
+                                    onchange="checkvaccination()">
+                            <label for="vaccinatedYes">Yes</label>
+                            <input type="radio"
+                                    id="vaccinatedNo"
+                                    name="isVaccinated"
+                                    value="No"
+                                    onchange="checkvaccination()">
+                            <label for="vaccinatedNo">No</label>
+                        </td>
+                        <td class="error_messages"><span id="vaccination_message"></span></td>
+                    </tr>
+                    <!-- Account Information Section -->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Account Information</h3></th>
+                    </tr>
                     <!--User ID Input-->
-                    <label for="userID">User ID</label><br>
-                    <input type="text"
-                            id="userID"
-                            name="userID"
-                            minlength="6"                                
-                            maxlength="15"
-                            required><br>
-                    <!--Password Entry-->
-                    <label for="pwd">Password</label><br>
-                    <input type="password"
-                            id="pwd"
-                            name="pwd"
-                            minlength="8"
-                            maxlength="20"
-                            required><br>
-                    <label for="pwdConfirm">Re-enter password</label><br>
-                    <!--Use JS to match passwords-->
-                    <input type="password"
-                            id="pwdConfirm"
-                            name="pwdConfirm"
-                            minlength="8"
-                            maxlength="20"
-                            required><br>
-                </div>
-                <!-- Clear and Submit buttons -->
-                <div class="formsubmissionbuttons">
-                    <table width="80%">
-                        <tr>
-                            <td align="right">
-                                <input type="button" id="reviewFormButton" value="Review Form">
-                            </td>
-                            <td align="center">
-                                <input type="reset"  id="clearFormButton" value="Clear Form">
-                            </td>
-                            <td align="left">
-                                <input type="submit" id="submitButton" value="Submit">
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                    <tr class="username-group">
+                        <td colspan="2" align="left">
+                            <label for="username">User ID</label>
+                        </td>
+                    </tr>
+                    <tr class="username-group">
+                        <td>
+                            <input type="text"
+                                    id="username"
+                                    name="username"
+                                    placeholder="User ID"
+                                    maxlength="15"
+                                    minlength="6"
+                                    pattern="[A-Za-z0-9]{6,15}"
+                                    required
+                                    oninvalid="this.setCustomValidity('User ID not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkusername()"
+                                    title="User ID must be between 6 and 15 characters long.">
+                        </td>
+                        <td class="error_messages"><span id="username_message"></span></td>
+                    </tr>
+                    <!--Password Inputs-->
+                    <tr class="password-group">
+                        <td colspan="2" align="left">
+                            <label for="password">Password</label>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td>
+                            <input type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    maxlength="20"
+                                    minlength="8"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
+                                    required
+                                    oninvalid="this.setCustomValidity('Password not valid')"
+                                    oninput="this.setCustomValidity('')"
+                                    onblur="checkpassword()"
+                                    title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
+                        </td>
+                        <td class="error_messages">
+                            <span id="password_message1"></span><br>
+                            <span id="password_message2"></span><br>
+                            <span id="password_message3"></span><br>
+                            <span id="password_message4"></span><br>
+                            <span id="password_message5"></span>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td colspan="2" align="left">
+                            <label for="confirm_password">Confirm Password</label>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td>
+                            <input type="password"
+                                    id="confirm_password"
+                                    name="confirm_password"
+                                    placeholder="Confirm Password"
+                                    maxlength="20"
+                                    minlength="8"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
+                                    required
+                                    oninvalid="this.setCustomValidity('Confirm Password not valid')"
+                                    oninput="this.setCustomValidity('')"'
+                                    onblur="checkconfirm_password()"
+                                    title="Please re-enter your password to confirm.">
+                        </td>
+                        <td class="error_messages"><span id="confirm_password_message"></span></td>
+                    </tr>
+                    <!-- Form Buttons -->
+                    <tr>
+                        <td colspan="2" align="center">
+                            <table width="80%">
+                                <tr>
+                                    <td align="right">
+                                        <input type="button" id="reviewFormButton" value="Review Form" onclick="reviewData()"
+                                        title="Click this button to review all data fields.">
+                                    </td>
+                                    <td align="center">
+                                        <input type="button" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
+                                        title="Click this button to validate all data fields.">
+                                    </td>
+                                    <td align="center">
+                                        <input type="reset"  id="clearFormButton" value="Clear Form"
+                                        title="Click this button to clear all data fields.">
+                                    </td>
+                                    <td align="left">
+                                        <input type="submit" id="submitFormButton" value="Submit Form" disabled
+                                        title="Click this button to submit the form.">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                </table>
             </form>
-        </div>
-        <!-- Data review section -->
-         <div class="dataReview">
          </div>
+
+        <!-- Data Review Section -->
+        <div id="dataReview"></div>
+
         <!-- Footer Section -->
         <div class="footer">
-        <footer>
-            <table width="100%">
+            <table align="center" width="95%">
                 <tr>
                     <td align="left">
                         <a href="mailto:someone@example.com"><b>Contact Us</b></a>
@@ -369,10 +619,7 @@
                         <p>Evergreen Cardiovascular Center<br>Created by Francisco Fuentes<br>MIS 3371</p>
                     </td>
                 </tr>
-            </table>
-        </footer>
         </div>
-    </div>
 
         <!-- JavaScript code for the localedate in the header -->
         <script>

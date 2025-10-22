@@ -1,99 +1,50 @@
 /*
    Name: Francisco Fuentes
    File: hw2.css
-   Date Created: 2025-09-22
+   Date Created: 2025-10-15
    Date Updated:
    Purpose: MIS 3371 Homework 2... Using CSS to style a patient intake form.
 */
 
-form {
-      display: grid;
-      justify-content: center;
-      place-items: left;
-      text-align: left;
-}
-
+/* Style for the entire body */
 body {
-   background-color: #D8DFE6;
+    background-color: #D8DFE6;
    font-family: Arial, Helvetica, sans-serif;
    color: #2C3E50;
    margin: auto;
 }
 
-#wrapper {
-   /* Form formatting */
-   min-height: 100dvh;
-   display: grid;
-   grid-template-rows: auto 1fr auto;
-   grid-template-columns: minmax(0, 1fr);
+/* Style for the form */
+#form-group {
+    padding: 50px;
 }
 
-/* Header */
-header {
-   background-color: #2C3E50;
+/* Style for the header */
+.header {
+    background-color: #2C3E50;
    color: white;
 }
 
-/* Label and Input padding */
-label, input, textarea {
-   margin-top: .75rem;
-   margin-bottom: .75rem;
-}
-
-#patient_description {
-   height: 25%;
-   width: 100%;
-}
-
-/* radio button horizontal display */
-input[type="radio"] {
-   display: flexbox;
-}
-
-/* slider styling */
+/* Layout for the range input */
 input[type="range"] {
-   width: 100%;
+    width: 100%;
 }
 
-/* placeholder color */
-input::placeholder {
-   color: #777777;
-   opacity: 1;
-}
-/* Submission buttons centering and color */
-#formsubmissionbuttons {
-   place-items: center;
+/* Style for the data review section */
+#dataReview {
+    margin-top: 20px;
+    padding: 15px;
 }
 
-#submitButton {
-      background-color: #4A8BF2;
-}
-
-/* Footer */
-footer {
-   background-color: #2C3E50;
+/* Style for Footer */
+.footer {
+    background-color: #2C3E50;
    color: white;
-   display: grid;
-   bottom:0vh;
-}
-/* header color */
-h3 {
-   color: #4A8BF2;
-}
-
-/* Checkbox Orientation */
-#diagnosis_checkboxes {
-   display: flexbox;
-}
-
-/* Header date display */
-#todaysdate {
-   vertical-align: bottom;
-}
-
-/* Footer social media links display */
-#socialhandles {
-   display: grid;
+   text-align: center;
+   padding: 10px;
+   position: relative;
+   width: 100%;
+   bottom: 0;
 }
 
 /* Footer hyperlink colors */
@@ -118,7 +69,7 @@ a:active {
   text-decoration: underline;
 }
 
-/* margin spacing for overlapping issues */
-.medicalandhealth {
-   margin-bottom: 2.5rem;
+/* Style for error messages */
+.error_messages {
+    color: red;
 }
