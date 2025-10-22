@@ -73,3 +73,8 @@ a:active {
 .error_messages {
     color: red;
 }
+
+/* Centering for page 2 button */
+.page2-button {
+    align-items: center;
+}
