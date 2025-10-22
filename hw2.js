@@ -21,7 +21,7 @@ function reviewData() {
         // Checkbox Filter
         if (element.type === 'checkbox') {
             if (element.checked) {
-                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td><td>${element.type}</td></tr>`;
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
             }
             continue;
         }
@@ -29,14 +29,14 @@ function reviewData() {
         // Radio Button Filter
         if (element.type === 'radio') {
             if (element.checked) {
-                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td><td>${element.type}</td></tr>`;
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
             }
             continue;
         }
 
         // Meaningful Data Type Filter
         if (element.name && element.value && element.type !== 'button') {
-            outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td><td>${element.type}</td></tr>`;
+            outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
         }
     }
 
