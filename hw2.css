@@ -75,6 +75,18 @@ a:active {
 }
 
 /* Centering for page 2 button */
-#page2 {
-    align-items: center;
+.page2 {
+    text-align: center;
+    margin-top: 15rem;
+}
+
+/* Style for confirm page footer */
+.footer2 {
+    background-color: #2C3E50;
+   color: white;
+   text-align: center;
+   padding: 10px;
+   position: absolute;
+   width: 100%;
+   bottom: 0;
 }
