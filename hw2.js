@@ -14,7 +14,7 @@ function reviewData() {
     const outputDiv = document.getElementById('dataReview');
     let outputHTML = '<table border = "1" align = "center"><tr><th>Field</th><th>Value</th></tr>';
 
-    // For loop that goes through all the input data and checks for existing fields
+    // "For loop" that goes through all the input data and checks for existing fields
     for (let i = 0; i < form.elements.length; i++) {
         const element = form.elements[i];
 
@@ -475,3 +475,14 @@ function validateData() {
         document.getElementById("submitFormButton").disabled = false;
     }
 }
+
+// Dynamic range slider
+    const slider = document.getElementById('pain_level');
+    const display = document.getElementById('valueDisplay');
+    display.textContent = slider.value;
+
+    slider.addEventListener('input', function() {
+        const newValue = this.value;
+
+        display.textContent = newValue;
+    });

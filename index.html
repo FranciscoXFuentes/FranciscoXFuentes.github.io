@@ -2,7 +2,7 @@
 <!--
     Name: Francisco Fuentes
     File: index.html
-    Note: The file is named index.html becuase github does not allow custom names for the landing page.
+    Note: The file is named index.html and not hw2.html, becuase github does not allow for custom names on the landing page.
     Date: 2025-10-15
     Date Last Modified: 2025-10-15
     Purpose: MIS 3371.. Adding data validation and data review functionality to the patient intake form for Homework 2.
@@ -17,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
     </head>
     <body>
-        <!-- Header Section -->
+    <!-- Header Section -->
         <div class ="header">
             <table align="center" width="95%">
                 <tr>
@@ -34,11 +34,11 @@
                 </tr>
             </table>
         </div>
-        <!-- Form Section -->
+    <!-- Form Section -->
          <div class ="body">
             <form name="intakeForm" id="intakeForm" action="hw2confirm.html" method="get">
                 <table class="form-group" align="center">
-                    <!--Personal Information Section-->
+                <!--Personal Information Section-->
                     <tr>
                         <th colspan="2" align="left"><h3>Personal Information</h3></th>
                     </tr>
@@ -49,7 +49,7 @@
                     </tr>
                     <tr class="name-group">
                         <td>
-                            <!--First name validation testing-->
+                        <!--Full name validation testing and REGEX pattern, should look smilar for all other input fields-->
                             <input type="text" 
                                     id="firstname" 
                                     name="firstname" 
@@ -58,7 +58,7 @@
                                     minlength="2" 
                                     maxlength="30" 
                                     required
-                                    oninvalid="this.setCustomValidity('First Name not valid')"
+                                    oninvalid="this.setCustomValidity('This first name is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkfirstname()"
                                     title="First name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
@@ -70,7 +70,7 @@
                                     maxlength="1"
                                     size="2"
                                     pattern="[A-Za-z]{0,1}"
-                                    oninvalid="this.setCustomValidity('Middle Initial not valid')"
+                                    oninvalid="this.setCustomValidity('The middle initial is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkminitial()"
                                     title="Middle initial should be a single letter.">
@@ -82,14 +82,14 @@
                                     maxlength="30" 
                                     required
                                     pattern="[A-Za-z\s'\-]{2,30}"
-                                    oninvalid="this.setCustomValidity('Last Name not valid')"
+                                    oninvalid="this.setCustomValidity('This last name is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checklastname()"
                                     title="Last name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
                         </td>
                         <td class="error_messages"><span id="name_message"></span></td>
                     </tr>
-                    <!--DOB input field-->
+                <!--DOB input field-->
                     <tr class="dob-group">
                         <td colspan="2" align="left">
                             <label for="dob">Date of Birth</label>
@@ -101,14 +101,14 @@
                                     id="dob" 
                                     name="dob" 
                                     required
-                                    oninvalid="this.setCustomValidity('Date of Birth not valid')"
+                                    oninvalid="this.setCustomValidity('The date of birth is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkdob()"
                                     title="Your date of birth must be between 120 years ago and today.">
                         </td>
                         <td class="error_messages"><span id="dob_message"></span></td>
                     </tr>
-                    <!--SSN input field-->
+                <!--SSN input field and testing-->
                     <tr class="ssn-group">
                         <td colspan="2" align="left">
                             <label for="ssn">Social Security Number</label>
@@ -124,14 +124,14 @@
                                     minlength="9" 
                                     required
                                     pattern="\d{3}-?\d{2}-?\d{4}"
-                                    oninvalid="this.setCustomValidity('SSN not valid')"
+                                    oninvalid="this.setCustomValidity('The SSN is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkssn()"
                                     title="SSN must be in the format ###-##-#### or #########">
                         </td>
                         <td class="error_messages"><span id="ssn_message"></span></td>
                     </tr>
-                    <!--Gender radio selection-->
+                <!--Gender radio selection-->
                     <tr class="gender-group">
                         <td colspan="2" align="left">
                             <label for="gender">Gender</label>
@@ -161,11 +161,11 @@
                         </td>
                         <td class="error_messages"><span id="gender_message"></span></td>
                     </tr>
-                    <!--Contact Information Section-->
+                <!--Contact Information Section-->
                     <tr>
                         <th colspan="2" align="left"><h3>Contact Information</h3></th>
                     </tr>
-                    <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
+                <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
                     <tr class="address-group">
                         <td colspan="2" align="left">
                             <label for="address">Address Line 1</label>
@@ -181,7 +181,7 @@
                                     minlength="5"
                                     required
                                     title="Address must be between 5 and 30 characters."
-                                    oninvalid="this.setCustomValidity('Address not valid')"
+                                    oninvalid="this.setCustomValidity('This address is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkaddress1()">
                         
@@ -202,7 +202,7 @@
                                     maxlength="30"
                                     minlength="0"
                                     title="Address must be between 5 and 30 characters."
-                                    oninvalid="this.setCustomValidity('Address not valid')"
+                                    oninvalid="this.setCustomValidity('This address is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkaddress2()">
                         
@@ -224,10 +224,10 @@
                                         placeholder="City"
                                         required
                                         title="City must be between 2 and 30 characters."
-                                        oninvalid="this.setCustomValidity('City not valid')"
+                                        oninvalid="this.setCustomValidity('This city is not valid')"
                                         oninput="this.setCustomValidity('')"
                                         onblur="checkcity()">
-                            <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
+                        <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
                             <select name="stateAbbreviation" id="stateAbbreviation" required>
                                     <option value="AL">AL</option>
                                     <option value="AK">AK</option>
@@ -295,14 +295,14 @@
                                         placeholder="Zip Code"
                                         required
                                         pattern="\d{5}(-\d{4})?"
-                                        oninvalid="this.setCustomValidity('Zip Code not valid')"
+                                        oninvalid="this.setCustomValidity('The zip code is not valid')"
                                         oninput="this.setCustomValidity('')"
                                         onblur="checkzip()"
                                         title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
                         </td>
                         <td class="error_messages"><span id="city_message"></span><br><span id="state_message"><br></span><span id="zip_message"></span></td>
                     </tr>
-                    <!-- Phone number and Email input fields -->
+                <!-- Phone number and Email input fields -->
                     <tr class="contact-group">
                         <td colspan="2" align="left">
                             <label for="phone">Phone Number</label>
@@ -318,7 +318,7 @@
                                     placeholder="1234567890"
                                     required
                                     pattern="\d{10}"
-                                    oninvalid="this.setCustomValidity('Phone Number not valid')"
+                                    oninvalid="this.setCustomValidity('This phone number is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkphone()"
                                     title="Phone number must be 10 digits long and contain only numbers.">
@@ -339,7 +339,7 @@
                                     maxlength="50"
                                     minlength="5"
                                     required
-                                    oninvalid="this.setCustomValidity('Email not valid')"
+                                    oninvalid="this.setCustomValidity('This email is not valid')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkemail()"
                                     title="Email must be a valid email address between 5 and 50 characters.">
@@ -391,7 +391,7 @@
                                         placeholder="Enter your symptoms and/or reason for visit here..."
                                         required
                                         title="Description must be between 2 and 500 characters long."
-                                        oninvalid="this.setCustomValidity('Description not valid')"
+                                        oninvalid="this.setCustomValidity('Invalid description')"
                                         oninput="this.setCustomValidity('')"
                                         onblur="checktextarea()"></textarea>
                         </td>
@@ -413,6 +413,11 @@
                                     value="5"
                                     oninput="this.nextElementSibling.value = this.value">
                             <output>5</output>
+                        </td>
+                    </tr>
+                    <tr class="slider-group">
+                        <td>
+                            <p>Current pain level: <span id="valueDispaly">5</span></p>
                         </td>
                     </tr>
                     <!-- Checkboxes for recent diagnoses -->
@@ -506,7 +511,7 @@
                                     minlength="6"
                                     pattern="[A-Za-z0-9]{6,15}"
                                     required
-                                    oninvalid="this.setCustomValidity('User ID not valid')"
+                                    oninvalid="this.setCustomValidity('Invalid User ID')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkusername()"
                                     title="User ID must be between 6 and 15 characters long.">
@@ -529,7 +534,7 @@
                                     minlength="8"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
                                     required
-                                    oninvalid="this.setCustomValidity('Password not valid')"
+                                    oninvalid="this.setCustomValidity('Invalid Password')"
                                     oninput="this.setCustomValidity('')"
                                     onblur="checkpassword()"
                                     title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
@@ -557,7 +562,7 @@
                                     minlength="8"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
                                     required
-                                    oninvalid="this.setCustomValidity('Confirm Password not valid')"
+                                    oninvalid="this.setCustomValidity('Password confirmation invalid')"
                                     oninput="this.setCustomValidity('')"'
                                     onblur="checkconfirm_password()"
                                     title="Please re-enter your password to confirm.">
