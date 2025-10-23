@@ -12,7 +12,7 @@ let error_flag = 0;
 function reviewData() {
     const form = document.getElementById('intakeForm');
     const outputDiv = document.getElementById('dataReview');
-    let outputHTML = '<table border = "1" align = "center"><tr><th>Field</th><th>Value</th><th>Type</th></tr>';
+    let outputHTML = '<table border = "1" align = "center"><tr><th>Field</th><th>Value</th></tr>';
 
     // For loop that goes through all the input data and checks for existing fields
     for (let i = 0; i < form.elements.length; i++) {
