@@ -36,7 +36,7 @@ input[type="range"] {
     padding: 15px;
 }
 
-/* Style for Footer */
+/* Style for main footer */
 .footer {
     background-color: #2C3E50;
    color: white;
@@ -69,18 +69,18 @@ a:active {
   text-decoration: underline;
 }
 
-/* Style for error messages */
+/* Style for validation error messages */
 .error_messages {
     color: red;
 }
 
-/* Centering for page 2 button */
+/* Centering for confirmation page */
 .page2 {
     text-align: center;
     margin-top: 15rem;
 }
 
-/* Style for confirm page footer */
+/* Styling for confirmation page's footer */
 .footer2 {
     background-color: #2C3E50;
    color: white;
