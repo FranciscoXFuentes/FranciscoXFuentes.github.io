@@ -94,7 +94,6 @@ a:active {
 
 .slider-group {
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
