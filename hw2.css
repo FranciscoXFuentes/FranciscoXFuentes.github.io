@@ -92,5 +92,6 @@ a:active {
 }
 
 .slider-group {
-  align-content: center;
+  display: flex;
+  justify-content: center;
 }
