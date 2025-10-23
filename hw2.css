@@ -90,3 +90,7 @@ a:active {
    width: 100%;
    bottom: 0;
 }
+
+.slider-group {
+  align-content: center;
+}
