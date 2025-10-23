@@ -92,6 +92,7 @@ a:active {
    bottom: 0;
 }
 
+/* Slider formatting */
 .slider-group {
   display: flex;
   justify-content: center;
