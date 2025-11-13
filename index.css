@@ -1,0 +1,8 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
