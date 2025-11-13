@@ -1,0 +1,100 @@
+/*
+   Name: Francisco Fuentes
+   File: hw3.css
+   Date Created: 2025-11-12
+   Date Updated: 2025-11-12
+   Purpose: MIS 3371 Homework 3... Using CSS to style the patient intake form and data errors.
+*/
+
+/* Style for the entire body */
+body {
+    background-color: #D8DFE6;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #2C3E50;
+   margin: auto;
+}
+
+/* Style for the form */
+#form-group {
+    padding: 50px;
+    width: 95%;
+}
+
+/* Style for the header */
+.header {
+    background-color: #2C3E50;
+   color: white;
+}
+
+/* Layout for the range input */
+input[type="range"] {
+    width: 100%;
+}
+
+/* Style for the data review section */
+#dataReview {
+    margin-top: 20px;
+    padding: 15px;
+}
+
+/* Style for main footer */
+.footer {
+    background-color: #2C3E50;
+   color: white;
+   text-align: center;
+   padding: 10px;
+   position: relative;
+   width: 100%;
+   bottom: 0;
+}
+
+/* Footer hyperlink colors */
+a:link {
+  color: #66D9A5;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #A5E3CD;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #4A8BF2;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: #3A6DCC;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* Style for validation error messages */
+.error_messages {
+    color: red;
+}
+
+/* Centering for confirmation page */
+.page2 {
+    text-align: center;
+    margin-top: 15rem;
+}
+
+/* Styling for confirmation page's footer */
+.footer2 {
+    background-color: #2C3E50;
+   color: white;
+   text-align: center;
+   padding: 10px;
+   position: absolute;
+   width: 100%;
+   bottom: 0;
+}
+
+/* Slider formatting */
+.slider-group {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
