@@ -215,13 +215,20 @@ function checkaddress2() {
 //validation function for city
 function checkcity() {
     x = document.getElementById("city").value;
+    const cityPattern = /^[A-Za-z0-9\s-]{2,}[A-Za-z0-9\s]*$/;
     if (x.length<2) {
         document.getElementById("city_message").innerHTML = "Invalid City... Must be at least 2 characters.";
         error_flag = 1;
     }
     else {
-        document.getElementById("city_message").innerHTML = "";
-        error_flag = 0;
+        if (cityPattern.test(x)) {
+            document.getElementById("city_message").innerHTML = "";
+            error_flag = 0;
+        }
+        else {
+            document.getElementById("city_message").innerHTML = "Invalid City name... Must not contain any special characters.";
+            error_flag = 1;
+        }
     }
 }
 
