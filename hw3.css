@@ -17,7 +17,8 @@ body {
 /* Style for the form */
 #form-group {
     padding: 50px;
-    width: 95%;
+    width: 90%;
+    table-layout: fixed;
 }
 
 /* Style for the header */
