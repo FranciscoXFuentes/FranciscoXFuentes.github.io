@@ -48,16 +48,16 @@ function reviewData() {
 function checkfirstname() {
     x = document.getElementById("firstname").value;
     if (x.length<2) {
-        document.getElementById("name_message").innerHTML = "Invalid First Name... Must be at least 2 characters.";
+        document.getElementById("fname_message").innerHTML = "Invalid First Name... Must be at least 2 characters.";
         error_flag = 1;
     }
     else {
         if (x.match(/^[A-Za-z\s'-]+$/)) {
-            document.getElementById("name_message").innerHTML = "";
+            document.getElementById("fname_message").innerHTML = "";
             error_flag = 0;
         }
         else {
-            document.getElementById("name_message").innerHTML = "Invalid First Name... Must contain only letters.";
+            document.getElementById("fname_message").innerHTML = "Invalid First Name... Must contain only letters.";
             error_flag = 1;
         }
     }
@@ -68,10 +68,10 @@ function checkminitial() {
     x = document.getElementById("minitial").value;
     if (x.length>0) {
         if (x.match(/[a-zA-Z ]/)) {
-            document.getElementById("name_message").innerHTML = "";
+            document.getElementById("minitial_message").innerHTML = "";
         }
         else {
-            document.getElementById("name_message").innerHTML = "Invalid Middle Initial... Must contain only letters.";
+            document.getElementById("minitial_message").innerHTML = "Invalid Middle Initial... Must contain only letters.";
             error_flag = 1;
         }
     }
@@ -81,16 +81,16 @@ function checkminitial() {
 function checklastname() {
     x = document.getElementById("lastname").value;
     if (x.length<2) {
-        document.getElementById("name_message").innerHTML = "Invalid Last Name... Must be at least 2 characters.";
+        document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must be at least 2 characters.";
         error_flag = 1;
     }
     else {
         if (x.match(/^[A-Za-z\s'-]+$/)) {
-            document.getElementById("name_message").innerHTML = "";
+            document.getElementById("lname_message").innerHTML = "";
             error_flag = 0;
         }
         else {
-            document.getElementById("name_message").innerHTML = "Invalid Last Name... Must contain only letters.";
+            document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must contain only letters.";
             error_flag = 1;
         }
     }
