@@ -23,8 +23,8 @@ body {
 }
 
 td {
-  height: 50px;
-  width: 200px;
+  height: auto;
+  width: 90%;
 }
 
 td span {
