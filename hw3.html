@@ -58,20 +58,15 @@
                                     minlength="2" 
                                     maxlength="30" 
                                     required
-                                    oninvalid="this.setCustomValidity('This first name is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkfirstname()"
                                     title="First name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
                             <input type="text" 
                                     id="minitial" 
                                     name="minitial" 
                                     placeholder="MI" 
-                                    minlength="1" 
+                                    minlength="0" 
                                     maxlength="1"
                                     size="2"
-                                    pattern="[A-Za-z]{0,1}"
-                                    oninvalid="this.setCustomValidity('The middle initial is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkminitial()"
                                     title="Middle initial should be a single letter.">
                             <input type="text" 
@@ -81,9 +76,6 @@
                                     minlength="2" 
                                     maxlength="30" 
                                     required
-                                    pattern="[A-Za-z\s'\-]{2,30}"
-                                    oninvalid="this.setCustomValidity('This last name is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checklastname()"
                                     title="Last name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
                         </td>
@@ -101,8 +93,6 @@
                                     id="dob" 
                                     name="dob" 
                                     required
-                                    oninvalid="this.setCustomValidity('The date of birth is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkdob()"
                                     title="Your date of birth must be between 120 years ago and today.">
                         </td>
@@ -124,8 +114,6 @@
                                     minlength="9" 
                                     required
                                     pattern="\d{3}-?\d{2}-?\d{4}"
-                                    oninvalid="this.setCustomValidity('The SSN is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkssn()"
                                     title="SSN must be in the format ###-##-#### or #########">
                         </td>
@@ -181,8 +169,6 @@
                                     minlength="5"
                                     required
                                     title="Address must be between 5 and 30 characters."
-                                    oninvalid="this.setCustomValidity('This address is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkaddress1()">
                         
                         </td>
@@ -202,8 +188,6 @@
                                     maxlength="30"
                                     minlength="0"
                                     title="Address must be between 5 and 30 characters."
-                                    oninvalid="this.setCustomValidity('This address is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkaddress2()">
                         
                         </td>
@@ -224,8 +208,6 @@
                                         placeholder="City"
                                         required
                                         title="City must be between 2 and 30 characters."
-                                        oninvalid="this.setCustomValidity('This city is not valid')"
-                                        oninput="this.setCustomValidity('')"
                                         onblur="checkcity()">
                         <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
                             <select name="stateAbbreviation" id="stateAbbreviation" required>
@@ -295,8 +277,6 @@
                                         placeholder="Zip Code"
                                         required
                                         pattern="\d{5}(-\d{4})?"
-                                        oninvalid="this.setCustomValidity('The zip code is not valid')"
-                                        oninput="this.setCustomValidity('')"
                                         onblur="checkzip()"
                                         title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
                         </td>
@@ -318,8 +298,6 @@
                                     placeholder="1234567890"
                                     required
                                     pattern="\d{10}"
-                                    oninvalid="this.setCustomValidity('This phone number is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkphone()"
                                     title="Phone number must be 10 digits long and contain only numbers.">
                         </td>
@@ -339,8 +317,6 @@
                                     maxlength="50"
                                     minlength="5"
                                     required
-                                    oninvalid="this.setCustomValidity('This email is not valid')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkemail()"
                                     title="Email must be a valid email address between 5 and 50 characters.">
                         </td>
@@ -391,8 +367,6 @@
                                         placeholder="Enter your symptoms and/or reason for visit here..."
                                         required
                                         title="Description must be between 2 and 500 characters long."
-                                        oninvalid="this.setCustomValidity('Invalid description')"
-                                        oninput="this.setCustomValidity('')"
                                         onblur="checktextarea()"></textarea>
                         </td>
                         <td class="error_messages"><span id="visit_reason_message"></span></td>
@@ -510,8 +484,6 @@
                                     minlength="6"
                                     pattern="[A-Za-z0-9]{6,15}"
                                     required
-                                    oninvalid="this.setCustomValidity('Invalid User ID')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkusername()"
                                     title="User ID must be between 6 and 15 characters long.">
                         </td>
@@ -533,8 +505,6 @@
                                     minlength="8"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
                                     required
-                                    oninvalid="this.setCustomValidity('Invalid Password')"
-                                    oninput="this.setCustomValidity('')"
                                     onblur="checkpassword()"
                                     title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
                         </td>
@@ -561,8 +531,6 @@
                                     minlength="8"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
                                     required
-                                    oninvalid="this.setCustomValidity('Password confirmation invalid')"
-                                    oninput="this.setCustomValidity('')"'
                                     onblur="checkconfirm_password()"
                                     title="Please re-enter your password to confirm.">
                         </td>
