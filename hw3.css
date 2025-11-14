@@ -19,6 +19,7 @@ body {
     padding: 50px;
     width: 90%;
     table-layout: fixed;
+    empty-cells: show;
 }
 
 /* Style for the header */
