@@ -222,7 +222,7 @@ function checkcity() {
             error_flag = 0;
         }
         else {
-            document.getElementById("city_message").innerHTML = "Invalid City name... Must not contain any special characters.";
+            document.getElementById("city_message").innerHTML = "Invalid City name... Must NOT contain special characters.";
             error_flag = 1;
         }
     }
@@ -365,7 +365,7 @@ function checkvaccination() {
 //validation function for user id
 function checkuserid() {
     x = document.getElementById("username").value;
-    const useridPattern = /^[a-zA-Z0-9]{6,15}$/;
+    const useridPattern = /^[A-Za-z][A-Za-z0-9]{6,15}$/;
 
     // check userid length and pattern
     if (useridPattern.test(x)) {
@@ -373,7 +373,7 @@ function checkuserid() {
         error_flag = 0;
     }
     else {
-        document.getElementById("username_message").innerHTML = "Invalid User ID... Must be 6-15 characters long and contain only letters and numbers.";
+        document.getElementById("username_message").innerHTML = "Invalid User ID... Must be 6-15 characters long , start with a letter character, and contain only letters and numbers.";
         error_flag = 1; 
     }
 }
