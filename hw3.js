@@ -267,14 +267,23 @@ function checkphone() {
 //validation function for email
 function checkemail() {
     x = document.getElementById("email").value;
+    const emailPattern = /^(?=.{5,50}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
-    if (x.length<5) {
-        document.getElementById("email_message").innerHTML = "Invalid Email... Must be at least 5 characters.";
-        error_flag = 1;
+    if (x.length>=5) {
+        if (emailPattern.test(x)) {
+            document.getElementById("email_message").innerHTML = "";
+            error_flag = 0;
+        }
+        else {
+            innerHTML = "Invalid Email Format.";
+            error_flag = 1;
+        }
+        /*document.getElementById("email_message").innerHTML = "Invalid Email... Must be at least 5 characters.";
+        error_flag = 1;*/
     }
     else {
-        document.getElementById("email_message").innerHTML = "";
-        error_flag = 0;
+        innerHTML = "Invalid Email... Must be at least 5 characters.";
+        error_flag = 1;
     }
 }
 
@@ -365,7 +374,7 @@ function checkvaccination() {
 //validation function for user id
 function checkuserid() {
     x = document.getElementById("username").value;
-    const useridPattern = /^[A-Za-z][A-Za-z0-9]{6,15}$/;
+    const useridPattern = /^[A-Za-z][A-Za-z0-9]{5,16}$/;
 
     // check userid length and pattern
     if (useridPattern.test(x)) {
