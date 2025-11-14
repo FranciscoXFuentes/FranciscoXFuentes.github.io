@@ -19,12 +19,6 @@ body {
     padding: 50px;
     width: 90%;
     table-layout: fixed;
-    empty-cells: show;
-}
-
-td {
-  height: auto;
-  width: 90%;
 }
 
 td span {
