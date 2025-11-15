@@ -146,7 +146,7 @@ function checkssn() {
             return 0;
         }
         else {
-            document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.<li>';
+            document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.</li>';
             return 1; 
         }
     }
