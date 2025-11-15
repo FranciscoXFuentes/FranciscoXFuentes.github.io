@@ -74,9 +74,9 @@ a:active {
 /* Style for validation error messages */
 .error_messages {
     color: red;
-    /* width: 300px; */
+    width: 500px;
     /* padding: 15px; */
-    /* white-space: normal; */
+    white-space: normal;
 }
 
 /* Centering for confirmation page */
