@@ -6,8 +6,6 @@
     Purpose: MIS 3371 Homework 3... Updating the patient intake form to validate data inputs with regex patterens on the fly and adding dynamic values for the range slider.
 */
 
-let error_flag;
-
 // Function(s) to get user data from the form and display it
 function reviewData() {
     const form = document.getElementById('intakeForm');
@@ -49,16 +47,16 @@ function checkfirstname() {
     x = document.getElementById("firstname").value;
     if (x.length<2) {
         document.getElementById("fname_message").innerHTML = "Invalid First Name... Must be at least 2 characters.";
-        error_flag = 1;
+         return error_flag = 1;
     }
     else {
         if (x.match(/^[A-Za-z\s'-]+$/)) {
             document.getElementById("fname_message").innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
         else {
             document.getElementById("fname_message").innerHTML = "Invalid First Name... Must contain only letters.";
-            error_flag = 1;
+            return error_flag = 1;
         }
     }
 }
@@ -69,10 +67,11 @@ function checkminitial() {
     if (x.length>0) {
         if (x.match(/[a-zA-Z ]/)) {
             document.getElementById("minitial_message").innerHTML = "";
+            return error_flag = 0;
         }
         else {
             document.getElementById("minitial_message").innerHTML = "Invalid Middle Initial... Must contain only letters.";
-            error_flag = 1;
+            return error_flag = 1;
         }
     }
 }
@@ -82,16 +81,16 @@ function checklastname() {
     x = document.getElementById("lastname").value;
     if (x.length<2) {
         document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must be at least 2 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         if (x.match(/^[A-Za-z\s'-]+$/)) {
             document.getElementById("lname_message").innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
         else {
             document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must contain only letters.";
-            error_flag = 1;
+            return error_flag = 1;
         }
     }
 }
@@ -117,20 +116,20 @@ function checkdob() {
     // validate dob
     if (dobInput.value === "") {
         dobMessage.innerHTML = "Date of Birth cannot be empty.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         if (dobTime > todayTime) {
         dobMessage.innerHTML = "Invalid Date of Birth... Cannot be in the future.";
-        error_flag = 1;
+        return error_flag = 1;
         }
         else if (dobTime < minTime) {
             dobMessage.innerHTML = "Invalid Date of Birth... Age cannot exceed 120 years.";
-            error_flag = 1;
+            return error_flag = 1;
         }
         else {
             dobMessage.innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
     }
 }
@@ -144,16 +143,16 @@ function checkssn() {
     if (x.length >= 9 && x.length <= 11) {
         if (ssnPattern.test(x)) {
             document.getElementById("ssn_message").innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
         else {
             document.getElementById("ssn_message").innerHTML = "Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.";
-            error_flag = 1; 
+            return error_flag = 1; 
         }
     }
     else {
         document.getElementById("ssn_message").innerHTML = "Invalid SSN... Must be between 9 and 11 digits long.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -172,11 +171,11 @@ function checkgender() {
 
     if (isChecked) {
         genderMessage.innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         genderMessage.innerHTML = "A gender option must be selected.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -185,11 +184,11 @@ function checkaddress1() {
     x = document.getElementById("addr1").value;
     if (x.length<5) {
         document.getElementById("addr1_message").innerHTML = "Invalid Address Line... Must be at least 5 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         document.getElementById("addr1_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
 }
 
@@ -200,15 +199,15 @@ function checkaddress2() {
 
     if (x.length>0 && y.length==0) {
         document.getElementById("addr2_message").innerHTML = "Address Line 1 must be filled out if Address Line 2 is used.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else if (x.length>0 && x.length<5) {
         document.getElementById("addr2_message").innerHTML = "Invalid Address Line... Must be at least 5 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         document.getElementById("addr2_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
 }
 
@@ -219,16 +218,16 @@ function checkcity() {
     if (x.length>=2) {
         if (cityPattern.test(x)) {
             document.getElementById("city_message").innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
         else {
             document.getElementById("city_message").innerHTML = "Invalid City name... Must NOT contain special characters.";
-            error_flag = 1;
+            return error_flag = 1;
         }
     }
     else {
         document.getElementById("city_message").innerHTML = "Invalid City... Must be at least 2 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -240,11 +239,11 @@ function checkzip() {
     // validate zip code if true or false when matched to pattern
     if (zipPattern.test(x)) {
         document.getElementById("zip_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         document.getElementById("zip_message").innerHTML = "Invalid Zip Code... Must be in the format XXXXX or XXXXX-XXXX and contain only numbers.";
-        error_flag = 1; 
+        return error_flag = 1; 
     }
 }
 
@@ -256,11 +255,11 @@ function checkphone() {
     // validate phone number matches to pattern
     if (phonePattern.test(x)) {
         document.getElementById("phone_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         document.getElementById("phone_message").innerHTML = "Invalid Phone Number... Must be 10 digits long and contain only numbers.";
-        error_flag = 1; 
+        return error_flag = 1; 
     }
 }
 
@@ -272,18 +271,16 @@ function checkemail() {
     if (x.length>=5) {
         if (emailPattern.test(x)) {
             document.getElementById("email_message").innerHTML = "";
-            error_flag = 0;
+            return error_flag = 0;
         }
         else {
             innerHTML = "Invalid Email Format.";
-            error_flag = 1;
+            return error_flag = 1;
         }
-        /*document.getElementById("email_message").innerHTML = "Invalid Email... Must be at least 5 characters.";
-        error_flag = 1;*/
     }
     else {
         innerHTML = "Invalid Email... Must be at least 5 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -302,11 +299,11 @@ function checkinsurance() {
 
     if (isChecked) {
         insuranceMessage.innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         insuranceMessage.innerHTML = "An inurance option must be selected.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -317,11 +314,11 @@ function checktextarea() {
 
     if (x.length<2) {
         document.getElementById("visit_reason_message").innerHTML = "Invalid Description... Must be at least 2 characters.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         document.getElementById("visit_reason_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
 }
 
@@ -340,11 +337,11 @@ function checkdiagnosis() {
 
     if (isChecked) {
         diagnosisMessage.innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         diagnosisMessage.innerHTML = "A diagnosis option must be selected.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -363,11 +360,11 @@ function checkvaccination() {
 
     if (isChecked) {
         vaccinationMessage.innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         vaccinationMessage.innerHTML = "A vaccination option must be selected.";
-        error_flag = 1;
+        return error_flag = 1;
     }
 }
 
@@ -379,11 +376,11 @@ function checkuserid() {
     // check userid length and pattern
     if (useridPattern.test(x)) {
         document.getElementById("username_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
     else {
         document.getElementById("username_message").innerHTML = "Invalid User ID... Must be 6-15 characters long , start with a letter character, and contain only letters and numbers.";
-        error_flag = 1; 
+        return error_flag = 1; 
     }
 }
 
@@ -396,7 +393,7 @@ function passwordStrengthCheck() {
     // check for lowercase letter
     if (passwordinput.search(/[a-z]/) < 0) {
         passwordoutput = "Password must contain at least 1 lowercase letter.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         passwordoutput = "";
@@ -406,7 +403,7 @@ function passwordStrengthCheck() {
     // check for uppercase letter
     if (passwordinput.search(/[A-Z]/) < 0) {
         passwordoutput = "Password must contain at least 1 uppercase letter.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         passwordoutput = "";
@@ -416,7 +413,7 @@ function passwordStrengthCheck() {
     // check for number
     if (passwordinput.search(/[0-9]/) < 0) {
         passwordoutput = "Password must contain at least 1 number.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         passwordoutput = "";
@@ -426,7 +423,7 @@ function passwordStrengthCheck() {
     // check for special character
     if (passwordinput.search(/[@#$%]/) < 0) {
         passwordoutput = "Password must contain at least 1 special character (@, #, $, %).";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         passwordoutput = "";
@@ -436,7 +433,7 @@ function passwordStrengthCheck() {
     // check for length
     if (passwordinput.length < 8 || passwordinput.length > 20) {
         passwordoutput = "Password must be between 8 and 20 characters long.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         passwordoutput = "";
@@ -452,16 +449,18 @@ function checkconfirm_password() {
 
     if (x !== y) {
         document.getElementById("confirm_password_message").innerHTML = "Passwords do not match.";
-        error_flag = 1;
+        return error_flag = 1;
     }
     else {
         document.getElementById("confirm_password_message").innerHTML = "";
-        error_flag = 0;
+        return error_flag = 0;
     }
 }
 
 // validation function to check all form fields
 function validateData() {
+    let error_flag;
+
     checkfirstname();
     checkminitial();
     checklastname();
@@ -483,7 +482,7 @@ function validateData() {
     checkconfirm_password();
 
     console.log('Error Flag: ' + error_flag);
-    if (error_flag == "1") {
+    if (error_flag == 1) {
         alert("Form contains errors. Please correct them before submitting.");
     }
     else {
