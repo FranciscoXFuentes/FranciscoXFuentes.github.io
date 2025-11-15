@@ -46,7 +46,7 @@ function reviewData() {
 function checkfirstname() {
     x = document.getElementById("firstname").value;
     if (x.length<2) {
-        document.getElementById("fname_message").innerHTML = '<li>"Invalid First Name... Must be at least 2 characters."</li>';
+        document.getElementById("fname_message").innerHTML = '<li>Invalid First Name... Must be at least 2 characters.</li>';
          return 1;
     }
     else {
@@ -55,7 +55,7 @@ function checkfirstname() {
             return 0;
         }
         else {
-            document.getElementById("fname_message").innerHTML = '<li>"Invalid First Name... Must contain only letters.</li>';
+            document.getElementById("fname_message").innerHTML = '<li>Invalid First Name... Must contain only letters.</li>';
             return 1;
         }
     }
@@ -70,7 +70,7 @@ function checkminitial() {
             return 0;
         }
         else {
-            document.getElementById("minitial_message").innerHTML = '<li>"Invalid Middle Initial... Must contain only letters."</li>';
+            document.getElementById("minitial_message").innerHTML = '<li>Invalid Middle Initial... Must contain only letters.</li>';
             return 1;
         }
     }
@@ -80,7 +80,7 @@ function checkminitial() {
 function checklastname() {
     x = document.getElementById("lastname").value;
     if (x.length<2) {
-        document.getElementById("lname_message").innerHTML = '<li>"Invalid Last Name... Must be at least 2 characters."</li>';
+        document.getElementById("lname_message").innerHTML = '<li>Invalid Last Name... Must be at least 2 characters.</li>';
         return 1;
     }
     else {
@@ -89,7 +89,7 @@ function checklastname() {
             return 0;
         }
         else {
-            document.getElementById("lname_message").innerHTML = '<li>"Invalid Last Name... Must contain only letters."</li>';
+            document.getElementById("lname_message").innerHTML = '<li>Invalid Last Name... Must contain only letters.</li>';
             return 1;
         }
     }
@@ -115,16 +115,16 @@ function checkdob() {
 
     // validate dob
     if (dobInput.value === "") {
-        dobMessage.innerHTML = '<li>"Date of Birth cannot be empty."</li>';
+        dobMessage.innerHTML = '<li>Date of Birth cannot be empty.</li>';
         return 1;
     }
     else {
         if (dobTime > todayTime) {
-        dobMessage.innerHTML = '<li>"Invalid Date of Birth... Cannot be in the future."</li>';
+        dobMessage.innerHTML = '<li>Invalid Date of Birth... Cannot be in the future.</li>';
         return 1;
         }
         else if (dobTime < minTime) {
-            dobMessage.innerHTML = '<li>"Invalid Date of Birth... Age cannot exceed 120 years."</li>';
+            dobMessage.innerHTML = '<li>Invalid Date of Birth... Age cannot exceed 120 years.</li>';
             return 1;
         }
         else {
@@ -146,12 +146,12 @@ function checkssn() {
             return 0;
         }
         else {
-            document.getElementById("ssn_message").innerHTML = '<li>"Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers."<li>';
+            document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.<li>';
             return 1; 
         }
     }
     else {
-        document.getElementById("ssn_message").innerHTML = '<li>"Invalid SSN... Must be between 9 and 11 digits long."</li>';
+        document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be between 9 and 11 digits long.</li>';
         return 1;
     }
 }
@@ -174,7 +174,7 @@ function checkgender() {
         return 0;
     }
     else {
-        genderMessage.innerHTML = '<li>"A gender option must be selected."</li>';
+        genderMessage.innerHTML = '<li>A gender option must be selected.</li>';
         return 1;
     }
 }
@@ -183,7 +183,7 @@ function checkgender() {
 function checkaddress1() {
     x = document.getElementById("addr1").value;
     if (x.length<5) {
-        document.getElementById("addr1_message").innerHTML = '<li>"Invalid Address Line... Must be at least 5 characters."</li>';
+        document.getElementById("addr1_message").innerHTML = '<li>Invalid Address Line... Must be at least 5 characters.</li>';
         return 1;
     }
     else {
@@ -198,11 +198,11 @@ function checkaddress2() {
     y = document.getElementById("addr1").value;
 
     if (x.length>0 && y.length==0) {
-        document.getElementById("addr2_message").innerHTML = '<li>"Address Line 1 must be filled out if Address Line 2 is used."</li>';
+        document.getElementById("addr2_message").innerHTML = '<li>Address Line 1 must be filled out if Address Line 2 is used.</li>';
         return 1;
     }
     else if (x.length>0 && x.length<5) {
-        document.getElementById("addr2_message").innerHTML = '<li>"Invalid Address Line... Must be at least 5 characters."</li>';
+        document.getElementById("addr2_message").innerHTML = '<li>Invalid Address Line... Must be at least 5 characters.</li>';
         return 1;
     }
     else {
