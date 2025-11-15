@@ -267,20 +267,20 @@ function checkphone() {
 function checkemail() {
     x = document.getElementById("email").value;
     const emailPattern = /^(?=.{5,50}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    
-    if (x.length>=5) {
+
+    if (x.length<5) {
+        document.getElementById("email_message").innerHTML = "<li>Email cannot be less than 5 character long.</li>";
+        return 1;
+    }
+    else {
         if (emailPattern.test(x)) {
             document.getElementById("email_message").innerHTML = "";
             return 0;
         }
         else {
-            innerHTML = "<li>Invalid Email Format.</li>";
+            document.getElementById("email_message").innerHTML = "<li>Invalid Email Format.</li>";
             return 1;
         }
-    }
-    else {
-        innerHTML = "<li>Invalid Email... Must be at least 5 characters.</li>";
-        return 1;
     }
 }
 
