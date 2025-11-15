@@ -488,7 +488,7 @@
                                     minlength="6"
                                     pattern="[A-Za-z0-9]{6,15}"
                                     required
-                                    onblur="checkusername()"
+                                    onblur="checkuserid()"
                                     title="User ID must be between 6 and 15 characters long.">
                         </td>
                         <td class="error_messages"><span id="username_message"></span></td>
@@ -509,7 +509,7 @@
                                     minlength="8"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
                                     required
-                                    onblur="checkpassword()"
+                                    onblur="passwordStrengthCheck()"
                                     title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
                         </td>
                         <td class="error_messages">
