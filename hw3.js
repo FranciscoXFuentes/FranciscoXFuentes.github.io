@@ -221,12 +221,12 @@ function checkcity() {
             return 0;
         }
         else {
-            document.getElementById("city_message").innerHTML = "Invalid City name... Must NOT contain special characters.";
+            document.getElementById("city_message").innerHTML = "<li>Invalid City name... Must NOT contain special characters.</li>";
             return 1;
         }
     }
     else {
-        document.getElementById("city_message").innerHTML = "Invalid City... Must be at least 2 characters.";
+        document.getElementById("city_message").innerHTML = "<li>Invalid City... Must be at least 2 characters.</li>";
         return 1;
     }
 }
@@ -242,7 +242,7 @@ function checkzip() {
         return 0;
     }
     else {
-        document.getElementById("zip_message").innerHTML = "Invalid Zip Code... Must be in the format XXXXX or XXXXX-XXXX and contain only numbers.";
+        document.getElementById("zip_message").innerHTML = "<li>Invalid Zip Code... Must be in the format XXXXX or XXXXX-XXXX and contain only numbers.</li>";
         return 1; 
     }
 }
@@ -258,7 +258,7 @@ function checkphone() {
         return 0;
     }
     else {
-        document.getElementById("phone_message").innerHTML = "Invalid Phone Number... Must be 10 digits long and contain only numbers.";
+        document.getElementById("phone_message").innerHTML = "<li>Invalid Phone Number... Must be 10 digits long and contain only numbers.</li>";
         return 1; 
     }
 }
@@ -274,12 +274,12 @@ function checkemail() {
             return 0;
         }
         else {
-            innerHTML = "Invalid Email Format.";
+            innerHTML = "<li>Invalid Email Format.</li>";
             return 1;
         }
     }
     else {
-        innerHTML = "Invalid Email... Must be at least 5 characters.";
+        innerHTML = "<li>Invalid Email... Must be at least 5 characters.</li>";
         return 1;
     }
 }
@@ -302,7 +302,7 @@ function checkinsurance() {
         return 0;
     }
     else {
-        insuranceMessage.innerHTML = "An inurance option must be selected.";
+        insuranceMessage.innerHTML = "<li>An inurance option must be selected.</li>";
         return 1;
     }
 }
@@ -313,7 +313,7 @@ function checktextarea() {
     x = document.getElementById("visit_reason").value;
 
     if (x.length<2) {
-        document.getElementById("visit_reason_message").innerHTML = "Invalid Description... Must be at least 2 characters.";
+        document.getElementById("visit_reason_message").innerHTML = "<li>Invalid Description... Must be at least 2 characters.</li>";
         return 1;
     }
     else {
@@ -340,7 +340,7 @@ function checkdiagnosis() {
         return 0;
     }
     else {
-        diagnosisMessage.innerHTML = "A diagnosis option must be selected.";
+        diagnosisMessage.innerHTML = "<li>A diagnosis option must be selected.</li>";
         return 1;
     }
 }
@@ -363,7 +363,7 @@ function checkvaccination() {
         return 0;
     }
     else {
-        vaccinationMessage.innerHTML = "A vaccination option must be selected.";
+        vaccinationMessage.innerHTML = "<li>A vaccination option must be selected.</li>";
         return 1;
     }
 }
@@ -379,7 +379,7 @@ function checkuserid() {
         return 0;
     }
     else {
-        document.getElementById("username_message").innerHTML = "Invalid User ID... Must be 6-15 characters long , start with a letter character, and contain only letters and numbers.";
+        document.getElementById("username_message").innerHTML = "<li>Invalid User ID... Must be 6-15 characters long , start with a letter character, and contain only letters and numbers.</li>";
         return 1; 
     }
 }
@@ -395,7 +395,7 @@ function passwordStrengthCheck() {
 
     // check for lowercase letter
     if (passwordinput.search(/[a-z]/) < 0) {
-        passwordoutput = "Password must contain at least 1 lowercase letter.";
+        passwordoutput = "<li>Password must contain at least 1 lowercase letter.</li>";
         password_error = 1;
     }
     else {
@@ -405,7 +405,7 @@ function passwordStrengthCheck() {
     
     // check for uppercase letter
     if (passwordinput.search(/[A-Z]/) < 0) {
-        passwordoutput = "Password must contain at least 1 uppercase letter.";
+        passwordoutput = "<li>Password must contain at least 1 uppercase letter.</li>";
         password_error = 1;
     }
     else {
@@ -415,7 +415,7 @@ function passwordStrengthCheck() {
 
     // check for number
     if (passwordinput.search(/[0-9]/) < 0) {
-        passwordoutput = "Password must contain at least 1 number.";
+        passwordoutput = "<li>Password must contain at least 1 number.</li>";
         password_error = 1;
     }
     else {
@@ -425,7 +425,7 @@ function passwordStrengthCheck() {
 
     // check for special character
     if (passwordinput.search(/[@#$%]/) < 0) {
-        passwordoutput = "Password must contain at least 1 special character (@, #, $, %).";
+        passwordoutput = "<li>Password must contain at least 1 special character (@, #, $, %)</li>";
         password_error = 1;
     }
     else {
@@ -435,7 +435,7 @@ function passwordStrengthCheck() {
 
     // check for length
     if (passwordinput.length < 8 || passwordinput.length > 20) {
-        passwordoutput = "Password must be between 8 and 20 characters long.";
+        passwordoutput = "<li>Password must be between 8 and 20 characters long.</li>";
         password_error = 1;
     }
     else {
@@ -453,12 +453,12 @@ function checkconfirm_password() {
     let password2_error = 0;
 
     if (y.length < 0) {
-        document.getElementById("confirm_password_message").innerHTML = "Confirm Password cannot be empty.";
+        document.getElementById("confirm_password_message").innerHTML = "<li>Confirm Password cannot be empty.</li>";
         password2_error = 1;
     }
     else {
         if (x !== y) {
-            document.getElementById("confirm_password_message").innerHTML = "Passwords do not match.";
+            document.getElementById("confirm_password_message").innerHTML = "<li>Passwords do not match.</li>";
             password2_error = 1;
         }
         else {

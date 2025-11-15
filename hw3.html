@@ -102,7 +102,7 @@
                                     onblur="checkdob()"
                                     title="Your date of birth must be between 120 years ago and today.">
                         </td>
-                        <td class="error_messages"><span id="dob_message"></span></td>
+                        <td class="error_messages"><ul><span id="dob_message"></span></ul></td>
                     </tr>
                 <!--SSN input field and testing-->
                     <tr class="ssn-group">
@@ -123,7 +123,7 @@
                                     onblur="checkssn()"
                                     title="SSN must be in the format ###-##-#### or #########">
                         </td>
-                        <td class="error_messages"><span id="ssn_message"></span></td>
+                        <td class="error_messages"><ul><span id="ssn_message"></span></ul></td>
                     </tr>
                 <!--Gender radio selection-->
                     <tr class="gender-group">
@@ -153,7 +153,7 @@
                                     onchange="checkgender()">
                             <label for="otherGender">Other</label>
                         </td>
-                        <td class="error_messages"><span id="gender_message"></span></td>
+                        <td class="error_messages"><ul><span id="gender_message"></span></ul></td>
                     </tr>
                 <!--Contact Information Section-->
                     <tr>
@@ -178,7 +178,7 @@
                                     onblur="checkaddress1()">
                         
                         </td>
-                        <td class="error_messages"><span id="addr1_message"></span></td>
+                        <td class="error_messages"><ul><span id="addr1_message"></span></ul></td>
                     </tr>
                     <tr class="address-group">
                         <td colspan="2" align="left">
@@ -197,7 +197,7 @@
                                     onblur="checkaddress2()">
                         
                         </td>
-                        <td class="error_messages"><span id="addr2_message"></span></td>
+                        <td class="error_messages"><ul><span id="addr2_message"></span></ul></td>
                     </tr>
                     <tr class="address-group">
                         <td colspan="2" align="left">
@@ -286,7 +286,13 @@
                                         onblur="checkzip()"
                                         title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
                         </td>
-                        <td class="error_messages"><span id="city_message"></span><br><span id="state_message"><br></span><span id="zip_message"></span></td>
+                        <td class="error_messages">
+                            <ul>
+                            <span id="city_message"></span>
+                            <span id="state_message"></span>
+                            <span id="zip_message"></span>
+                            </ul>
+                        </td>
                     </tr>
                 <!-- Phone number and Email input fields -->
                     <tr class="contact-group">
@@ -307,7 +313,7 @@
                                     onblur="checkphone()"
                                     title="Phone number must be 10 digits long and contain only numbers.">
                         </td>
-                        <td class="error_messages"><span id="phone_message"></span></td>
+                        <td class="error_messages"><ul><span id="phone_message"></span></ul></td>
                     </tr>
                     <tr class="contact-group">
                         <td colspan="2" align="left">
@@ -326,7 +332,7 @@
                                     onblur="checkemail()"
                                     title="Email must be a valid email address between 5 and 50 characters.">
                         </td>
-                        <td class="error_messages"><span id="email_message"></span></td>
+                        <td class="error_messages"><ul><span id="email_message"></span></ul></td>
                     </tr>
                     <!-- Medical & Health Information Section -->
                     <tr>
@@ -354,7 +360,7 @@
                                     onchange="checkinsurance()">
                             <label for="insuranceNo">No</label>
                         </td>
-                        <td class="error_messages"><span id="insurance_message"></span></td>
+                        <td class="error_messages"><ul><span id="insurance_message"></span></ul></td>
                     </tr>
                     <!--Text Area/symptoms section-->
                     <tr class="textarea-group">
@@ -375,7 +381,7 @@
                                         title="Description must be between 2 and 500 characters long."
                                         onblur="checktextarea()"></textarea>
                         </td>
-                        <td class="error_messages"><span id="visit_reason_message"></span></td>
+                        <td class="error_messages"><ul><span id="visit_reason_message"></span></ul></td>
                     </tr>
                     <!-- Slider for pain level -->
                     <tr class="slider-text">
@@ -444,7 +450,7 @@
                                     onchange="checkdiagnosis()">
                             <label for="noneofTheAbove">None of the above</label><br>
                         </td>
-                        <td class="error_messages" ><span id="diagnosis_message"></span></td>
+                        <td class="error_messages" ><ul><span id="diagnosis_message"></span></ul></td>
                     </tr>
                     <!-- Vaccination radio selection -->
                     <tr>
@@ -468,7 +474,7 @@
                                     onchange="checkvaccination()">
                             <label for="vaccinatedNo">No</label>
                         </td>
-                        <td class="error_messages"><span id="vaccination_message"></span></td>
+                        <td class="error_messages"><ul><span id="vaccination_message"></span></ul></td>
                     </tr>
                     <!-- Account Information Section -->
                     <tr>
@@ -493,7 +499,7 @@
                                     onblur="checkuserid()"
                                     title="User ID must be between 6 and 15 characters long.">
                         </td>
-                        <td class="error_messages"><span id="username_message"></span></td>
+                        <td class="error_messages"><ul><span id="username_message"></span></ul></td>
                     </tr>
                     <!--Password Inputs-->
                     <tr class="password-group">
@@ -515,11 +521,13 @@
                                     title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
                         </td>
                         <td class="error_messages">
-                            <span id="password_message1"></span><br>
-                            <span id="password_message2"></span><br>
-                            <span id="password_message3"></span><br>
-                            <span id="password_message4"></span><br>
+                            <ul>
+                            <span id="password_message1"></span>
+                            <span id="password_message2"></span>
+                            <span id="password_message3"></span>
+                            <span id="password_message4"></span>
                             <span id="password_message5"></span>
+                            </ul>
                         </td>
                     </tr>
                     <tr class="password-group">
@@ -540,7 +548,7 @@
                                     onblur="checkconfirm_password()"
                                     title="Please re-enter your password to confirm.">
                         </td>
-                        <td class="error_messages"><span id="confirm_password_message"></span></td>
+                        <td class="error_messages"><ul><span id="confirm_password_message"></span></ul></td>
                     </tr>
                     <!-- Form Buttons -->
                     <tr>
