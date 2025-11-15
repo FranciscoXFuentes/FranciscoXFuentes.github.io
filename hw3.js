@@ -46,7 +46,7 @@ function reviewData() {
 function checkfirstname() {
     x = document.getElementById("firstname").value;
     if (x.length<2) {
-        document.getElementById("fname_message").innerHTML = "Invalid First Name... Must be at least 2 characters.";
+        document.getElementById("fname_message").innerHTML = '<li>"Invalid First Name... Must be at least 2 characters."</li>';
          return 1;
     }
     else {
@@ -55,7 +55,7 @@ function checkfirstname() {
             return 0;
         }
         else {
-            document.getElementById("fname_message").innerHTML = "Invalid First Name... Must contain only letters.";
+            document.getElementById("fname_message").innerHTML = '<li>"Invalid First Name... Must contain only letters.</li>';
             return 1;
         }
     }
@@ -70,7 +70,7 @@ function checkminitial() {
             return 0;
         }
         else {
-            document.getElementById("minitial_message").innerHTML = "Invalid Middle Initial... Must contain only letters.";
+            document.getElementById("minitial_message").innerHTML = '<li>"Invalid Middle Initial... Must contain only letters."</li>';
             return 1;
         }
     }
@@ -80,7 +80,7 @@ function checkminitial() {
 function checklastname() {
     x = document.getElementById("lastname").value;
     if (x.length<2) {
-        document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must be at least 2 characters.";
+        document.getElementById("lname_message").innerHTML = '<li>"Invalid Last Name... Must be at least 2 characters."</li>';
         return 1;
     }
     else {
@@ -89,7 +89,7 @@ function checklastname() {
             return 0;
         }
         else {
-            document.getElementById("lname_message").innerHTML = "Invalid Last Name... Must contain only letters.";
+            document.getElementById("lname_message").innerHTML = '<li>"Invalid Last Name... Must contain only letters."</li>';
             return 1;
         }
     }
@@ -466,7 +466,7 @@ function checkconfirm_password() {
             password2_error = 0;
         }
     }
-    
+
     return password2_error;
 }
 
