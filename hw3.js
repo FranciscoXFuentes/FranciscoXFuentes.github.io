@@ -447,13 +447,19 @@ function checkconfirm_password() {
     x = document.getElementById("password").value;
     y = document.getElementById("confirm_password").value;
 
-    if (x !== y) {
-        document.getElementById("confirm_password_message").innerHTML = "Passwords do not match.";
+    if (y.length < 0) {
+        document.getElementById("confirm_password_message").innerHTML = "Confirm Password cannot be empty.";
         return error_flag = 1;
     }
     else {
-        document.getElementById("confirm_password_message").innerHTML = "";
-        return error_flag = 0;
+        if (x !== y) {
+            document.getElementById("confirm_password_message").innerHTML = "Passwords do not match.";
+            return error_flag = 1;
+        }
+        else {
+            document.getElementById("confirm_password_message").innerHTML = "";
+            return error_flag = 0;
+        }
     }
 }
 
@@ -482,7 +488,7 @@ function validateData() {
     checkconfirm_password();
 
     console.log('Error Flag: ' + error_flag);
-    if (error_flag == 1) {
+    if (error_flag === 1) {
         alert("Form contains errors. Please correct them before submitting.");
     }
     else {
