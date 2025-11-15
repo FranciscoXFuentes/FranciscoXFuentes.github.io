@@ -452,7 +452,7 @@ function checkconfirm_password() {
     y = document.getElementById("confirm_password").value;
     let password2_error = 0;
 
-    if (y.length < 0) {
+    if (y.length < 1) {
         document.getElementById("confirm_password_message").innerHTML = "<li>Confirm Password cannot be empty.</li>";
         password2_error = 1;
     }
