@@ -457,7 +457,7 @@ function checkconfirm_password() {
         password2_error = 1;
     }
     else {
-        if (x !== y) {
+        if (y !== x) {
             document.getElementById("confirm_password_message").innerHTML = "<li>Passwords do not match.</li>";
             password2_error = 1;
         }
