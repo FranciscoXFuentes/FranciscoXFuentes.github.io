@@ -386,6 +386,9 @@ function checkuserid() {
 
 // validation for password ensuring strength
 function passwordStrengthCheck() {
+    // return error flag after all checks
+    let password_error = 0;
+    // get password input value
     let passwordoutput;
     const passwordinput = document.getElementById("password").value;
     console.log(passwordinput);
@@ -393,7 +396,7 @@ function passwordStrengthCheck() {
     // check for lowercase letter
     if (passwordinput.search(/[a-z]/) < 0) {
         passwordoutput = "Password must contain at least 1 lowercase letter.";
-        return 1;
+        password_error = 1;
     }
     else {
         passwordoutput = "";
@@ -403,7 +406,7 @@ function passwordStrengthCheck() {
     // check for uppercase letter
     if (passwordinput.search(/[A-Z]/) < 0) {
         passwordoutput = "Password must contain at least 1 uppercase letter.";
-        return 1;
+        password_error = 1;
     }
     else {
         passwordoutput = "";
@@ -413,7 +416,7 @@ function passwordStrengthCheck() {
     // check for number
     if (passwordinput.search(/[0-9]/) < 0) {
         passwordoutput = "Password must contain at least 1 number.";
-        return 1;
+        password_error = 1;
     }
     else {
         passwordoutput = "";
@@ -423,7 +426,7 @@ function passwordStrengthCheck() {
     // check for special character
     if (passwordinput.search(/[@#$%]/) < 0) {
         passwordoutput = "Password must contain at least 1 special character (@, #, $, %).";
-        return 1;
+        password_error = 1;
     }
     else {
         passwordoutput = "";
@@ -433,34 +436,38 @@ function passwordStrengthCheck() {
     // check for length
     if (passwordinput.length < 8 || passwordinput.length > 20) {
         passwordoutput = "Password must be between 8 and 20 characters long.";
-        return 1;
+        password_error = 1;
     }
     else {
         passwordoutput = "";
     }
     document.getElementById("password_message5").innerHTML = passwordoutput;
 
+    return password_error;
 }
 
 // Check confirm password matches password
 function checkconfirm_password() {
     x = document.getElementById("password").value;
     y = document.getElementById("confirm_password").value;
+    let password2_error = 0;
 
     if (y.length < 0) {
         document.getElementById("confirm_password_message").innerHTML = "Confirm Password cannot be empty.";
-        return 1;
+        password2_error = 1;
     }
     else {
         if (x !== y) {
             document.getElementById("confirm_password_message").innerHTML = "Passwords do not match.";
-            return 1;
+            password2_error = 1;
         }
         else {
             document.getElementById("confirm_password_message").innerHTML = "";
-            return 0;
+            password2_error = 0;
         }
     }
+    
+    return password2_error;
 }
 
 // validation function to check all form fields
