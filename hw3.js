@@ -115,16 +115,16 @@ function checkdob() {
 
     // validate dob
     if (dobInput.value === "") {
-        dobMessage.innerHTML = "Date of Birth cannot be empty.";
+        dobMessage.innerHTML = '<li>"Date of Birth cannot be empty."</li>';
         return 1;
     }
     else {
         if (dobTime > todayTime) {
-        dobMessage.innerHTML = "Invalid Date of Birth... Cannot be in the future.";
+        dobMessage.innerHTML = '<li>"Invalid Date of Birth... Cannot be in the future."</li>';
         return 1;
         }
         else if (dobTime < minTime) {
-            dobMessage.innerHTML = "Invalid Date of Birth... Age cannot exceed 120 years.";
+            dobMessage.innerHTML = '<li>"Invalid Date of Birth... Age cannot exceed 120 years."</li>';
             return 1;
         }
         else {
@@ -146,12 +146,12 @@ function checkssn() {
             return 0;
         }
         else {
-            document.getElementById("ssn_message").innerHTML = "Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.";
+            document.getElementById("ssn_message").innerHTML = '<li>"Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers."<li>';
             return 1; 
         }
     }
     else {
-        document.getElementById("ssn_message").innerHTML = "Invalid SSN... Must be between 9 and 11 digits long.";
+        document.getElementById("ssn_message").innerHTML = '<li>"Invalid SSN... Must be between 9 and 11 digits long."</li>';
         return 1;
     }
 }
@@ -174,7 +174,7 @@ function checkgender() {
         return 0;
     }
     else {
-        genderMessage.innerHTML = "A gender option must be selected.";
+        genderMessage.innerHTML = '<li>"A gender option must be selected."</li>';
         return 1;
     }
 }
@@ -183,7 +183,7 @@ function checkgender() {
 function checkaddress1() {
     x = document.getElementById("addr1").value;
     if (x.length<5) {
-        document.getElementById("addr1_message").innerHTML = "Invalid Address Line... Must be at least 5 characters.";
+        document.getElementById("addr1_message").innerHTML = '<li>"Invalid Address Line... Must be at least 5 characters."</li>';
         return 1;
     }
     else {
@@ -198,11 +198,11 @@ function checkaddress2() {
     y = document.getElementById("addr1").value;
 
     if (x.length>0 && y.length==0) {
-        document.getElementById("addr2_message").innerHTML = "Address Line 1 must be filled out if Address Line 2 is used.";
+        document.getElementById("addr2_message").innerHTML = '<li>"Address Line 1 must be filled out if Address Line 2 is used."</li>';
         return 1;
     }
     else if (x.length>0 && x.length<5) {
-        document.getElementById("addr2_message").innerHTML = "Invalid Address Line... Must be at least 5 characters.";
+        document.getElementById("addr2_message").innerHTML = '<li>"Invalid Address Line... Must be at least 5 characters."</li>';
         return 1;
     }
     else {
