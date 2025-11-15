@@ -6,7 +6,7 @@
     Purpose: MIS 3371 Homework 3... Updating the patient intake form to validate data inputs with regex patterens on the fly and adding dynamic values for the range slider.
 */
 
-let error_flag = 0;
+let error_flag;
 
 // Function(s) to get user data from the form and display it
 function reviewData() {
