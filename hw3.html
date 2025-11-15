@@ -80,9 +80,11 @@
                                     title="Last name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
                         </td>
                         <td class="error_messages">
-                            <span id="fname_message"></span><br>
-                            <span id="minitial_message"></span><br>
-                            <span id="lname_message"></span>
+                            <ul>
+                                <li><span id="fname_message"></span></li>
+                                <li><span id="minitial_message"></span></li>
+                                <li><span id="lname_message"></span></li>
+                            </ul>
                         </td>
                     </tr>
                 <!--DOB input field-->
@@ -100,7 +102,7 @@
                                     onblur="checkdob()"
                                     title="Your date of birth must be between 120 years ago and today.">
                         </td>
-                        <td class="error_messages"><span id="dob_message"></span></td>
+                        <td class="error_messages"><ul><li><span id="dob_message"></span></li></ul></td>
                     </tr>
                 <!--SSN input field and testing-->
                     <tr class="ssn-group">
@@ -121,7 +123,7 @@
                                     onblur="checkssn()"
                                     title="SSN must be in the format ###-##-#### or #########">
                         </td>
-                        <td class="error_messages"><span id="ssn_message"></span></td>
+                        <td class="error_messages"><ul><li><span id="ssn_message"></span></li></ul></td>
                     </tr>
                 <!--Gender radio selection-->
                     <tr class="gender-group">
@@ -151,7 +153,7 @@
                                     onchange="checkgender()">
                             <label for="otherGender">Other</label>
                         </td>
-                        <td class="error_messages"><span id="gender_message"></span></td>
+                        <td class="error_messages"><ul><li><span id="gender_message"></span></li></ul></td>
                     </tr>
                 <!--Contact Information Section-->
                     <tr>
