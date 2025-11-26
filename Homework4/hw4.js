@@ -1,0 +1,518 @@
+/*
+    Name: Francisco Fuentes
+    File: hw4.js
+    Date Created: 2025-11-24
+    Date Updated: 2025-11-24
+    Purpose: MIS 3371 Homework 4... Updating JS code to create Fetch APi functions, Cookie storage, and Local Storage for the patient intake form.
+*/
+
+// Function(s) to get user data from the form and display it
+function reviewData() {
+    const form = document.getElementById('intakeForm');
+    const outputDiv = document.getElementById('dataReview');
+    let outputHTML = '<table border = "1" align = "center"><tr><th>Field</th><th>Value</th></tr>';
+
+    // "For loop" that goes through all the input data and checks for existing fields
+    for (let i = 0; i < form.elements.length; i++) {
+        const element = form.elements[i];
+
+        // Checkbox Filter
+        if (element.type === 'checkbox') {
+            if (element.checked) {
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
+            }
+            continue;
+        }
+
+        // Radio Button Filter
+        if (element.type === 'radio') {
+            if (element.checked) {
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
+            }
+            continue;
+        }
+
+        // Meaningful Data Type Filter
+        if (element.name && element.value && element.type !== 'button') {
+            outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
+        }
+    }
+
+    outputDiv.innerHTML = outputHTML + '</table>';
+}
+
+// Valdation functions for each input field begins here
+// validation function for first name
+function checkfirstname() {
+    x = document.getElementById("firstname").value;
+    if (x.length<2) {
+        document.getElementById("fname_message").innerHTML = '<li>Invalid First Name... Must be at least 2 characters.</li>';
+         return 1;
+    }
+    else {
+        if (x.match(/^[A-Za-z\s'-]+$/)) {
+            document.getElementById("fname_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("fname_message").innerHTML = '<li>Invalid First Name... Must contain only letters.</li>';
+            return 1;
+        }
+    }
+}
+
+// validation function for middle initial
+function checkminitial() {
+    x = document.getElementById("minitial").value;
+    if (x.length>0) {
+        if (x.match(/[a-zA-Z ]/)) {
+            document.getElementById("minitial_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("minitial_message").innerHTML = '<li>Invalid Middle Initial... Must contain only letters.</li>';
+            return 1;
+        }
+    }
+}
+
+//validation function for last name
+function checklastname() {
+    x = document.getElementById("lastname").value;
+    if (x.length<2) {
+        document.getElementById("lname_message").innerHTML = '<li>Invalid Last Name... Must be at least 2 characters.</li>';
+        return 1;
+    }
+    else {
+        if (x.match(/^[A-Za-z\s'-]+$/)) {
+            document.getElementById("lname_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("lname_message").innerHTML = '<li>Invalid Last Name... Must contain only letters.</li>';
+            return 1;
+        }
+    }
+}
+
+//validation functio for dob
+function checkdob() {
+    const dobInput = document.getElementById("dob");
+    const dobValue = new Date(dobInput.value);
+    const dobMessage = document.getElementById("dob_message");
+
+    // get today's date at midnight
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // set min and max date for dob
+    const minDate = new Date();
+    minDate.setFullYear(today.getFullYear() - 120);
+
+    const dobTime = dobValue.getTime();
+    const todayTime = today.getTime();
+    const minTime = minDate.getTime();
+
+    // validate dob
+    if (dobInput.value === "") {
+        dobMessage.innerHTML = '<li>Date of Birth cannot be empty.</li>';
+        return 1;
+    }
+    else {
+        if (dobTime > todayTime) {
+        dobMessage.innerHTML = '<li>Invalid Date of Birth... Cannot be in the future.</li>';
+        return 1;
+        }
+        else if (dobTime < minTime) {
+            dobMessage.innerHTML = '<li>Invalid Date of Birth... Age cannot exceed 120 years.</li>';
+            return 1;
+        }
+        else {
+            dobMessage.innerHTML = "";
+            return 0;
+        }
+    }
+}
+
+//validation function for social security number
+function checkssn() {
+    x = document.getElementById("ssn").value;
+    const ssnPattern = /^\d{3}-?\d{2}-?\d{4}$/;
+
+    // validate ssn if ssn matches pattern and is 9-11 digits long
+    if (x.length >= 9 && x.length <= 11) {
+        if (ssnPattern.test(x)) {
+            document.getElementById("ssn_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be in the format XXX-XX-XXXX or XXXXXXXXX and contain only numbers.</li>';
+            return 1; 
+        }
+    }
+    else {
+        document.getElementById("ssn_message").innerHTML = '<li>Invalid SSN... Must be between 9 and 11 digits long.</li>';
+        return 1;
+    }
+}
+
+//validation function for gender selection
+function checkgender() {
+    const genderInputs = document.getElementsByName("patient_gender");
+    let genderMessage = document.getElementById("gender_message");
+    let isChecked = false;
+
+    for (let i = 0; i < genderInputs.length; i++) {
+        if (genderInputs[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+
+    if (isChecked) {
+        genderMessage.innerHTML = "";
+        return 0;
+    }
+    else {
+        genderMessage.innerHTML = '<li>A gender option must be selected.</li>';
+        return 1;
+    }
+}
+
+//validation function for address line 1
+function checkaddress1() {
+    x = document.getElementById("addr1").value;
+    if (x.length<5) {
+        document.getElementById("addr1_message").innerHTML = '<li>Invalid Address Line... Must be at least 5 characters.</li>';
+        return 1;
+    }
+    else {
+        document.getElementById("addr1_message").innerHTML = "";
+        return 0;
+    }
+}
+
+//validation function for address line 2
+function checkaddress2() {
+    x = document.getElementById("addr2").value;
+    y = document.getElementById("addr1").value;
+
+    if (x.length>0 && y.length==0) {
+        document.getElementById("addr2_message").innerHTML = '<li>Address Line 1 must be filled out if Address Line 2 is used.</li>';
+        return 1;
+    }
+    else if (x.length>0 && x.length<5) {
+        document.getElementById("addr2_message").innerHTML = '<li>Invalid Address Line... Must be at least 5 characters.</li>';
+        return 1;
+    }
+    else {
+        document.getElementById("addr2_message").innerHTML = "";
+        return 0;
+    }
+}
+
+//validation function for city
+function checkcity() {
+    x = document.getElementById("city").value;
+    const cityPattern = /^[A-Za-z0-9\s-]{2,}[A-Za-z0-9\s]*$/;
+    if (x.length>=2) {
+        if (cityPattern.test(x)) {
+            document.getElementById("city_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("city_message").innerHTML = "<li>Invalid City name... Must NOT contain special characters.</li>";
+            return 1;
+        }
+    }
+    else {
+        document.getElementById("city_message").innerHTML = "<li>Invalid City... Must be at least 2 characters.</li>";
+        return 1;
+    }
+}
+
+//validation function for zip code
+function checkzip() {
+    x = document.getElementById("zip").value;
+    const zipPattern = /^\d{5}(-\d{4})?$/;
+
+    // validate zip code if true or false when matched to pattern
+    if (zipPattern.test(x)) {
+        document.getElementById("zip_message").innerHTML = "";
+        return 0;
+    }
+    else {
+        document.getElementById("zip_message").innerHTML = "<li>Invalid Zip Code... Must be in the format XXXXX or XXXXX-XXXX and contain only numbers.</li>";
+        return 1; 
+    }
+}
+
+//validation function for phone number
+function checkphone() {
+    x = document.getElementById("phone").value;
+    const phonePattern = /^\d{10}$/;
+
+    // validate phone number matches to pattern
+    if (phonePattern.test(x)) {
+        document.getElementById("phone_message").innerHTML = "";
+        return 0;
+    }
+    else {
+        document.getElementById("phone_message").innerHTML = "<li>Invalid Phone Number... Must be 10 digits long and contain only numbers.</li>";
+        return 1; 
+    }
+}
+
+//validation function for email
+function checkemail() {
+    x = document.getElementById("email").value;
+    const emailPattern = /^(?=.{5,50}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (x.length<5) {
+        document.getElementById("email_message").innerHTML = "<li>Email cannot be less than 5 character long.</li>";
+        return 1;
+    }
+    else {
+        if (emailPattern.test(x)) {
+            document.getElementById("email_message").innerHTML = "";
+            return 0;
+        }
+        else {
+            document.getElementById("email_message").innerHTML = "<li>Invalid Email Format.</li>";
+            return 1;
+        }
+    }
+}
+
+//validation functio for insurance selection
+function checkinsurance() {
+    const insuranceInputs = document.getElementsByName("insurance_status");
+    let insuranceMessage = document.getElementById("insurance_message");
+    let isChecked = false;
+
+    for (let i = 0; i < insuranceInputs.length; i++) {
+        if (insuranceInputs[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+
+    if (isChecked) {
+        insuranceMessage.innerHTML = "";
+        return 0;
+    }
+    else {
+        insuranceMessage.innerHTML = "<li>An inurance option must be selected.</li>";
+        return 1;
+    }
+}
+
+
+//validation function for the text aresa input
+function checktextarea() {
+    x = document.getElementById("visit_reason").value;
+
+    if (x.length<2) {
+        document.getElementById("visit_reason_message").innerHTML = "<li>Invalid Description... Must be at least 2 characters.</li>";
+        return 1;
+    }
+    else {
+        document.getElementById("visit_reason_message").innerHTML = "";
+        return 0;
+    }
+}
+
+//validation function for diagnosis checkboxes
+function checkdiagnosis() {
+    const diagnosisInputs = document.getElementsByName("diagnosis");
+    let diagnosisMessage = document.getElementById("diagnosis_message");
+    let isChecked = false;
+
+    for (let i = 0; i < diagnosisInputs.length; i++) {
+        if (diagnosisInputs[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+
+    if (isChecked) {
+        diagnosisMessage.innerHTML = "";
+        return 0;
+    }
+    else {
+        diagnosisMessage.innerHTML = "<li>A diagnosis option must be selected.</li>";
+        return 1;
+    }
+}
+
+//validation function for vaccination satus
+function checkvaccination() {
+    const vaccinationInputs = document.getElementsByName("isVaccinated");
+    let vaccinationMessage = document.getElementById("vaccination_message");
+    let isChecked = false;
+
+    for (let i = 0; i < vaccinationInputs.length; i++) {
+        if (vaccinationInputs[i].checked) {
+            isChecked = true;
+            break;
+        }
+    }
+
+    if (isChecked) {
+        vaccinationMessage.innerHTML = "";
+        return 0;
+    }
+    else {
+        vaccinationMessage.innerHTML = "<li>A vaccination option must be selected.</li>";
+        return 1;
+    }
+}
+
+//validation function for user id
+function checkuserid() {
+    x = document.getElementById("username").value;
+    const useridPattern = /^[A-Za-z][A-Za-z0-9]{5,16}$/;
+
+    // check userid length and pattern
+    if (useridPattern.test(x)) {
+        document.getElementById("username_message").innerHTML = "";
+        return 0;
+    }
+    else {
+        document.getElementById("username_message").innerHTML = "<li>Invalid User ID... Must be 6-15 characters long , start with a letter character, and contain only letters and numbers.</li>";
+        return 1; 
+    }
+}
+
+// validation for password ensuring strength
+function passwordStrengthCheck() {
+    // return error flag after all checks
+    let password_error = 0;
+    // get password input value
+    let passwordoutput;
+    const passwordinput = document.getElementById("password").value;
+    console.log(passwordinput);
+
+    // check for lowercase letter
+    if (passwordinput.search(/[a-z]/) < 0) {
+        passwordoutput = "<li>Password must contain at least 1 lowercase letter.</li>";
+        password_error = 1;
+    }
+    else {
+        passwordoutput = "";
+    }
+    document.getElementById("password_message1").innerHTML = passwordoutput;
+    
+    // check for uppercase letter
+    if (passwordinput.search(/[A-Z]/) < 0) {
+        passwordoutput = "<li>Password must contain at least 1 uppercase letter.</li>";
+        password_error = 1;
+    }
+    else {
+        passwordoutput = "";
+    }
+    document.getElementById("password_message2").innerHTML = passwordoutput;
+
+    // check for number
+    if (passwordinput.search(/[0-9]/) < 0) {
+        passwordoutput = "<li>Password must contain at least 1 number.</li>";
+        password_error = 1;
+    }
+    else {
+        passwordoutput = "";
+    }
+    document.getElementById("password_message3").innerHTML = passwordoutput;
+
+    // check for special character
+    if (passwordinput.search(/[@#$%]/) < 0) {
+        passwordoutput = "<li>Password must contain at least 1 special character (@, #, $, %)</li>";
+        password_error = 1;
+    }
+    else {
+        passwordoutput = "";
+    }
+    document.getElementById("password_message4").innerHTML = passwordoutput;
+
+    // check for length
+    if (passwordinput.length < 8 || passwordinput.length > 20) {
+        passwordoutput = "<li>Password must be between 8 and 20 characters long.</li>";
+        password_error = 1;
+    }
+    else {
+        passwordoutput = "";
+    }
+    document.getElementById("password_message5").innerHTML = passwordoutput;
+
+    return password_error;
+}
+
+// Check confirm password matches password
+function checkconfirm_password() {
+    x = document.getElementById("password").value;
+    y = document.getElementById("confirm_password").value;
+    let password2_error = 0;
+
+    if (y.length < 1) {
+        document.getElementById("confirm_password_message").innerHTML = "<li>Confirm Password cannot be empty.</li>";
+        password2_error = 1;
+    }
+    else {
+        if (y !== x) {
+            document.getElementById("confirm_password_message").innerHTML = "<li>Passwords do not match.</li>";
+            password2_error = 1;
+        }
+        else {
+            document.getElementById("confirm_password_message").innerHTML = "";
+            password2_error = 0;
+        }
+    }
+
+    return password2_error;
+}
+
+// validation function to check all form fields
+function validateData() {
+
+    // declare error flag
+    let error_flag = 0;
+
+    // call and accumulate error flags
+    error_flag |= checkfirstname();
+    error_flag |= checkminitial();
+    error_flag |= checklastname();
+    error_flag |= checkdob();
+    error_flag |= checkssn();
+    error_flag |= checkgender();
+    error_flag |= checkaddress1();
+    error_flag |= checkaddress2();
+    error_flag |= checkcity();
+    error_flag |= checkzip();
+    error_flag |= checkphone();
+    error_flag |= checkemail();
+    error_flag |= checkinsurance();
+    error_flag |= checktextarea();
+    error_flag |= checkdiagnosis();
+    error_flag |= checkvaccination();
+    error_flag |= checkuserid();
+    error_flag |= passwordStrengthCheck();
+    error_flag |= checkconfirm_password();
+
+    console.log('Error Flag: ' + error_flag);
+    if (error_flag === 1) {
+        alert("Form contains errors. Please correct them before submitting.");
+    }
+    else {
+        document.getElementById("submitFormButton").disabled = false;
+    }
+}
+
+// Dynamic range slider
+    const slider = document.getElementById('pain_level');
+    const display = document.getElementById('valueDisplay');
+    display.textContent = slider.value;
+
+    slider.addEventListener('input', function() {
+        const newValue = this.value;
+
+        display.textContent = newValue;
+    });
