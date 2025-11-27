@@ -519,19 +519,21 @@ function validateData() {
 
 // Fetch API Functions
     // Zip Code API
+    // Check for zip code when user leaves input field
     document.getElementById("zip").addEventListener("blur", getZipcode);
     async function getZipcode() {
         try{
             const zip = document.getElementById("zip").value;
+            // API Fetch call with zip value
             const response = await fetch("https://us-zipcode.api.smarty.com/lookup?key=254252967495540176&city=&state=&zipcode=" + zip);
-
+            // Error handling
             if (!response.ok) {
                 throw new Error("Could not fetch zip code data.");
             }
-
+            // Store API data
             const data = await response.json();
             console.log(data);
-
+            // Check if data exists and fill city and state fields
             if (data && data.city_states && data.city_states.length > 0) {
                 const locationData = data[0].city_states[0];
                 console.log("City: ", locationData.city);
@@ -539,8 +541,8 @@ function validateData() {
                 const city = locationData.city;
                 const stateAbbreviation = locationData.state_abbreviation;
 
-            document.getElementById("city").value = city;
-            document.getElementById("stateAbbreviation").value = stateAbbreviation;
+                document.getElementById("city").value = city;
+                document.getElementById("stateAbbreviation").value = stateAbbreviation;
             }
         }
         catch (error) {
