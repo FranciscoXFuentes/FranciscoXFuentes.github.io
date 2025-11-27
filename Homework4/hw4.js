@@ -516,3 +516,23 @@ function validateData() {
 
         display.textContent = newValue;
     });
+
+// Fetch API Functions
+    // Zip Code API
+    document.getElementById("zip").addEventListener("blur", getZipcode);
+    async function getZipcode() {
+        try{
+            const zip = document.getElementById("zip").value;
+            const response = await fetch("https://us-zipcode.api.smarty.com/lookup?auth-id=0a130782-9711-4fd8-89e9-b433bb83a7c9&auth-token=CcaGws6P4nhHFoKhInpr&zipcode=" + zip);
+
+            if (!response.ok) {
+                throw new Error("Could not fetch zip code data.");
+            }
+
+            const data = await response.json();
+            console.log(data);
+        }
+        catch (error) {
+            console.error("Error fetching zip code data: ", error);
+        }
+    }

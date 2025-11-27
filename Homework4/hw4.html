@@ -206,6 +206,16 @@
                     <tr class="address-group">
                         <td>
                             <input type="text"
+                                        id="zip"
+                                        name="zip"
+                                        maxlength="10"
+                                        minlength="5"
+                                        placeholder="Zip Code"
+                                        required
+                                        pattern="\d{5}(-\d{4})?"
+                                        onblur="checkzip()"
+                                        title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
+                            <input type="text"
                                         id="city"
                                         name="city"
                                         maxlength="30"
@@ -215,7 +225,10 @@
                                         title="City must be between 2 and 30 characters."
                                         onblur="checkcity()">
                         <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
-                            <select name="stateAbbreviation" id="stateAbbreviation" required>
+                            <select name="stateAbbreviation"
+                                    id="stateAbbreviation"
+                                    title="Selecet a state from the dropdown list."
+                                    required>
                                     <option value="AL">AL</option>
                                     <option value="AK">AK</option>
                                     <option value="AR">AR</option>
@@ -274,22 +287,12 @@
                                     <option value="UM">UM</option>
                                     <option value="VI">VI</option>
                             </select>
-                            <input type="text"
-                                        id="zip"
-                                        name="zip"
-                                        maxlength="10"
-                                        minlength="5"
-                                        placeholder="Zip Code"
-                                        required
-                                        pattern="\d{5}(-\d{4})?"
-                                        onblur="checkzip()"
-                                        title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
                         </td>
                         <td class="error_messages">
                             <ul>
+                            <span id="zip_message"></span>
                             <span id="city_message"></span>
                             <span id="state_message"></span>
-                            <span id="zip_message"></span>
                             </ul>
                         </td>
                     </tr>
