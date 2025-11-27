@@ -523,7 +523,7 @@ function validateData() {
     async function getZipcode() {
         try{
             const zip = document.getElementById("zip").value;
-            const response = await fetch("https://us-zipcode.api.smarty.com/lookup?auth-id=0a130782-9711-4fd8-89e9-b433bb83a7c9&auth-token=CcaGws6P4nhHFoKhInpr&zipcode=" + zip);
+            const response = await fetch("https://us-zipcode.api.smarty.com/lookup?key=254252967495540176&city=&state=&zipcode=" + zip);
 
             if (!response.ok) {
                 throw new Error("Could not fetch zip code data.");
