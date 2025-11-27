@@ -530,11 +530,18 @@ function validateData() {
             }
 
             const data = await response.json();
-            const city = data.city_states[0].city;
-            const stateAbbreviation = data.city_states[0].state_abbreviation;
+            console.log(data);
+
+            if (data && data.city_states && data.city_states.length > 0) {
+                const locationData = data.city_states[0];
+                console.log("City: ", locationData.city);
+                console.log("State Abbreviation: ", locationData.state_abbreviation);
+                const city = locationData.city;
+                const stateAbbreviation = locationData.state_abbreviation;
 
             document.getElementById("city").value = city;
             document.getElementById("stateAbbreviation").value = stateAbbreviation;
+            }
         }
         catch (error) {
             console.error("Error fetching zip code data: ", error);
