@@ -533,21 +533,12 @@ function validateData() {
             // Store API data
             const data = await response.json();
             console.log(data);
+            // Fill city and state fields
+            const city = data[0].city_states?.[0]?.city;
+            const stateAbbreviation = data[0].city_states?.[0]?.state_abbreviation;
 
-            // If the API returns an array, access the first element's city_states
-            if (Array.isArray(data) && data.length > 0) {
-                console.log(data[0].city_states?.[0]?.city);
-                console.log(data[0].city_states?.[0]?.state_abbreviation);
-            }
-
-            // Check if data exists and fill city and state fields
-            if (Array.isArray(data) && data.length > 0 && data[0].city_states && data[0].city_states.length > 0) {
-                const city = data[0].city_states[0].city;
-                const stateAbbreviation = data[0].city_states[0].state_abbreviation;
-
-                document.getElementById("city").value = city;
-                document.getElementById("stateAbbreviation").value = stateAbbreviation;
-            }
+            document.getElementById("city").value = city;
+            document.getElementById("stateAbbreviation").value = stateAbbreviation;
         }
         catch (error) {
             console.error("Error fetching zip code data: ", error);
