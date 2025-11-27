@@ -533,6 +533,10 @@ function validateData() {
             // Store API data
             const data = await response.json();
             console.log(data);
+
+            console.log(data.city_states.city);
+            console.log(data.city_states.state_abbreviation);
+            
             // Check if data exists and fill city and state fields
             if (data && data.city_states && data.city_states.length > 0) {
                 const city = data.city_states.city;
