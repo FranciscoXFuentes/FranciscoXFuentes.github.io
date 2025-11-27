@@ -533,7 +533,7 @@ function validateData() {
             console.log(data);
 
             if (data && data.city_states && data.city_states.length > 0) {
-                const locationData = data.city_states[0];
+                const locationData = data[0].city_states[0];
                 console.log("City: ", locationData.city);
                 console.log("State Abbreviation: ", locationData.state_abbreviation);
                 const city = locationData.city;
