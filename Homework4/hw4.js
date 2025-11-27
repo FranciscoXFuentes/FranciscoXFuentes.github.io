@@ -517,7 +517,7 @@ function validateData() {
         display.textContent = newValue;
     });
 
-// Fetch API Functions
+/* Fetch API Functions
     // Zip Code API
     // Check for zip code when user leaves input field
     document.getElementById("zip").addEventListener("blur", getZipcode);
@@ -543,4 +543,4 @@ function validateData() {
         catch (error) {
             console.error("Error fetching zip code data: ", error);
         }
-    }
+    } */
