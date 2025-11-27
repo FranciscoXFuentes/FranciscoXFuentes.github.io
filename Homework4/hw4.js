@@ -535,11 +535,8 @@ function validateData() {
             console.log(data);
             // Check if data exists and fill city and state fields
             if (data && data.city_states && data.city_states.length > 0) {
-                const locationData = data[0].city_states[0];
-                console.log("City: ", locationData.city);
-                console.log("State Abbreviation: ", locationData.state_abbreviation);
-                const city = locationData.city;
-                const stateAbbreviation = locationData.state_abbreviation;
+                const city = data.city_states.city;
+                const stateAbbreviation = data.city_states.state_abbreviation;
 
                 document.getElementById("city").value = city;
                 document.getElementById("stateAbbreviation").value = stateAbbreviation;
