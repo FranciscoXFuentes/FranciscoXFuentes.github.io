@@ -530,7 +530,11 @@ function validateData() {
             }
 
             const data = await response.json();
-            console.log(data);
+            const city = data.city_states[0].city;
+            const stateAbbreviation = data.city_states[0].state_abbreviation;
+
+            document.getElementById("city").value = city;
+            document.getElementById("stateAbbreviation").value = stateAbbreviation;
         }
         catch (error) {
             console.error("Error fetching zip code data: ", error);
