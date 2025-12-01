@@ -327,7 +327,7 @@
     .modalCloseBtn {
         text-align: right !important;
     }
-    .modalImage {
+    #modalImage {
         /* float: center !important; */
         display: block;
         max-width: 100%;
