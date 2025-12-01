@@ -608,7 +608,7 @@ slider.addEventListener("input", function() {
             displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); cookieFill(); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
         } else {
             verifyDisplay.innerHTML = "Our records indicate that you are a first time user.";
-            displayBtn.innerHTML = '<button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Create account.</button>';
+            displayBtn.innerHTML = '<button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Create account</button>';
 
         }
     }
@@ -658,4 +658,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+
     }
