@@ -327,6 +327,9 @@
     .modalCloseBtn {
         text-align: right !important;
     }
+    .modalCloseBtn:hover {
+        text-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
     #modalImage {
         /* float: center !important; */
         display: block;
