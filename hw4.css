@@ -325,5 +325,9 @@
         text-align: right !important;
     }
     .modalImage {
-        float: center !important;
+        /* float: center !important; */
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 0;
     }
