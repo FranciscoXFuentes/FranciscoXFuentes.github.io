@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<!--
+    Name: Francisco Fuentes
+    File: hw4.html
+    Date Created: 2025-11-24
+    Date Updated: 2025-11-24
+    Purpose: MIS 3371 Homework 4... Clinic sign up website that utilizes Cookies, Local Storage, iFrames, Fetch API, and Content Protection.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hw4.css">
+    <script src="hw4.js" defer></script>
+    <!-- Free icon pack from: https://fontawesome.com/ -->
+    <script src="https://kit.fontawesome.com/5090b28546.js" crossorigin="anonymous"></script>
+    <title>Evergreen Clinic HW4</title>
+</head>
+<body onload="checkCookies()">
+<!-- Header Section -->
+    <div class="topheader" id="topheader">
+            <img src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="200px" height="200px">
+            <h1>Evergreen Cardiovascular Center</h1>
+            <b>Today's Date:<span id="today"></span></b>
+    </div>
+    <!-- Navigation Section hidden on start-->
+    <div class="header" id="navbar">
+        <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="nav-button">Home</a>
+        <!--<a href="#form-section" onclick="showSection('form-section'); return false;" class="nav-button">Sign Up</a>-->
+        <a href="#location-section" onclick="showSection('location-section'); return false;" class="nav-button">Locations</a>
+    </div>
+<!-- Main Content Sections -->
+ <main>
+<!-- Welcome View -->
+    <section id="welcome-section" class="main-content">
+        <h2>Welcome <span id="cookieMessage"></span> to Evergreen Cardiovascular  Health Center</h2>
+        <p>Your health is our priority.</p>
+        <p style="line-height: 30px;"><span id="cookieVerify"></span></p>
+        <span id="verification-buttons"></span>
+    </section>
+<!-- Form View -->
+     <section id="form-section" class="main-content">
+            <h1 id="form-heading">Patient Intake Form</h1>
+            <form name="intakeForm" id="intakeForm" action="hw4sub.html" method="get">
+                <table class="form-group" align="center">
+        <!--Personal Information Section-->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Personal Information</h3></th>
+                    </tr>
+                    <tr class="name-group">
+                        <td colspan="2" align="left">
+                            <label for="fname">Full name</label>
+                        </td>
+                    </tr>
+                    <tr class="name-group">
+                        <td>
+                        <!--Full name validation testing and REGEX pattern, should look smilar for all other input fields-->
+                            <input type="text" 
+                                    id="firstname" 
+                                    name="firstname" 
+                                    pattern="[A-Za-z\s'\-]{2,30}"
+                                    placeholder="First Name" 
+                                    minlength="2" 
+                                    maxlength="30" 
+                                    required
+                                    onblur="checkfirstname()"
+                                    title="First name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
+                            <input type="text" 
+                                    id="minitial" 
+                                    name="minitial" 
+                                    placeholder="MI" 
+                                    minlength="0" 
+                                    maxlength="1"
+                                    size="2"
+                                    onblur="checkminitial()"
+                                    title="Middle initial should be a single letter.">
+                            <input type="text" 
+                                    id="lastname" 
+                                    name="lastname" 
+                                    placeholder="Last Name" 
+                                    minlength="2" 
+                                    maxlength="30" 
+                                    required
+                                    onblur="checklastname()"
+                                    title="Last name should be minimum 2 characters and only contain letters, hyphens, apostrophes, and spaces.">
+                        </td>
+                        <td class="error_messages">
+                            <ul>
+                            <span id="fname_message"></span>
+                            <span id="minitial_message"></span>
+                            <span id="lname_message"></span>
+                            </ul>
+                        </td>
+                    </tr>
+            <!--DOB input field-->
+                    <tr class="dob-group">
+                        <td colspan="2" align="left">
+                            <label for="dob">Date of Birth</label>
+                        </td>
+                    </tr>
+                    <tr class="dob-group">
+                        <td>
+                            <input type="date" 
+                                    id="dob" 
+                                    name="dob" 
+                                    required
+                                    onblur="checkdob()"
+                                    title="Your date of birth must be between 120 years ago and today.">
+                        </td>
+                        <td class="error_messages"><ul><span id="dob_message"></span></ul></td>
+                    </tr>
+            <!--SSN input field and testing-->
+                    <tr class="ssn-group">
+                        <td colspan="2" align="left">
+                            <label for="ssn">Social Security Number</label>
+                        </td>
+                    </tr>
+                    <tr class="ssn-group">
+                        <td>
+                            <input type="password" 
+                                    id="ssn" 
+                                    name="ssn" 
+                                    placeholder="SSN (###-##-####)" 
+                                    maxlength="11"
+                                    minlength="9" 
+                                    required
+                                    pattern="\d{3}-?\d{2}-?\d{4}"
+                                    onblur="checkssn()"
+                                    title="SSN must be in the format ###-##-#### or #########">
+                        </td>
+                        <td class="error_messages"><ul><span id="ssn_message"></span></ul></td>
+                    </tr>
+            <!--Gender radio selection-->
+                    <tr class="gender-group">
+                        <td colspan="2" align="left">
+                            <label for="gender">Gender</label>
+                        </td>
+                    </tr>
+                    <tr class="gender-group">
+                        <td>
+                            <input type="radio"
+                                    id="maleGender"
+                                    name="patient_gender"
+                                    value="Male"
+                                    required
+                                    onchange="checkgender()">
+                            <label for="maleGender">Male</label>
+                            <input type="radio"
+                                    id="femaleGender"
+                                    name="patient_gender"
+                                    value="Female"
+                                    onchange="checkgender()">
+                            <label for="femaleGender">Female</label>
+                            <input type="radio"
+                                    id="otherGender"
+                                    name="patient_gender"
+                                    value="Other"
+                                    onchange="checkgender()">
+                            <label for="otherGender">Other</label>
+                        </td>
+                        <td class="error_messages"><ul><span id="gender_message"></span></ul></td>
+                    </tr>
+        <!--Contact Information Section-->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Contact Information</h3></th>
+                    </tr>
+            <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="address">Address Line 1</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
+                                    id="addr1"
+                                    name="addr1"
+                                    placeholder="123 Main Street"
+                                    maxlength="30"
+                                    minlength="5"
+                                    required
+                                    title="Address must be between 5 and 30 characters."
+                                    onblur="checkaddress1()">
+                        
+                        </td>
+                        <td class="error_messages"><ul><span id="addr1_message"></span></ul></td>
+                    </tr>
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="address2">Address Line 2</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
+                                    id="addr2"
+                                    name="addr2"
+                                    placeholder="Apt, Suite, etc."
+                                    maxlength="30"
+                                    minlength="0"
+                                    title="Address must be between 5 and 30 characters."
+                                    onblur="checkaddress2()">
+                        
+                        </td>
+                        <td class="error_messages"><ul><span id="addr2_message"></span></ul></td>
+                    </tr>
+                    <tr class="address-group">
+                        <td colspan="2" align="left">
+                            <label for="city">City, </label><label for="state">State, </label><label for="zip">Zip Code</label>
+                        </td>
+                    </tr>
+                    <tr class="address-group">
+                        <td>
+                            <input type="text"
+                                        id="zip"
+                                        name="zip"
+                                        maxlength="10"
+                                        minlength="5"
+                                        placeholder="Zip Code"
+                                        required
+                                        pattern="\d{5}(-\d{4})?"
+                                        onblur="checkzip()"
+                                        title="Zip Code must be in the format ##### or #####-#### and between 5 and 10 characters.">
+                            <input type="text"
+                                        id="city"
+                                        name="city"
+                                        maxlength="30"
+                                        minlength="2"
+                                        placeholder="City"
+                                        required
+                                        title="City must be between 2 and 30 characters."
+                                        onblur="checkcity()">
+                <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
+                            <select name="stateAbbreviation"
+                                    id="stateAbbreviation"
+                                    title="Selecet a state from the dropdown list."
+                                    required>
+                                    <option value="AL">AL</option>
+                                    <option value="AK">AK</option>
+                                    <option value="AR">AR</option>
+                                    <option value="AZ">AZ</option>
+                                    <option value="CA">CA</option>
+                                    <option value="CO">CO</option>
+                                    <option value="CT">CT</option>
+                                    <option value="DC">DC</option>
+                                    <option value="DE">DE</option>
+                                    <option value="FL">FL</option>
+                                    <option value="GA">GA</option>
+                                    <option value="HI">HI</option>
+                                    <option value="IA">IA</option>
+                                    <option value="ID">ID</option>
+                                    <option value="IL">IL</option>
+                                    <option value="IN">IN</option>
+                                    <option value="KS">KS</option>
+                                    <option value="KY">KY</option>
+                                    <option value="LA">LA</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MD">MD</option>
+                                    <option value="ME">ME</option>
+                                    <option value="MI">MI</option>
+                                    <option value="MN">MN</option>
+                                    <option value="MO">MO</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MT">MT</option>
+                                    <option value="NC">NC</option>
+                                    <option value="NE">NE</option>
+                                    <option value="NH">NH</option>
+                                    <option value="NJ">NJ</option>
+                                    <option value="NM">NM</option>
+                                    <option value="NV">NV</option>
+                                    <option value="NY">NY</option>
+                                    <option value="ND">ND</option>
+                                    <option value="OH">OH</option>
+                                    <option value="OK">OK</option>
+                                    <option value="OR">OR</option>
+                                    <option value="PA">PA</option>
+                                    <option value="RI">RI</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SD">SD</option>
+                                    <option value="TN">TN</option>
+                                    <option value="TX">TX</option>
+                                    <option value="UT">UT</option>
+                                    <option value="VT">VT</option>
+                                    <option value="VA">VA</option>
+                                    <option value="WA">WA</option>
+                                    <option value="WI">WI</option>
+                                    <option value="WV">WV</option>
+                                    <option value="WY">WY</option>
+                                    <option value="AS">AS</option>
+                                    <option value="GU">GU</option>
+                                    <option value="MP">MP</option>
+                                    <option value="PR">PR</option>
+                                    <option value="UM">UM</option>
+                                    <option value="VI">VI</option>
+                            </select>
+                        </td>
+                        <td class="error_messages">
+                            <ul>
+                            <span id="zip_message"></span>
+                            <span id="city_message"></span>
+                            <span id="state_message"></span>
+                            </ul>
+                        </td>
+                    </tr>
+            <!-- Phone number and Email input fields -->
+                    <tr class="contact-group">
+                        <td colspan="2" align="left">
+                            <label for="phone">Phone Number</label>
+                        </td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td>
+                            <input type="text"
+                                    id="phone"
+                                    name="phone"
+                                    minlength="10"
+                                    maxlength="10"
+                                    placeholder="1234567890"
+                                    required
+                                    pattern="\d{10}"
+                                    onblur="checkphone()"
+                                    title="Phone number must be 10 digits long and contain only numbers.">
+                        </td>
+                        <td class="error_messages"><ul><span id="phone_message"></span></ul></td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td colspan="2" align="left">
+                            <label for="email">Email Address</label>
+                        </td>
+                    </tr>
+                    <tr class="contact-group">
+                        <td>
+                            <input type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    maxlength="50"
+                                    minlength="5"
+                                    required
+                                    onblur="checkemail()"
+                                    title="Email must be a valid email address between 5 and 50 characters.">
+                        </td>
+                        <td class="error_messages"><ul><span id="email_message"></span></ul></td>
+                    </tr>
+        <!-- Medical & Health Information Section -->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Medical & Health Information</h3></th>
+                    </tr>
+            <!-- Insurance radio selection -->
+                    <tr class="insurance-group">
+                        <td colspan="2" align="left">
+                            <label for="insurance_status">Do you currently have health insurance?</label>
+                        </td>
+                    </tr>
+                    <tr class="insurance-group">
+                        <td>
+                            <input type="radio"
+                                    id="insuranceYes"
+                                    name="insurance_status"
+                                    value="Yes"
+                                    required
+                                    onchange="checkinsurance()">
+                            <label for="insuranceYes">Yes</label>
+                            <input type="radio"
+                                    id="insuranceNo"
+                                    name="insurance_status"
+                                    value="No"
+                                    onchange="checkinsurance()">
+                            <label for="insuranceNo">No</label>
+                        </td>
+                        <td class="error_messages"><ul><span id="insurance_message"></span></ul></td>
+                    </tr>
+            <!--Text Area/symptoms section-->
+                    <tr class="textarea-group">
+                        <td colspan="2" align="left">
+                            <label for="visit_reason">Please describe your symptoms and/or the reason for your visit today.</label>
+                        </td>
+                    </tr>
+                    <tr class="textarea-group">
+                        <td>
+                            <textarea id="visit_reason"
+                                        name="visit_reason"
+                                        rows="3"
+                                        cols="50"
+                                        maxlength="500"
+                                        minlength="2"
+                                        placeholder="Enter your symptoms and/or reason for visit here..."
+                                        required
+                                        title="Description must be between 2 and 500 characters long."
+                                        onblur="checktextarea()"></textarea>
+                        </td>
+                        <td class="error_messages"><ul><span id="visit_reason_message"></span></ul></td>
+                    </tr>
+            <!-- Slider for pain level -->
+                    <tr class="slider-text">
+                        <td colspan="2" align="left">
+                            <label for="pain_level">On a scale of 1 to 10, how would you rate your current pain level?</label>
+                        </td>
+                    </tr>
+                    <tr class="slider-group">
+                        <td colspan="2">
+                            <input type="range"
+                                    id="pain_level"
+                                    name="pain_level"
+                                    min="1"
+                                    max="10"
+                                    value="5"
+                                    step="1">
+                        </td>
+                    </tr>
+                    <tr class="slider-group">
+                        <td colspan="2">
+                            <p>Current pain level: <span id="valueDisplay">5</span></p>
+                        </td>
+                    </tr>
+            <!-- Checkboxes for recent diagnoses -->
+                    <tr colspan="2" align="left">
+                        <td>
+                            <label for="diagnosis_checkboxes">Have you recently been diagnosed with any of the following? Check all that apply.</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left" id="diagnosis_checkboxes">
+                            <input type="checkbox"
+                                    id="diabetes"
+                                    name="diagnosis"
+                                    value="Diabetes"
+                                    onchange="checkdiagnosis()">
+                            <label for="diabetes">Diabetes</label><br>
+                            <input type="checkbox"
+                                    id="hypertension"
+                                    name="diagnosis"
+                                    value="Hypertension"
+                                    onchange="checkdiagnosis()">
+                            <label for="hypertension">Hypertension</label><br>
+                            <input type="checkbox"
+                                    id="heartDisease"
+                                    name="diagnosis"
+                                    value="Heart Disease"
+                                    onchange="checkdiagnosis()">
+                            <label for="heartDisease">Hear Disease</label><br>
+                            <input type="checkbox"
+                                    id="asthma"
+                                    name="diagnosis"
+                                    value="Asthma"
+                                    onchange="checkdiagnosis()">
+                            <label for="asthma">Asthma</label><br>
+                            <input type="checkbox"
+                                    id="deppressionOrAnxiety"
+                                    name="diagnosis"
+                                    value="Depression or Anxiety"
+                                    onchange="checkdiagnosis()">
+                            <label for="deppressionOrAnxiety">Depression or Anxiety</label><br>
+                            <input type="checkbox"
+                                    id="noneofTheAbove"
+                                    name="diagnosis"
+                                    value="None"
+                                    onchange="checkdiagnosis()">
+                            <label for="noneofTheAbove">None of the above</label><br>
+                        </td>
+                        <td class="error_messages" ><ul><span id="diagnosis_message"></span></ul></td>
+                    </tr>
+            <!-- Vaccination radio selection -->
+                    <tr>
+                        <td colspan="2" align="left">
+                            <label for="isVaccinated">Have you been vaccinated?</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio"
+                                    id="vaccinatedYes"
+                                    name="isVaccinated"
+                                    value="Yes"
+                                    required
+                                    onchange="checkvaccination()">
+                            <label for="vaccinatedYes">Yes</label>
+                            <input type="radio"
+                                    id="vaccinatedNo"
+                                    name="isVaccinated"
+                                    value="No"
+                                    onchange="checkvaccination()">
+                            <label for="vaccinatedNo">No</label>
+                        </td>
+                        <td class="error_messages"><ul><span id="vaccination_message"></span></ul></td>
+                    </tr>
+        <!-- Account Information Section -->
+                    <tr>
+                        <th colspan="2" align="left"><h3>Account Information</h3></th>
+                    </tr>
+            <!--User ID Input-->
+                    <tr class="username-group">
+                        <td colspan="2" align="left">
+                            <label for="username">User ID</label>
+                        </td>
+                    </tr>
+                    <tr class="username-group">
+                        <td>
+                            <input type="text"
+                                    id="username"
+                                    name="username"
+                                    placeholder="User ID"
+                                    maxlength="15"
+                                    minlength="6"
+                                    pattern="[A-Za-z0-9]{6,15}"
+                                    required
+                                    onblur="checkuserid()"
+                                    title="User ID must be between 6 and 15 characters long.">
+                        </td>
+                        <td class="error_messages"><ul><span id="username_message"></span></ul></td>
+                    </tr>
+            <!--Password Inputs-->
+                    <tr class="password-group">
+                        <td colspan="2" align="left">
+                            <label for="password">Password</label>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td>
+                            <input type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    maxlength="20"
+                                    minlength="8"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
+                                    required
+                                    onblur="passwordStrengthCheck()"
+                                    title="Password must be between 8 and 20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, #, $, %).">
+                        </td>
+                        <td class="error_messages">
+                            <ul>
+                            <span id="password_message1"></span>
+                            <span id="password_message2"></span>
+                            <span id="password_message3"></span>
+                            <span id="password_message4"></span>
+                            <span id="password_message5"></span>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td colspan="2" align="left">
+                            <label for="confirm_password">Confirm Password</label>
+                        </td>
+                    </tr>
+                    <tr class="password-group">
+                        <td>
+                            <input type="password"
+                                    id="confirm_password"
+                                    name="confirm_password"
+                                    placeholder="Confirm Password"
+                                    maxlength="20"
+                                    minlength="8"
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}"
+                                    required
+                                    onblur="checkconfirm_password()"
+                                    title="Please re-enter your password to confirm.">
+                        </td>
+                        <td class="error_messages"><ul><span id="confirm_password_message"></span></ul></td>
+                    </tr>
+            <!-- Form Buttons -->
+                    <tr>
+                        <td colspan="2" align="center">
+                            <table width="80%">
+                                <tr>
+                                    <td align="right">
+                                        <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
+                                        title="Click this button to review all data fields.">
+                                    </td>
+                                    <td align="center">
+                                        <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
+                                        title="Click this button to validate all data fields.">
+                                    </td>
+                                    <td align="center">
+                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear Form"
+                                        title="Click this button to clear all data fields.">
+                                    </td>
+                                    <td align="left">
+                                        <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" disabled
+                                        title="Click this button to submit the form.">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                </table>
+            </form>
+        <!-- Data Review Section -->
+            <div class="dataTable" id="dataReview"></div>
+        </section>
+    <!-- Location View -->
+        <section id="location-section" class="main-content">
+            <article>
+                <h2>Clinic Locations</h2>
+                <p>We are currently only operating at one clinic serving the Houston area.</p>
+                <h3>Evergreen Cardiovascular Center - Main Branch</h3>
+                <p>123 Main St, Houston, TX 77002</p>
+                <p>Hours: 6:00 AM - 5:00 PM</p>
+                <figure>
+            <!-- Image sourced from https://www.freepik.com/free-photo/analog-landscape-city-with-buildings_31261380.htm#fromView=search&page=1&position=1&uuid=040a057f-d53c-47de-a047-c3f01706d5a9&query=medical+center+building-->
+                    <img src="analog-landscape-city-with-buildings.jpg" alt="Clinic Exterior" width="450" height="250">
+                </figure>
+            </article>
+            <aside>
+            <!-- Embedded map view of the Houston Medical Center Area in an iFrame -->
+                <iframe src="https://maps.google.com/maps?q=Medical+Center+Area,+Houston,+TX/@29.7099063,-95.396515,15z&output=embed" allowfullscreen></iframe>
+            </aside>
+        </section>
+</main>
+
+<!--(Extra Credit) Modal Popup -->
+    <div id="locationModal" class="modal">
+        <!--Content-->
+        <div class="modal-content">
+            <div class="modalCloseBtn">
+                <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <article id="modalArticle">
+                <h2>Clinic Locations</h2>
+                <p>We are currently only operating at one clinic serving the Houston area.</p>
+                <h3>Evergreen Cardiovascular Center - Main Branch</h3>
+                <p>123 Main St, Houston, TX 77002</p>
+                <p>Hours: 6:00 AM - 5:00 PM</p>
+                <figure id="modalImage">
+                    <!-- Image sourced from https://www.freepik.com/free-photo/analog-landscape-city-with-buildings_31261380.htm#fromView=search&page=1&position=1&uuid=040a057f-d53c-47de-a047-c3f01706d5a9&query=medical+center+building-->
+                    <img src="analog-landscape-city-with-buildings.jpg" width="450" height="250">
+                </figure>
+            </article>
+        </div>
+    </div>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <!-- Icons -->
+        <div id="footerLinks">
+            <a href="#welcome-section" onclick="showSection('welcome-section')"class="footer-button">Home</a>
+            <a href="mailto:someone@example.com" class="footer-button">Contact</a>
+            <a href="#locationModal" class="footer-button" id="modalBtn">Locations</a>
+            <a href="" onclick="deleteCookie()" class="footer-button">Delete Cookies</a>
+        </div>
+        <p id="footerSocialP">Follow us on social media</p>
+        <div class="footerIcons">
+            <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-square-instagram" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://x.com/" target="_blank"><i class="fa-brands fa-square-x-twitter" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-square-facebook" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-square-youtube" style="font-size: 40px; color:#D8DEE7"></i></a>
+        </div>
+        <div id="footerInfo">
+            <p>Evergreen Cardiovascular Center</p>
+            <p>Created by Francisco Fuentes</p>
+            <p>MIS 3371 - Transaction Processing Systems</p>
+        </div>
+</footer>
+</body>
+</html>

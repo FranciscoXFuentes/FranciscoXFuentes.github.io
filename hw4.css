@@ -1,0 +1,329 @@
+/*
+   Name: Francisco Fuentes
+   File: hw4.css
+   Date Created: 2025-11-24
+   Date Updated: 2025-11-24
+   Purpose: MIS 3371 Homework 4... Using CSS to protect page content and iFrame design for the patient intake form.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Styling for entire page */
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+               sans-serif;
+        color: #2c3e50;
+        background-color: #D8DEE7;
+        box-sizing: border-box;
+        min-height: 100vh;
+    }
+
+    main {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: auto;
+        padding-bottom: 40px;
+    }
+
+    .page2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+/* Welcome Section Length Fix for Footer */
+    #welcome-section {
+        margin-top: 5vh;
+        margin-bottom: 20vh;
+    }
+
+/* Header Styling */
+    .header, .topheader {
+        background-color: #505967;
+        color: #D8DEE7;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        width: 100%;
+        align-items: center;
+        margin: 0;
+    }
+    /* Nav Bar Hiding */
+    .header {
+        display: none;
+        justify-content: space-evenly;
+        position: sticky;
+        top: 0;
+        gap: 12px;
+        transition: 0.4s;
+    }
+    .topheader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    input, select, textarea {
+        background: #E3E7EE;
+        border: solid 1px;
+        border-radius: 2px;
+        border-color:#9EA7B6;
+        color: #1E232B;
+    }
+    input[type="checkbox"], input[type="radio"] {
+        color: #E3E7EE;
+    }
+    input::placeholder {
+        color: #5F6672;
+    }
+
+/* Error Message Styling */
+    .error_messages {
+        color: red;
+        text-wrap: wrap;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+/* Navigation Bar Config */
+    #navbar .nav-button, #navbar input[type="button"] {
+        display: inline-block;
+        background-color: #505967;
+        font-size: 18px;
+        border-radius: 2px;
+        padding: 10px 20px;
+        flex-grow: 1;
+        margin-bottom: 6px;
+        border: none;
+        color: #D8DEE7;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition-duration: 0.4s;
+    }
+    #navbar .nav-button:hover, #navbar input[type="button"]:hover {
+        background-color: #5A8DFB;
+        color: #D8DEE7;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+/* Landing Page Styling */
+    #welcome-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: center;
+        padding: 30px;
+    }
+    /* Welcome page buttons */
+    .welcomeBtn {
+        border: none;
+        border-radius: 4px;
+        width: 200px;
+        background-color: white;
+        color: #1E232B;
+        font-size: 16px;
+        padding: 10px 16px;
+        transition-duration: .4s;
+    }
+    .welcomeBtn:hover {
+        background-color: #1E232B;
+        color: white;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+/* Form Styling and Hiding */
+    #form-group {
+        width: 100%;
+        padding: 20px;
+        margin: auto;
+    }
+    #form-group td {
+        padding: 10px;
+        text-align: left;
+        word-wrap: break-word;
+        vertical-align: top;
+    }
+    /* Sign up section */
+    #form-section {
+        display: none;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: left;
+        padding-left: 500px;
+        padding-right: 500px;
+    }
+    #form-heading {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .dataTable table, .dataTable th, .dataTable tr, .dataTable td{
+        border: 2px solid;
+        border-color: #007bff;
+        background-color: white;
+        color:#3C4142;
+        border-collapse: collapse;
+        padding: 8px;
+    }
+    /* Form buttons */
+    .formButton {
+        border: 1px #888888 solid;
+        border-radius: 2px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 8px 18px;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+    #reviewFormButton:hover {
+        background-color: #007bff;
+        color: white;
+        transition: .4s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    #validateInputButton:hover {
+        background-color: #ffc107;
+        color: white;
+        transition: .4s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    #clearFormButton:hover {
+        background-color: #dc3545;
+        color: white;
+        transition: .4s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+    #submitFormButton:disabled:hover {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    #submitFormButton:not(:disabled):hover {
+        background-color: #28a745;
+        color: white;
+        transition: .4s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+
+/* Styling and hiding for the location tab */
+    #location-section {
+        display: none;
+        justify-content: space-evenly;
+        align-items: center;
+        text-align: left;
+        padding: 10px;
+    }
+    #location-section aside {
+        float: right;
+        margin-top: 2vh;
+    }
+    #location-section iframe {
+        border: 2px solid #ccc;
+        border-radius: 15px;
+        overflow: hidden;
+        height: 500px;
+        width: 450px;
+    }
+    #location-section figure {
+        margin: 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+/* Footer Styling */
+    footer {
+        background-color: #505967;
+        color: #D8DEE7;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding-top: 40px;
+        position: relative;
+        bottom: 0;
+    }
+
+    #footerSocialP {
+        font-size: 18px;
+    }
+
+    #footerLinks {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #footerIcons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #footerInfo {
+        display: flex;
+        flex-direction: column;
+        padding-top: 20px;
+        line-height: 0;
+        font-size: 12px;
+        color: #D8DEE7;
+    }
+
+    /* Footer Buttons */
+    .footer .footer-button, .footer input[type="button"] {
+        display: inline-block;
+        background-color: #505967;
+        font-size: 18px;
+        border-radius: 2px;
+        padding: 10px 12px;
+        margin-bottom: 6px;
+        border: none;
+        color: #D8DEE7;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition-duration: 0.4s;
+    }
+    .footer .footer-button:hover, .footer input[type="button"]:hover {
+        background-color: #63F2B5;
+        color: #505967;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+/*(Extra Credit) Modal Styling */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.315);
+    }
+    .modal-content {
+        background-color: white;
+        text-align: left;
+        margin: auto;
+        padding: 20px;
+        border: 2px solid lightgrey;
+        width: 30%;
+    }
+    .modalCloseBtn {
+        text-align: right !important;
+    }
+    .modalImage {
+        float: center !important;
+    }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+    Name: Francisco Fuentes
+    File: hw4sub.html
+    Date Created: 2025-11-24
+    Date Updated: 2025-11-24
+    Purpose: MIS 3371 Homework 4... Confirmation landing page for hw4.
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Evergreen Cardiovascular Clinic Intake Form Successful</title>
+        <link rel="icon" type="image" href="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png">
+        <link rel="stylesheet" href="Homework4/hw4.css">
+    </head>
+    <body>
+        <!-- Header Section -->
+        <div class="topheader" id="topheader">
+            <img src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="200px" height="200px">
+            <h1>Evergreen Cardiovascular Center</h1>
+            <b>Today's Date:<span id="today"></span></b>
+    </div>
+        <!-- Navigation Section hidden on start-->
+    <div class="header" id="navbar">
+        <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="nav-button">Home</a>
+        <a href="#form-section" onclick="showSection('form-section'); return false;" class="nav-button">Sign Up</a>
+        <a href="#location-section" onclick="showSection('location-section'); return false;" class="nav-button">Locations</a>
+    </div>
+        <!-- Body --> 
+        <div class="page2" style="height: 70%;">
+            <h1>Form Submitted Successfully!</h1>
+            <a href="hw4.html" target="_self"><button class="welcomeBtn">Home</button></a>
+        </div>
+        <!-- Footer Section -->
+        <div class="footer2">
+        <!-- Footer Section -->
+            <footer class="footer">
+                <!-- Icons -->
+                <div id="footerLinks">
+                    <a href="#welcome-section" onclick="showSection('welcome-section')"class="footer-button">Home</a>
+                    <a href="mailto:someone@example.com" class="footer-button">Contact</a>
+                    <a href="#locationModal" class="footer-button" id="modalBtn">Locations</a>
+                    <a href="" onclick="deleteCookie()" class="footer-button">Delete Cookies</a>
+                </div>
+                <p id="footerSocialP">Follow us on social media</p>
+                <div class="footerIcons">
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-square-instagram" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-square-x-twitter" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-square-facebook" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-square-youtube" style="font-size: 40px; color:#D8DEE7"></i></a>
+                </div>
+                <div id="footerInfo">
+                    <p>Evergreen Cardiovascular Center</p>
+                    <p>Created by Francisco Fuentes</p>
+                    <p>MIS 3371 - Transaction Processing Systems</p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
