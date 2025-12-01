@@ -12,61 +12,50 @@
         <meta charset="utf-8">
         <title>Evergreen Cardiovascular Clinic Intake Form Successful</title>
         <link rel="icon" type="image" href="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png">
-        <link rel="stylesheet" href="hw4.css">
+        <link rel="stylesheet" href="Homework4/hw4.css">
     </head>
     <body>
         <!-- Header Section -->
-        <div class="header">
-        <header>
-            <table width="100%">
-                <tr>
-                    <td align="left"><img id="logo" src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Medical Clinic" height="200" width="200"></td>
-                    <td align="center"></td>
-                    <td align="right" id="todaysdate"><b>Today's Date:<span id="today"></span></b></td>
-                </tr>
-            </table>
-        </header>
-        </div>
+        <div class="topheader" id="topheader">
+            <img src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="200px" height="200px">
+            <h1>Evergreen Cardiovascular Center</h1>
+            <b>Today's Date:<span id="today"></span></b>
+    </div>
+        <!-- Navigation Section hidden on start-->
+    <div class="header" id="navbar">
+        <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="nav-button">Home</a>
+        <a href="#form-section" onclick="showSection('form-section'); return false;" class="nav-button">Sign Up</a>
+        <a href="#location-section" onclick="showSection('location-section'); return false;" class="nav-button">Locations</a>
+    </div>
         <!-- Body --> 
-        <div class="page2">
+        <div class="page2" style="height: 70%;">
             <h1>Form Submitted Successfully!</h1>
-            <a href="hw4.html" target="_self"><button>Go Back</button></a>
+            <a href="Homework4/hw4.html" target="_self"><button class="welcomeBtn">Home</button></a>
         </div>
         <!-- Footer Section -->
         <div class="footer2">
-        <footer>
-            <table width="100%">
-                <tr>
-                    <td align="left">
-                        <a href="mailto:someone@example.com"><b>Contact Us</b></a>
-                        <div id="socialhandles">
-                            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-                            <a href="https://x.com/?lang=en" target="_blank">Twitter/X</a>
-                        </div>
-                        <img id="Instagram_icon"
-                                src="Instagram_icon.png"
-                                alt="HeartCare Medical Clinic Instagram"
-                                width="30px"
-                                height="30px">
-                        <img id="X_Twitter_icon"
-                                src="vecteezy_x-twitter-icon-logo-symbol_53986348.png"
-                                alt="HeartCare Medical Clinic X/Twitter"
-                                width="30px"
-                                height="30px">
-                    </td>
-                    <td align="right">
-                        <p>Created by Francisco Fuentes<br>MIS 3371</p>
-                    </td>
-                </tr>
-            </table>
-        </footer>
+        <!-- Footer Section -->
+            <footer class="footer">
+                <!-- Icons -->
+                <div id="footerLinks">
+                    <a href="#welcome-section" onclick="showSection('welcome-section')"class="footer-button">Home</a>
+                    <a href="mailto:someone@example.com" class="footer-button">Contact</a>
+                    <a href="#locationModal" class="footer-button" id="modalBtn">Locations</a>
+                    <a href="" onclick="deleteCookie()" class="footer-button">Delete Cookies</a>
+                </div>
+                <p id="footerSocialP">Follow us on social media</p>
+                <div class="footerIcons">
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-square-instagram" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://x.com/" target="_blank"><i class="fa-brands fa-square-x-twitter" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-square-facebook" style="font-size: 40px; color:#D8DEE7"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-square-youtube" style="font-size: 40px; color:#D8DEE7"></i></a>
+                </div>
+                <div id="footerInfo">
+                    <p>Evergreen Cardiovascular Center</p>
+                    <p>Created by Francisco Fuentes</p>
+                    <p>MIS 3371 - Transaction Processing Systems</p>
+                </div>
+            </footer>
         </div>
-
-        <!-- JavaScript code for the localedate in the header -->
-        <script>
-            const d = new Date();
-            let text = d.toLocaleDateString();
-            document.getElementById("today").innerHTML = text;
-        </script>
     </body>
 </html>

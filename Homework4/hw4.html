@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <!--
     Name: Francisco Fuentes
-    File: hw4.html
-    Date: 2025-11-24
-    Date Last Modified: 2025-11-24
-    Purpose: MIS 3371.. Implementing Fetch API, iFrames, Content Protection, and demonstrating the use of Cookies and Local Storage for the patient intake form.
+    File: hw4sub.html
+    Date Created: 2025-11-24
+    Date Updated: 2025-11-24
+    Purpose: MIS 3371 Homework 4... Confirmation landing page for hw4.
 -->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Evergreen Cardiovascular Center Intake Form</title>
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="stylesheet" href="hw4.css">
-        <script src="hw4.js" defer></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
-    </head>
-    <body>
-    <!-- Header Section -->
-        <div class ="header">
-            <table align="center" width="95%">
-                <tr>
-                    <td align="left">
-                        <img src="freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="150" height="150">
-                    </td>
-                    <td align="center">
-                        <h1>Evergreen Cardiovascular Center</h1>
-                        <h2>Patient Intake Form</h2>
-                    </td>
-                    <td align="right" id="todaysdate">
-                        <b>Today's Date:<span id="today"></span></b>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    <!-- Form Section -->
-         <div class ="body">
-            <form name="intakeForm" id="intakeForm" action="hw4sub.html" method="get">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Homework4/hw4.css">
+    <script src="Homework4/hw4.js" defer></script>
+    <!-- Free icon pack from: https://fontawesome.com/ -->
+    <script src="https://kit.fontawesome.com/5090b28546.js" crossorigin="anonymous"></script>
+    <title>Evergreen Clinic HW4</title>
+</head>
+<body onload="checkCookies()">
+<!-- Header Section -->
+    <div class="topheader" id="topheader">
+            <img src="Homework4/freepik-duotone-doodle-dr-benton-cardiovascular-center-logo-20250925001012XiEL.png" alt="Evergreen Cardiovascular Center Logo" width="200px" height="200px">
+            <h1>Evergreen Cardiovascular Center</h1>
+            <b>Today's Date:<span id="today"></span></b>
+    </div>
+    <!-- Navigation Section hidden on start-->
+    <div class="header" id="navbar">
+        <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="nav-button">Home</a>
+        <!--<a href="#form-section" onclick="showSection('form-section'); return false;" class="nav-button">Sign Up</a>-->
+        <a href="#location-section" onclick="showSection('location-section'); return false;" class="nav-button">Locations</a>
+    </div>
+<!-- Main Content Sections -->
+ <main>
+<!-- Welcome View -->
+    <section id="welcome-section" class="main-content">
+        <h2>Welcome <span id="cookieMessage"></span> to Evergreen Cardiovascular  Health Center</h2>
+        <p>Your health is our priority.</p>
+        <p style="line-height: 30px;"><span id="cookieVerify"></span></p>
+        <span id="verification-buttons"></span>
+    </section>
+<!-- Form View -->
+     <section id="form-section" class="main-content">
+            <h1 id="form-heading">Patient Intake Form</h1>
+            <form name="intakeForm" id="intakeForm" action="Homework4/hw4sub.html" method="get">
                 <table class="form-group" align="center">
-                <!--Personal Information Section-->
+        <!--Personal Information Section-->
                     <tr>
                         <th colspan="2" align="left"><h3>Personal Information</h3></th>
                     </tr>
@@ -86,7 +92,7 @@
                             </ul>
                         </td>
                     </tr>
-                <!--DOB input field-->
+            <!--DOB input field-->
                     <tr class="dob-group">
                         <td colspan="2" align="left">
                             <label for="dob">Date of Birth</label>
@@ -103,7 +109,7 @@
                         </td>
                         <td class="error_messages"><ul><span id="dob_message"></span></ul></td>
                     </tr>
-                <!--SSN input field and testing-->
+            <!--SSN input field and testing-->
                     <tr class="ssn-group">
                         <td colspan="2" align="left">
                             <label for="ssn">Social Security Number</label>
@@ -124,7 +130,7 @@
                         </td>
                         <td class="error_messages"><ul><span id="ssn_message"></span></ul></td>
                     </tr>
-                <!--Gender radio selection-->
+            <!--Gender radio selection-->
                     <tr class="gender-group">
                         <td colspan="2" align="left">
                             <label for="gender">Gender</label>
@@ -154,11 +160,11 @@
                         </td>
                         <td class="error_messages"><ul><span id="gender_message"></span></ul></td>
                     </tr>
-                <!--Contact Information Section-->
+        <!--Contact Information Section-->
                     <tr>
                         <th colspan="2" align="left"><h3>Contact Information</h3></th>
                     </tr>
-                <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
+            <!-- Address input fields: Address Line 1, Address Line 2, City, State, Zip Code -->
                     <tr class="address-group">
                         <td colspan="2" align="left">
                             <label for="address">Address Line 1</label>
@@ -200,7 +206,7 @@
                     </tr>
                     <tr class="address-group">
                         <td colspan="2" align="left">
-                            <label for="zip">Zip, </label><label for="city">City, </label><label for="stateAbbreviation">State Abbreviation</label>
+                            <label for="city">City, </label><label for="state">State, </label><label for="zip">Zip Code</label>
                         </td>
                     </tr>
                     <tr class="address-group">
@@ -224,7 +230,7 @@
                                         required
                                         title="City must be between 2 and 30 characters."
                                         onblur="checkcity()">
-                        <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
+                <!-- State and Outlying Terriroties abbreviation list sourced from: https://www.freeformatter.com/usa-state-list-html-select.html -->
                             <select name="stateAbbreviation"
                                     id="stateAbbreviation"
                                     title="Selecet a state from the dropdown list."
@@ -296,7 +302,7 @@
                             </ul>
                         </td>
                     </tr>
-                <!-- Phone number and Email input fields -->
+            <!-- Phone number and Email input fields -->
                     <tr class="contact-group">
                         <td colspan="2" align="left">
                             <label for="phone">Phone Number</label>
@@ -336,11 +342,11 @@
                         </td>
                         <td class="error_messages"><ul><span id="email_message"></span></ul></td>
                     </tr>
-                    <!-- Medical & Health Information Section -->
+        <!-- Medical & Health Information Section -->
                     <tr>
                         <th colspan="2" align="left"><h3>Medical & Health Information</h3></th>
                     </tr>
-                    <!-- Insurance radio selection -->
+            <!-- Insurance radio selection -->
                     <tr class="insurance-group">
                         <td colspan="2" align="left">
                             <label for="insurance_status">Do you currently have health insurance?</label>
@@ -364,7 +370,7 @@
                         </td>
                         <td class="error_messages"><ul><span id="insurance_message"></span></ul></td>
                     </tr>
-                    <!--Text Area/symptoms section-->
+            <!--Text Area/symptoms section-->
                     <tr class="textarea-group">
                         <td colspan="2" align="left">
                             <label for="visit_reason">Please describe your symptoms and/or the reason for your visit today.</label>
@@ -385,7 +391,7 @@
                         </td>
                         <td class="error_messages"><ul><span id="visit_reason_message"></span></ul></td>
                     </tr>
-                    <!-- Slider for pain level -->
+            <!-- Slider for pain level -->
                     <tr class="slider-text">
                         <td colspan="2" align="left">
                             <label for="pain_level">On a scale of 1 to 10, how would you rate your current pain level?</label>
@@ -407,7 +413,7 @@
                             <p>Current pain level: <span id="valueDisplay">5</span></p>
                         </td>
                     </tr>
-                    <!-- Checkboxes for recent diagnoses -->
+            <!-- Checkboxes for recent diagnoses -->
                     <tr colspan="2" align="left">
                         <td>
                             <label for="diagnosis_checkboxes">Have you recently been diagnosed with any of the following? Check all that apply.</label>
@@ -454,7 +460,7 @@
                         </td>
                         <td class="error_messages" ><ul><span id="diagnosis_message"></span></ul></td>
                     </tr>
-                    <!-- Vaccination radio selection -->
+            <!-- Vaccination radio selection -->
                     <tr>
                         <td colspan="2" align="left">
                             <label for="isVaccinated">Have you been vaccinated?</label>
@@ -478,11 +484,11 @@
                         </td>
                         <td class="error_messages"><ul><span id="vaccination_message"></span></ul></td>
                     </tr>
-                    <!-- Account Information Section -->
+        <!-- Account Information Section -->
                     <tr>
                         <th colspan="2" align="left"><h3>Account Information</h3></th>
                     </tr>
-                    <!--User ID Input-->
+            <!--User ID Input-->
                     <tr class="username-group">
                         <td colspan="2" align="left">
                             <label for="username">User ID</label>
@@ -503,7 +509,7 @@
                         </td>
                         <td class="error_messages"><ul><span id="username_message"></span></ul></td>
                     </tr>
-                    <!--Password Inputs-->
+            <!--Password Inputs-->
                     <tr class="password-group">
                         <td colspan="2" align="left">
                             <label for="password">Password</label>
@@ -552,25 +558,25 @@
                         </td>
                         <td class="error_messages"><ul><span id="confirm_password_message"></span></ul></td>
                     </tr>
-                    <!-- Form Buttons -->
+            <!-- Form Buttons -->
                     <tr>
                         <td colspan="2" align="center">
                             <table width="80%">
                                 <tr>
                                     <td align="right">
-                                        <input type="button" id="reviewFormButton" value="Get Data" onclick="reviewData()"
+                                        <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
                                         title="Click this button to review all data fields.">
                                     </td>
                                     <td align="center">
-                                        <input type="button" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
+                                        <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
                                         title="Click this button to validate all data fields.">
                                     </td>
                                     <td align="center">
-                                        <input type="reset"  id="clearFormButton" value="Clear Form"
+                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear Form"
                                         title="Click this button to clear all data fields.">
                                     </td>
                                     <td align="left">
-                                        <input type="submit" id="submitFormButton" value="Submit Form" disabled
+                                        <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" disabled
                                         title="Click this button to submit the form.">
                                     </td>
                                 </tr>
@@ -578,43 +584,71 @@
                         </td>
                 </table>
             </form>
-         </div>
-
         <!-- Data Review Section -->
-        <div id="dataReview"></div>
+            <div class="dataTable" id="dataReview"></div>
+        </section>
+    <!-- Location View -->
+        <section id="location-section" class="main-content">
+            <article>
+                <h2>Clinic Locations</h2>
+                <p>We are currently only operating at one clinic serving the Houston area.</p>
+                <h3>Evergreen Cardiovascular Center - Main Branch</h3>
+                <p>123 Main St, Houston, TX 77002</p>
+                <p>Hours: 6:00 AM - 5:00 PM</p>
+                <figure>
+            <!-- Image sourced from https://www.freepik.com/free-photo/analog-landscape-city-with-buildings_31261380.htm#fromView=search&page=1&position=1&uuid=040a057f-d53c-47de-a047-c3f01706d5a9&query=medical+center+building-->
+                    <img src="analog-landscape-city-with-buildings.jpg" alt="Clinic Exterior" width="450" height="250">
+                </figure>
+            </article>
+            <aside>
+            <!-- Embedded map view of the Houston Medical Center Area in an iFrame -->
+                <iframe src="https://maps.google.com/maps?q=Medical+Center+Area,+Houston,+TX/@29.7099063,-95.396515,15z&output=embed" allowfullscreen></iframe>
+            </aside>
+        </section>
+</main>
 
-        <!-- Footer Section -->
-        <div class="footer">
-            <table align="center" width="95%">
-                <tr>
-                    <td align="left">
-                        <a href="mailto:someone@example.com"><b>Contact Us</b></a>
-                        <div id="socialhandles">
-                            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-                            <a href="https://x.com/?lang=en" target="_blank">Twitter/X</a>
-                        </div>
-                        <img id="Instagram_icon"
-                                src="Instagram_icon.png"
-                                alt="HeartCare Medical Clinic Instagram"
-                                width="30px"
-                                height="30px">
-                        <img id="X_Twitter_icon"
-                                src="vecteezy_x-twitter-icon-logo-symbol_53986348.png"
-                                alt="HeartCare Medical Clinic X/Twitter"
-                                width="30px"
-                                height="30px">
-                    </td>
-                    <td align="right">
-                        <p>Evergreen Cardiovascular Center<br>Created by Francisco Fuentes<br>MIS 3371</p>
-                    </td>
-                </tr>
+<!--(Extra Credit) Modal Popup -->
+    <div id="locationModal" class="modal">
+        <!--Content-->
+        <div class="modal-content">
+            <div class="modalCloseBtn">
+                <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <article id="modalArticle">
+                <h2>Clinic Locations</h2>
+                <p>We are currently only operating at one clinic serving the Houston area.</p>
+                <h3>Evergreen Cardiovascular Center - Main Branch</h3>
+                <p>123 Main St, Houston, TX 77002</p>
+                <p>Hours: 6:00 AM - 5:00 PM</p>
+                <figure id="modalImage">
+                    <!-- Image sourced from https://www.freepik.com/free-photo/analog-landscape-city-with-buildings_31261380.htm#fromView=search&page=1&position=1&uuid=040a057f-d53c-47de-a047-c3f01706d5a9&query=medical+center+building-->
+                    <img src="Homework4/analog-landscape-city-with-buildings.jpg" width="450" height="250">
+                </figure>
+            </article>
         </div>
+    </div>
 
-        <!-- JavaScript code for the localedate in the header -->
-        <script>
-            const d = new Date();
-            let text = d.toLocaleDateString();
-            document.getElementById("today").innerHTML = text;
-        </script>
-    </body>
+<!-- Footer Section -->
+<footer class="footer">
+    <!-- Icons -->
+        <div id="footerLinks">
+            <a href="#welcome-section" onclick="showSection('welcome-section')"class="footer-button">Home</a>
+            <a href="mailto:someone@example.com" class="footer-button">Contact</a>
+            <a href="#locationModal" class="footer-button" id="modalBtn">Locations</a>
+            <a href="" onclick="deleteCookie()" class="footer-button">Delete Cookies</a>
+        </div>
+        <p id="footerSocialP">Follow us on social media</p>
+        <div class="footerIcons">
+            <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-square-instagram" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://x.com/" target="_blank"><i class="fa-brands fa-square-x-twitter" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-square-facebook" style="font-size: 40px; color:#D8DEE7"></i></a>
+            <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-square-youtube" style="font-size: 40px; color:#D8DEE7"></i></a>
+        </div>
+        <div id="footerInfo">
+            <p>Evergreen Cardiovascular Center</p>
+            <p>Created by Francisco Fuentes</p>
+            <p>MIS 3371 - Transaction Processing Systems</p>
+        </div>
+</footer>
+</body>
 </html>
