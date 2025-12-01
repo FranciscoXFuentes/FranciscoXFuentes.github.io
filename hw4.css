@@ -315,11 +315,14 @@
     }
     .modal-content {
         background-color: white;
+        height: auto;
+        width: fit-content;
+        max-width: 60%;
         text-align: left;
         margin: auto;
         padding: 20px;
         border: 2px solid lightgrey;
-        width: 30%;
+        border-radius: 6px;
     }
     .modalCloseBtn {
         text-align: right !important;
