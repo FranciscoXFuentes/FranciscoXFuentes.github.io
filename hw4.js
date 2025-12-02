@@ -564,19 +564,19 @@ slider.addEventListener("input", function() {
                 document.getElementById("today").innerHTML = text;
     
 // Cookie Implementation Functions
-    // Set cookie function
+// Set cookie function
     function setCookie(name, value, expiration) {
         const date = new Date();
         date.setTime(date.getTime() + (expiration * 24 * 60 * 60 * 1000));
         let expires = "expires=" + date.toUTCString();
         document.cookie = `${name}=${value}; ${expires}; path=/`;
     }
-    // Delete cookie
+// Delete cookie function
     function deleteCookie() {
-        setCookie("firstname", null, null);
-        setCookie("lastname", null, null);
+        setCookie("firstname", "", 0);
+        setCookie("lastname", "", 0);
     }
-    // Get a cookie
+// Get a cookie
     function getCookie(name) {
         const cDecoded = decodeURIComponent(document.cookie);
         const cArray = cDecoded.split("; ");
@@ -589,14 +589,7 @@ slider.addEventListener("input", function() {
         })
         return result;
     }
-    // Query for cookies
-    const submitBtn = document.querySelector("#submitFormButton");
-    submitBtn.addEventListener("click", () => {
-        // Expire in two days for security
-        setCookie("firstname", document.getElementById("firstname").value, 2);
-        setCookie("lastname", document.getElementById("lastname").value, 2);
-    });
-    // Check for cookies
+// Check for cookies
     function checkCookies() {
         const welcomeDisplay = document.getElementById("cookieMessage");
         const verifyDisplay = document.getElementById("cookieVerify");
@@ -614,7 +607,18 @@ slider.addEventListener("input", function() {
 
         }
     }
-    // If cookies exist and information is correct autofill
+// Option to save or delete cookies with checkbox
+    function saveCookies() {
+        const rememberBox = document.querySelector("#rememberUser");
+        if (rememberBox.isChecked) {
+            setCookie("firstname", document.getElementById("firstname").value, 2);
+            setCookie("lastname", document.getElementById("lastname").value, 2);
+        }
+        else {
+            deleteCookie();
+        }
+    }
+// If cookies still exist w desired user's information autofill
     function cookieFill() {
         const firstField = document.querySelector("#firstname");
         const lastField = document.querySelector("#lastname");
