@@ -633,9 +633,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById("locationModal");
     const modalBtn = document.getElementById("modalBtn");
     const modalSpan = document.getElementsByClassName("close")[0];
-    /*modalBtn.onclick = function() {
+    modalBtn.onclick = function() {
         modal.style.display = "block";
-    }*/
+    }
     modalSpan.onclick = function() {
         modal.style.display = "none"
     }
