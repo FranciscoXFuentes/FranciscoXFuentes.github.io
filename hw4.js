@@ -627,6 +627,8 @@ slider.addEventListener("input", function() {
         }
 
     }
+
+// Local Storage Use
     
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
