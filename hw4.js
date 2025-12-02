@@ -610,7 +610,7 @@ slider.addEventListener("input", function() {
 // Option to save or delete cookies with checkbox
     function saveCookies() {
         const rememberBox = document.querySelector("#rememberUser");
-        if (rememberBox.isChecked) {
+        if (rememberBox.checked) {
             setCookie("firstname", document.getElementById("firstname").value, 2);
             setCookie("lastname", document.getElementById("lastname").value, 2);
         }
