@@ -563,6 +563,7 @@ slider.addEventListener("input", function() {
                 let text = d.toLocaleDateString();
                 document.getElementById("today").innerHTML = text;
     
+// Cookie Implementation Functions
     // Set cookie function
     function setCookie(name, value, expiration) {
         const date = new Date();
@@ -591,8 +592,9 @@ slider.addEventListener("input", function() {
     // Query for cookies
     const submitBtn = document.querySelector("#submitFormButton");
     submitBtn.addEventListener("click", () => {
-        setCookie("firstname", document.getElementById("firstname").value, 365);
-        setCookie("lastname", document.getElementById("lastname").value, 365);
+        // Expire in two days for security
+        setCookie("firstname", document.getElementById("firstname").value, 2);
+        setCookie("lastname", document.getElementById("lastname").value, 2);
     });
     // Check for cookies
     function checkCookies() {
@@ -628,7 +630,8 @@ slider.addEventListener("input", function() {
 
     }
 
-// Local Storage Use
+// Local Storage Implementation
+
     
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
