@@ -719,4 +719,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
     }
-console.log(userInfoLocal);
