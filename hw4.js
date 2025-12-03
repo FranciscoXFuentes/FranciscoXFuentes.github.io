@@ -618,7 +618,6 @@ slider.addEventListener("input", function() {
             deleteCookie();
         }
     }
-
 // Set Local Storage
     function saveLocalStorage() {
         localStorage.setItem('firstname', document.getElementById("firstname").value);
@@ -638,7 +637,6 @@ slider.addEventListener("input", function() {
         localStorage.clear();
     }
 // Get and fill local Storage
-
     function localFill() {
         let userfname = getCookie("firstname");
         let userlname = getCookie("lastname");
@@ -659,12 +657,11 @@ slider.addEventListener("input", function() {
             clearLocalStorage();
         }
     }
-
 // Reset Form Function
  function resetForm() {
-    document.getElementById("intakeForm").resetForm();
+    document.getElementById("intakeForm").reset();
  }
-    
+
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById("locationModal");
@@ -697,3 +694,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
     }
+/* (Extra Credit) External Fetch API to input city and state based on zip code
+    document.getElementById("zip").addEventListener("blur", getZipcode);
+        async function getZipcode() {
+            try{
+                const zip = document.getElementById("zip").value;
+                // API Fetch call with zip value
+                const response = await fetch("https://us-zipcode.api.smarty.com/lookup?key=254252967495540176&city=&state=&zipcode=" + zip);
+                // Error handling
+                if (!response.ok) {
+                    throw new Error("Could not fetch zip code data.");
+                }
+                // Store API data
+                const data = await response.json();
+                console.log(data);
+                // Fill city and state fields
+                const city = data[0].city_states?.[0]?.city;
+                const stateAbbreviation = data[0].city_states?.[0]?.state_abbreviation;
+
+                document.getElementById("city").value = city;
+                document.getElementById("stateAbbreviation").value = stateAbbreviation;
+            }
+            catch (error) {
+                console.error("Error fetching zip code data: ", error);
+            }
+        } */
