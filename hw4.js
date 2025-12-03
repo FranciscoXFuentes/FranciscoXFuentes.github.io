@@ -622,44 +622,17 @@ slider.addEventListener("input", function() {
 
 // Set Local Storage
     function saveLocalStorage() {
-        console.log("--- saveLocalInfo function started ---");
-
-        /*const rememberBox = document.querySelector("#rememberUser");
-        /if (rememberBox.checked) {
-        // get checkbox value
-        function getGender() {
-            const genderInput = document.getElementsByName('patient_gender');
-            for (let i = 0; i < genderInput.length; i++) {
-                if (genderInput[i].checked) {
-                    return genderInput[i].value;
-                }
-            }
-        }*/
-
-        let userInfoLocal = {
-            fname: document.getElementById("firstname").value,
-            mname: document.getElementById("minitial").value,
-            lname: document.getElementById("lastname").value,
-            dob: document.getElementById("dob").value,
-            //gender: getGender(),
-            address1: document.getElementById("addr1").value,
-            address2: document.getElementById("addr2").value,
-            zip: document.getElementById("zip").value,
-            city: document.getElementById("city").value,
-            state: document.getElementById("state").value,
-            phone: document.getElementById("phone").value,
-            email: document.getElementById("email").value
-        };
-        // Stringify object info
-        let userInfoLocalString = JSON.stringify(userInfoLocal);
-        // Save to local storage
-        localStorage.setItem("userInfoLocal", userInfoLocalString);
-        console.log("Data saved successfully!"); // 👈 ADD THIS
-        
-        //else {
-            //console.log("Checkbox not checked. Skipping save."); // 👈 ADD THIS
-        //}
-        console.log("--- saveLocalInfo function ended ---"); // 👈 ADD THIS
+        localStorage.setItem('firstname', document.getElementById("firstname").value);
+        localStorage.setItem('miname', document.getElementById("minitial").value);
+        localStorage.setItem('lastname', document.getElementById("lastname").value);
+        localStorage.setItem('dob', document.getElementById("dob").value);
+        localStorage.setItem('address1', document.getElementById("addr1").value);
+        localStorage.setItem('address2', document.getElementById("addr2").value);
+        localStorage.setItem('zip', document.getElementById("zip").value);
+        localStorage.setItem('city', document.getElementById("city").value);
+        localStorage.setItem('state', document.getElementById("state").value);
+        localStorage.setItem('phone', document.getElementById("phone").value);
+        localStorage.setItem('email', document.getElementById("email").value);
     }
 // Clear Local Storage
     function clearLocalStorage() {
@@ -667,32 +640,19 @@ slider.addEventListener("input", function() {
     }
 // Get and autofill local Storage
     function infoFill() {
-    // get local storage object
-        const userInfoLocalString = localStorage.getItem("userInfoLocal");
-
-        if (userInfoLocalString) {
-            const userInfoLocal = JSON.parse(userInfoLocalString);
-
         // fill info
-            document.getElementById('firstname').value = userInfoLocal.fname;
-            document.getElementById('minitial').value = userInfoLocal.mname;
-            document.getElementById('lastname').value = userInfoLocal.lname;
-            document.getElementById('dob').value = userInfoLocal.dob;
-            document.getElementById('addr1').value = userInfoLocal.address1;
-            document.getElementById('addr2').value = userInfoLocal.address2;
-            document.getElementById('zip').value = userInfoLocal.zip;
-            document.getElementById('city').value = userInfoLocal.city;
-            document.getElementById('state').value = userInfoLocal.state;
-            document.getElementById('phone').value = userInfoLocal.phone;
-            document.getElementById('email').value = userInfoLocal.email;
-            const genderInput = document.getElementsByName('patient_gender');
-            for (let i = 0; i < genderInput.length; i++) {
-                if (genderInput[i].value === userInfoLocal.gender) {
-                    genderInput[i].checked = true;
-                    break;
-                }
-            }
-        }
+            document.getElementById('firstname').innerHTML = localStorage.getItem("firstname");
+            document.getElementById('minitial').innerHTML = localStorage.getItem("miname");
+            document.getElementById('lastname').innerHTML = localStorage.getItem("lastname");
+            document.getElementById('dob').innerHTML = localStorage.getItem("dob");
+            document.getElementById('addr1').innerHTML = localStorage.getItem("address1");
+            document.getElementById('addr2').innerHTML = localStorage.getItem("address2");
+            document.getElementById('zip').innerHTML = localStorage.getItem("zip");
+            document.getElementById('city').innerHTML = localStorage.getItem("city");
+            document.getElementById('state').innerHTML = localStorage.getItem("state");
+            document.getElementById('phone').innerHTML = localStorage.getItem("phone");
+            document.getElementById('email').innerHTML = localStorage.getItem("email");
+            
     }
 
 //(Extra Credit) Footer Modal Popup
