@@ -388,7 +388,6 @@ function reviewData() {
         // get password input value
         let passwordoutput;
         const passwordinput = document.getElementById("password").value;
-        console.log(passwordinput);
 
         // check for lowercase letter
         if (passwordinput.search(/[a-z]/) < 0) {
