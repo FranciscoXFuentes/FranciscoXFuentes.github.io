@@ -656,7 +656,7 @@ slider.addEventListener("input", function() {
             document.getElementById("email").value = localStorage.getItem('email');
         }
         else {
-            break;
+            clearLocalStorage();
         }
     }
     
