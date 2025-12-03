@@ -638,22 +638,17 @@ slider.addEventListener("input", function() {
     function clearLocalStorage() {
         localStorage.clear();
     }
-// Get and autofill local Storage
-    function infoFill() {
-        // fill info
-            document.getElementById("firstname").innerHTML = localStorage.getItem('firstname');
-            document.getElementById("minitial").innerHTML = localStorage.getItem('miname');
-            document.getElementById("lastname").innerHTML = localStorage.getItem('lastname');
-            document.getElementById("dob").innerHTML = localStorage.getItem('dob');
-            document.getElementById("addr1").innerHTML = localStorage.getItem('address1');
-            document.getElementById("addr2").innerHTML = localStorage.getItem('address2');
-            document.getElementById("zip").innerHTML = localStorage.getItem('zip');
-            document.getElementById("city").innerHTML = localStorage.getItem('city');
-            document.getElementById("state").innerHTML = localStorage.getItem('state');
-            document.getElementById("phone").innerHTML = localStorage.getItem('phone');
-            document.getElementById("email").innerHTML = localStorage.getItem('email');
-            
-    }
+// Get and fill local Storage
+    document.getElementById("minitial").innerHTML = localStorage.getItem('miname');
+    document.getElementById("lastname").innerHTML = localStorage.getItem('lastname');
+    document.getElementById("dob").innerHTML = localStorage.getItem('dob');
+    document.getElementById("addr1").innerHTML = localStorage.getItem('address1');
+    document.getElementById("addr2").innerHTML = localStorage.getItem('address2');
+    document.getElementById("zip").innerHTML = localStorage.getItem('zip');
+    document.getElementById("city").innerHTML = localStorage.getItem('city');
+    document.getElementById("state").innerHTML = localStorage.getItem('state');
+    document.getElementById("phone").innerHTML = localStorage.getItem('phone');
+    document.getElementById("email").innerHTML = localStorage.getItem('email');
 
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
