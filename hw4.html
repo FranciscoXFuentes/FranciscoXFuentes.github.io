@@ -41,7 +41,7 @@
 <!-- Form View -->
      <section id="form-section" class="main-content">
             <h1 id="form-heading">Patient Intake Form</h1>
-            <form name="intakeForm" id="intakeForm" action="hw4sub.html" method="get" onsubmit="saveLocalInfo(event);">
+            <form name="intakeForm" id="intakeForm" action="hw4sub.html" method="get">
                 <table class="form-group" align="center">
         <!--Personal Information Section-->
                     <tr>
@@ -582,7 +582,7 @@
                                         title="Click this button to clear all data fields.">
                                     </td>
                                     <td align="left">
-                                        <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" onclick="saveCookie()" disabled
+                                        <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" onclick="saveCookie(); saveLocalStorage();" disabled
                                         title="Click this button to submit the form.">
                                     </td>
                                 </tr>

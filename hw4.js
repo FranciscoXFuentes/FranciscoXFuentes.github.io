@@ -621,9 +621,7 @@ slider.addEventListener("input", function() {
     }
 
 // Set Local Storage
-    function saveLocalInfo() {
-        event.preventDefault();
-
+    function saveLocalStorage() {
         console.log("--- saveLocalInfo function started ---");
 
         const rememberBox = document.querySelector("#rememberUser");
