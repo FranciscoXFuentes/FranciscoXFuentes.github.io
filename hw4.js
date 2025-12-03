@@ -636,7 +636,7 @@ slider.addEventListener("input", function() {
     }
 // Clear Local Storage
     function clearLocalStorage() {
-        localStorage.removeItem("userInfoLocal");
+        localStorage.clear();
     }
 // Get and autofill local Storage
     function infoFill() {
