@@ -630,7 +630,7 @@ slider.addEventListener("input", function() {
         localStorage.setItem('address2', document.getElementById("addr2").value);
         localStorage.setItem('zip', document.getElementById("zip").value);
         localStorage.setItem('city', document.getElementById("city").value);
-        localStorage.setItem('state', document.getElementById("state").value);
+        localStorage.setItem('state', document.getElementById("stateAbbreviation").value);
         localStorage.setItem('phone', document.getElementById("phone").value);
         localStorage.setItem('email', document.getElementById("email").value);
     }
@@ -639,6 +639,7 @@ slider.addEventListener("input", function() {
         localStorage.clear();
     }
 // Get and fill local Storage
+    document.getElementById("firstname").value = localStorage.getItem('firstname');
     document.getElementById("minitial").value = localStorage.getItem('miname');
     document.getElementById("lastname").value = localStorage.getItem('lastname');
     document.getElementById("dob").value = localStorage.getItem('dob');
@@ -646,7 +647,7 @@ slider.addEventListener("input", function() {
     document.getElementById("addr2").value = localStorage.getItem('address2');
     document.getElementById("zip").value = localStorage.getItem('zip');
     document.getElementById("city").value = localStorage.getItem('city');
-    document.getElementById("state").value = localStorage.getItem('state');
+    document.getElementById("stateAbbreviation").value = localStorage.getItem('state');
     document.getElementById("phone").value = localStorage.getItem('phone');
     document.getElementById("email").value = localStorage.getItem('email');
 
