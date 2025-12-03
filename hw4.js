@@ -600,43 +600,73 @@ slider.addEventListener("input", function() {
             // call inner html on load welcome page
             welcomeDisplay.innerHTML = "back " + userfname;
             verifyDisplay.innerHTML = "Please verify this information and select an option to continue. <br> Is this your full name "+ userfname+ " " + userlname + "?";
-            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); cookieFill(); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
+            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); infoFill(); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
         } else {
             verifyDisplay.innerHTML = "Our records indicate that you are a first time user.";
             displayBtn.innerHTML = '<button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Create account</button>';
 
         }
     }
-// Option to save or delete cookies with checkbox
+// Option to save or delete cookies/local storage with checkbox
     function saveCookies() {
         const rememberBox = document.querySelector("#rememberUser");
         if (rememberBox.checked) {
             setCookie("firstname", document.getElementById("firstname").value, 2);
             setCookie("lastname", document.getElementById("lastname").value, 2);
+            saveLocalInfo();
         }
         else {
             deleteCookie();
+            clearLocalStorage();
         }
     }
-// If cookies still exist w desired user's information autofill
-    function cookieFill() {
-        const firstField = document.querySelector("#firstname");
-        const lastField = document.querySelector("#lastname");
-        const fname = getCookie("firstname");
-        const lname = getCookie("lastname");
 
-        if(firstField) {
-            firstField.value = fname;
-        }
-        if(lastField) {
-            lastField.value = lname;
-        }
+// Set Local Storage
+    function saveLocalInfo() {
+        let userInfoLocal = {
+            fname: document.getElementById("firstname").value,
+            mname: document.getElementById('minitial').value,
+            lname: document.getElementById('lastname').value,
+            dob: document.getElementById('dob').value,
+            gender: document.getElementsByName('patient_gender').value,
+            address1: document.getElementById('addr1').value,
+            address2: document.getElementById('addr2').value,
+            zip: document.getElementById('zip').value,
+            city: document.getElementById('city').value,
+            state: document.getElementById('state').value,
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value
+        };
+        // Stringify object info
+        let userInfoLocalString = JSON.stringify(userInfoLocal);
+        // Save to local storage
+        localStorage.setItem("userInfoLocal", userInfoLocalString);
+    }
+// Clear Local Storage
+    function clearLocalStorage() {
+        localStorage.removeItem("userInfoLocal");
+    }
+// Get and autofill local Storage
+    function infoFill() {
+    // get local storage object
+        const userInfoLocalString = localStorage.getItem("userInfoLocal");
+        const userInfoLocal = JSON.parse(userInfoLocalString);
 
+    // fill info
+        document.getElementById('firstname').value = userInfoLocal.fname;
+        document.getElementById('minitial').value = userInfoLocal.mname;
+        document.getElementById('lastname').value = userInfoLocal.lname;
+        document.getElementById('dob').value = userInfoLocal.dob;
+        document.getElementsByName('patient_gender').value = userInfoLocal.gender;
+        document.getElementById('addr1').value = userInfoLocal.address1;
+        document.getElementById('addr2').value = userInfoLocal.address2;
+        document.getElementById('zip').value = userInfoLocal.zip;
+        document.getElementById('city').value = userInfoLocal.city;
+        document.getElementById('state').value = userInfoLocal.state;
+        document.getElementById('phone').value = userInfoLocal.phone;
+        document.getElementById('email').value = userInfoLocal.email;
     }
 
-// Local Storage Implementation
-
-    
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById("locationModal");
