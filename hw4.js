@@ -622,6 +622,8 @@ slider.addEventListener("input", function() {
 
 // Set Local Storage
     function saveLocalInfo() {
+        console.log("--- saveLocalInfo function started ---");
+
         const rememberBox = document.querySelector("#rememberUser");
         if (rememberBox.checked) {
         // get checkbox value
@@ -652,7 +654,12 @@ slider.addEventListener("input", function() {
         let userInfoLocalString = JSON.stringify(userInfoLocal);
         // Save to local storage
         localStorage.setItem("userInfoLocal", userInfoLocalString);
+        console.log("Data saved successfully!"); // 👈 ADD THIS
         }
+        else {
+            console.log("Checkbox not checked. Skipping save."); // 👈 ADD THIS
+        }
+        console.log("--- saveLocalInfo function ended ---"); // 👈 ADD THIS
     }
 // Clear Local Storage
     function clearLocalStorage() {
