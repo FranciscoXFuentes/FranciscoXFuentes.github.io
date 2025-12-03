@@ -623,12 +623,23 @@ slider.addEventListener("input", function() {
 
 // Set Local Storage
     function saveLocalInfo() {
+
+    // Store gender checkbox
+        function getGender() {
+            const genderInput = document.getElementsByName('patient_gender');
+            for (let i = 0; i < genderInput.length; i++) {
+                if (genderInput[i].checked) {
+                    return genderInput[i].value;
+                }
+            }
+        }
+
         let userInfoLocal = {
             fname: document.getElementById("firstname").value,
             mname: document.getElementById('minitial').value,
             lname: document.getElementById('lastname').value,
             dob: document.getElementById('dob').value,
-            gender: document.getElementsByName('patient_gender').value,
+            gender: getGender(),
             address1: document.getElementById('addr1').value,
             address2: document.getElementById('addr2').value,
             zip: document.getElementById('zip').value,
