@@ -650,21 +650,30 @@ slider.addEventListener("input", function() {
     function infoFill() {
     // get local storage object
         const userInfoLocalString = localStorage.getItem("userInfoLocal");
-        const userInfoLocal = JSON.parse(userInfoLocalString);
 
-    // fill info
-        document.getElementById('firstname').value = userInfoLocal.fname;
-        document.getElementById('minitial').value = userInfoLocal.mname;
-        document.getElementById('lastname').value = userInfoLocal.lname;
-        document.getElementById('dob').value = userInfoLocal.dob;
-        document.getElementsByName('patient_gender').value = userInfoLocal.gender;
-        document.getElementById('addr1').value = userInfoLocal.address1;
-        document.getElementById('addr2').value = userInfoLocal.address2;
-        document.getElementById('zip').value = userInfoLocal.zip;
-        document.getElementById('city').value = userInfoLocal.city;
-        document.getElementById('state').value = userInfoLocal.state;
-        document.getElementById('phone').value = userInfoLocal.phone;
-        document.getElementById('email').value = userInfoLocal.email;
+        if (userInfoLocalString) {
+            const userInfoLocal = JSON.parse(userInfoLocalString);
+
+        // fill info
+            document.getElementById('firstname').value = userInfoLocal.fname;
+            document.getElementById('minitial').value = userInfoLocal.mname;
+            document.getElementById('lastname').value = userInfoLocal.lname;
+            document.getElementById('dob').value = userInfoLocal.dob;
+            document.getElementById('addr1').value = userInfoLocal.address1;
+            document.getElementById('addr2').value = userInfoLocal.address2;
+            document.getElementById('zip').value = userInfoLocal.zip;
+            document.getElementById('city').value = userInfoLocal.city;
+            document.getElementById('state').value = userInfoLocal.state;
+            document.getElementById('phone').value = userInfoLocal.phone;
+            document.getElementById('email').value = userInfoLocal.email;
+            const genderInput = document.getElementsByName('patient_gender');
+            for (let i = 0; i < genderInput.length; i++) {
+                if (genderInput[i].value === userInfoLocal.gender) {
+                    genderInput[i].checked = true;
+                    break;
+                }
+            }
+        }
     }
 
 //(Extra Credit) Footer Modal Popup
