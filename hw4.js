@@ -624,8 +624,8 @@ slider.addEventListener("input", function() {
     function saveLocalStorage() {
         console.log("--- saveLocalInfo function started ---");
 
-        const rememberBox = document.querySelector("#rememberUser");
-        if (rememberBox.checked) {
+        /*const rememberBox = document.querySelector("#rememberUser");
+        /if (rememberBox.checked) {
         // get checkbox value
         function getGender() {
             const genderInput = document.getElementsByName('patient_gender');
@@ -634,31 +634,31 @@ slider.addEventListener("input", function() {
                     return genderInput[i].value;
                 }
             }
-        }
+        }*/
 
         let userInfoLocal = {
-            fname: document.getElementById('firstname').value,
-            mname: document.getElementById('minitial').value,
-            lname: document.getElementById('lastname').value,
-            dob: document.getElementById('dob').value,
-            gender: getGender(),
-            address1: document.getElementById('addr1').value,
-            address2: document.getElementById('addr2').value,
-            zip: document.getElementById('zip').value,
-            city: document.getElementById('city').value,
-            state: document.getElementById('state').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value
+            fname: document.getElementById("firstname").value,
+            mname: document.getElementById("minitial").value,
+            lname: document.getElementById("lastname").value,
+            dob: document.getElementById("dob").value,
+            //gender: getGender(),
+            address1: document.getElementById("addr1").value,
+            address2: document.getElementById("addr2").value,
+            zip: document.getElementById("zip").value,
+            city: document.getElementById("city").value,
+            state: document.getElementById("state").value,
+            phone: document.getElementById("phone").value,
+            email: document.getElementById("email").value
         };
         // Stringify object info
         let userInfoLocalString = JSON.stringify(userInfoLocal);
         // Save to local storage
         localStorage.setItem("userInfoLocal", userInfoLocalString);
         console.log("Data saved successfully!"); // 👈 ADD THIS
-        }
-        else {
-            console.log("Checkbox not checked. Skipping save."); // 👈 ADD THIS
-        }
+        
+        //else {
+            //console.log("Checkbox not checked. Skipping save."); // 👈 ADD THIS
+        //}
         console.log("--- saveLocalInfo function ended ---"); // 👈 ADD THIS
     }
 // Clear Local Storage
