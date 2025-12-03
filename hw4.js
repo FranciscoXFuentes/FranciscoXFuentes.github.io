@@ -601,7 +601,7 @@ slider.addEventListener("input", function() {
             // call inner html on load welcome page
             welcomeDisplay.innerHTML = "back " + userfname;
             verifyDisplay.innerHTML = "Please verify this information and select an option to continue. <br> Is this your full name "+ userfname+ " " + userlname + "?";
-            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); setTimeout(infoFill, 20); return false;">Yes</button><button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
+            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); setTimeout(infoFill, 20); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
         } else {
             verifyDisplay.innerHTML = "Our records indicate that you are a first time user.";
             displayBtn.innerHTML = '<button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Create account</button>';
