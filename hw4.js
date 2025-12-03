@@ -614,7 +614,6 @@ slider.addEventListener("input", function() {
         if (rememberBox.checked) {
             setCookie("firstname", document.getElementById("firstname").value, 2);
             setCookie("lastname", document.getElementById("lastname").value, 2);
-            saveLocalInfo();
         }
         else {
             deleteCookie();
@@ -623,8 +622,9 @@ slider.addEventListener("input", function() {
 
 // Set Local Storage
     function saveLocalInfo() {
-
-    // Store gender checkbox
+        const rememberBox = document.querySelector("#rememberUser");
+        if (rememberBox.checked) {
+        // get checkbox value
         function getGender() {
             const genderInput = document.getElementsByName('patient_gender');
             for (let i = 0; i < genderInput.length; i++) {
@@ -652,6 +652,7 @@ slider.addEventListener("input", function() {
         let userInfoLocalString = JSON.stringify(userInfoLocal);
         // Save to local storage
         localStorage.setItem("userInfoLocal", userInfoLocalString);
+        }
     }
 // Clear Local Storage
     function clearLocalStorage() {
