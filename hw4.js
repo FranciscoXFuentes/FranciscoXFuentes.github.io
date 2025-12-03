@@ -601,7 +601,7 @@ slider.addEventListener("input", function() {
             // call inner html on load welcome page
             welcomeDisplay.innerHTML = "back " + userfname;
             verifyDisplay.innerHTML = "Please verify this information and select an option to continue. <br> Is this your full name "+ userfname+ " " + userlname + "?";
-            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); infoFill(); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
+            displayBtn.innerHTML = '<button id="returningUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Yes</button> <button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); deleteCookie(); return false;">No</button>';
         } else {
             verifyDisplay.innerHTML = "Our records indicate that you are a first time user.";
             displayBtn.innerHTML = '<button id="newUser" class="welcomeBtn" onclick="showSection(\'form-section\'); revealNavBar(); return false;">Create account</button>';
@@ -639,16 +639,16 @@ slider.addEventListener("input", function() {
         localStorage.clear();
     }
 // Get and fill local Storage
-    document.getElementById("minitial").innerHTML = localStorage.getItem('miname');
-    document.getElementById("lastname").innerHTML = localStorage.getItem('lastname');
-    document.getElementById("dob").innerHTML = localStorage.getItem('dob');
-    document.getElementById("addr1").innerHTML = localStorage.getItem('address1');
-    document.getElementById("addr2").innerHTML = localStorage.getItem('address2');
-    document.getElementById("zip").innerHTML = localStorage.getItem('zip');
-    document.getElementById("city").innerHTML = localStorage.getItem('city');
-    document.getElementById("state").innerHTML = localStorage.getItem('state');
-    document.getElementById("phone").innerHTML = localStorage.getItem('phone');
-    document.getElementById("email").innerHTML = localStorage.getItem('email');
+    document.getElementById("minitial").value = localStorage.getItem('miname');
+    document.getElementById("lastname").value = localStorage.getItem('lastname');
+    document.getElementById("dob").value = localStorage.getItem('dob');
+    document.getElementById("addr1").value = localStorage.getItem('address1');
+    document.getElementById("addr2").value = localStorage.getItem('address2');
+    document.getElementById("zip").value = localStorage.getItem('zip');
+    document.getElementById("city").value = localStorage.getItem('city');
+    document.getElementById("state").value = localStorage.getItem('state');
+    document.getElementById("phone").value = localStorage.getItem('phone');
+    document.getElementById("email").value = localStorage.getItem('email');
 
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
