@@ -638,18 +638,28 @@ slider.addEventListener("input", function() {
         localStorage.clear();
     }
 // Get and fill local Storage
-    document.getElementById("firstname").value = localStorage.getItem('firstname');
-    document.getElementById("minitial").value = localStorage.getItem('miname');
-    document.getElementById("lastname").value = localStorage.getItem('lastname');
-    document.getElementById("dob").value = localStorage.getItem('dob');
-    document.getElementById("addr1").value = localStorage.getItem('address1');
-    document.getElementById("addr2").value = localStorage.getItem('address2');
-    document.getElementById("zip").value = localStorage.getItem('zip');
-    document.getElementById("city").value = localStorage.getItem('city');
-    document.getElementById("stateAbbreviation").value = localStorage.getItem('state');
-    document.getElementById("phone").value = localStorage.getItem('phone');
-    document.getElementById("email").value = localStorage.getItem('email');
 
+    function localFill() {
+        let userfname = getCookie("firstname");
+        let userlname = getCookie("lastname");
+        if (userfname != "" && userfname != null) {
+            document.getElementById("firstname").value = localStorage.getItem('firstname');
+            document.getElementById("minitial").value = localStorage.getItem('miname');
+            document.getElementById("lastname").value = localStorage.getItem('lastname');
+            document.getElementById("dob").value = localStorage.getItem('dob');
+            document.getElementById("addr1").value = localStorage.getItem('address1');
+            document.getElementById("addr2").value = localStorage.getItem('address2');
+            document.getElementById("zip").value = localStorage.getItem('zip');
+            document.getElementById("city").value = localStorage.getItem('city');
+            document.getElementById("stateAbbreviation").value = localStorage.getItem('state');
+            document.getElementById("phone").value = localStorage.getItem('phone');
+            document.getElementById("email").value = localStorage.getItem('email');
+        }
+        else {
+            break;
+        }
+    }
+    
 //(Extra Credit) Footer Modal Popup
 document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById("locationModal");
