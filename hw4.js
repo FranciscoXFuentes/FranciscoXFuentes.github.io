@@ -694,7 +694,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
     }
-/* (Extra Credit) External Fetch API to input city and state based on zip code
+/* Fetch API to input city and state based on zip code
     document.getElementById("zip").addEventListener("blur", getZipcode);
         async function getZipcode() {
             try{
