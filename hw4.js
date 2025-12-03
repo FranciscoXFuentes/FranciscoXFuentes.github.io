@@ -635,7 +635,7 @@ slider.addEventListener("input", function() {
         }
 
         let userInfoLocal = {
-            fname: document.getElementById("firstname").value,
+            fname: document.getElementById('firstname').value,
             mname: document.getElementById('minitial').value,
             lname: document.getElementById('lastname').value,
             dob: document.getElementById('dob').value,
@@ -719,3 +719,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
 
     }
+console.log(userInfoLocal);
