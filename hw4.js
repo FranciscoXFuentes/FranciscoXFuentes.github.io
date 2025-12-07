@@ -526,7 +526,7 @@ slider.addEventListener("input", function() {
         for (i = 0; i < data.length; i++) {
             if (data[i].abbreviation = input) {
                 newValue = data[i].name;
-                field.value = newValue;
+                field = newValue;
                 break;
             }
         }
