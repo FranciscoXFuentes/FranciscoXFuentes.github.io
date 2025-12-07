@@ -517,7 +517,7 @@ slider.addEventListener("input", function() {
     document.getElementById("stateAbbreviation").addEventListener("change", getState);
     async function getState() {
         const input = document.getElementById("stateAbbreviation").value;
-        const field = document.getElementById("stateName").innerHTML;
+        const field = document.getElementById("stateName");
         // Fetch Data
         let stObject = await fetch('states_titlecase.json');
         const data = await stObject.json();
@@ -526,7 +526,7 @@ slider.addEventListener("input", function() {
         for (i = 0; i < data.length; i++) {
             if (data[i].abbreviation = input) {
                 newValue = data[i].name;
-                field = newValue;
+                field.innerHTML = newValue;
                 break;
             }
         }
