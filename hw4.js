@@ -530,7 +530,6 @@ slider.addEventListener("input", function() {
                 break;
             }
         }
-        // Assign state name to field value
     }
 
 // (Extra Credit) Fetch API to input city and state based on zip code
