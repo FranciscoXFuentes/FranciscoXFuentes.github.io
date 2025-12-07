@@ -525,7 +525,7 @@ slider.addEventListener("input", function() {
             let stateName;
             //Loop through the object til desired data and change the "stateName" field's value.
             for (i = 0; i < data.length; i++) {
-                if (data[i].abbreviation === input) {
+                if (data[i].abbreviation.toUpperCase() === input.toUpperCase()) {
                     stateName = data[i].name;
                     break;
                 }
