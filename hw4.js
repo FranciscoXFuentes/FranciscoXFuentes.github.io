@@ -514,17 +514,17 @@ slider.addEventListener("input", function() {
 
 // Fetch API function to take state abbreviation and grab the full state name from json file to display next to the field
 // JSON code sourced from: https://gist.github.com/mshafrir/2646763#file-states_titlecase-json
-    document.getElementById("stateAbbreviation").addEventListener("input", getState);
+    document.getElementById("stateAbbreviation").addEventListener("change", getState);
     async function getState() {
         const input = document.getElementById("stateAbbreviation").value;
-        let field = document.getElementById("stateName");
+        const field = document.getElementById("stateName");
         // Fetch Data
         let stObject = await fetch('states_titlecase.json');
         const data = await stObject.json();
         let newValue;
         //Loop through the object til desired data and change the "stateName" field's value.
         for (i = 0; i < data.length; i++) {
-            if (data[i].abbreviation = input) {
+            if (data[i].abbreviation === input) {
                 newValue = data[i].name;
                 field.textContent = newValue;
                 break;
