@@ -86,11 +86,11 @@
     input::placeholder {
         color: #5F6672;
     }
-
-    @media (max-width: 600px) {
-        #stateAbbreviation {
-            width: 100%;
-        }
+    #stateAbbreviation {
+        min-width: 2ch;
+        width: 100%;
+        max-width: 100px;
+        box-sizing: border-box;
     }
 
 /* Error Message Styling */
