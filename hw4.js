@@ -517,7 +517,7 @@ slider.addEventListener("input", function() {
     document.getElementById("stateAbbreviation").addEventListener("blur", getState);
     async function getState() {
         const input = document.getElementById("stateAbbreviation").value;
-        const field = document.getElementById("stateAbbreviation");
+        const field = document.getElementById("stateName");
         // Fetch Data
         let stObject = await fetch('states_titlecase.json');
         const data = await stObject.json();

@@ -86,11 +86,6 @@
     input::placeholder {
         color: #5F6672;
     }
-    #stateAbbreviation {
-        min-width: 2ch;
-        width: 100%;
-        max-width: 100px;
-    }
 
 /* Error Message Styling */
     .error_messages {
