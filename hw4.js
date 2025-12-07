@@ -512,7 +512,8 @@ slider.addEventListener("input", function() {
     display.innerHTML = newValue;
 });
 
-// Fetch API function to take state abbreviation and grab the full state name from json file
+// Fetch API function to take state abbreviation and grab the full state name from json file: states_titlecase.json
+// JSON code sourced from: https://gist.github.com/mshafrir/2646763#file-states_titlecase-json
     document.getElementById("stateAbbreviation").addEventListener("change", getState);
     async function getState() {
         const input = document.getElementById("stateAbbreviation").value;
