@@ -522,7 +522,7 @@ slider.addEventListener("input", function() {
         const data = await stObject.json();
         let newValue;
         //Loop through the object til desired data and change the "select" field's value.
-        for (i = 0; data.length; i++) {
+        for (i = 0; i < data.length; i++) {
             if (data[i].abbreviation = input) {
                 newValue = data[i].name;
                 break;
