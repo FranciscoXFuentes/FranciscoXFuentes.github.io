@@ -90,7 +90,6 @@
         min-width: 2ch;
         width: 100%;
         max-width: 100px;
-        box-sizing: border-box;
     }
 
 /* Error Message Styling */
