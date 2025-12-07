@@ -87,6 +87,12 @@
         color: #5F6672;
     }
 
+    @media (max-width: 600px) {
+        #stateAbbreviation {
+            width: 100%;
+        }
+    }
+
 /* Error Message Styling */
     .error_messages {
         color: red;
