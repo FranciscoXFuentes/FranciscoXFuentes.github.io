@@ -513,7 +513,20 @@ slider.addEventListener("input", function() {
 });
 
 // Fetch API function to take state abbreviation and grab the full state name from json file
-
+    async function getState() {
+        const input = document.getElementById("stateAbbreviation").value;
+        // Fetch Data
+        let stObject = await fetch('states_titlecase.json');
+        const data = await stObject.json();
+        let newValue = document.getElementById("stateAbbreviation").innerHTML;
+        //Loop through the object til desired data and change the "select" field's value.
+        for (i = 0; data.length; i++) {
+            if (data[i].abbreviation = input) {
+                newValue = data[i].name;
+                break;
+            }
+        }
+    }
 // (Extra Credit) Fetch API to input city and state based on zip code
     document.getElementById("zip").addEventListener("blur", getZipcode);
         async function getZipcode() {
