@@ -527,6 +527,7 @@ slider.addEventListener("input", function() {
             }
         }
     }
+    
 // (Extra Credit) Fetch API to input city and state based on zip code
     document.getElementById("zip").addEventListener("blur", getZipcode);
         async function getZipcode() {
