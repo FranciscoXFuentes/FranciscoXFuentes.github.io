@@ -516,10 +516,11 @@ slider.addEventListener("input", function() {
     document.getElementById("stateAbbreviation").addEventListener("change", getState);
     async function getState() {
         const input = document.getElementById("stateAbbreviation").value;
+        const field = document.getElementById("stateAbbreviation");
         // Fetch Data
         let stObject = await fetch('states_titlecase.json');
         const data = await stObject.json();
-        let newValue = document.getElementById("stateAbbreviation").innerHTML.value;
+        let newValue;
         //Loop through the object til desired data and change the "select" field's value.
         for (i = 0; data.length; i++) {
             if (data[i].abbreviation = input) {
@@ -527,6 +528,8 @@ slider.addEventListener("input", function() {
                 break;
             }
         }
+        // Assign state name to field value
+        field.value = newValue;
     }
 
 // (Extra Credit) Fetch API to input city and state based on zip code
