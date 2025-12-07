@@ -526,11 +526,11 @@ slider.addEventListener("input", function() {
         for (i = 0; i < data.length; i++) {
             if (data[i].abbreviation = input) {
                 newValue = data[i].name;
+                field.value = newValue;
                 break;
             }
         }
         // Assign state name to field value
-        field.value = newValue;
     }
 
 // (Extra Credit) Fetch API to input city and state based on zip code
