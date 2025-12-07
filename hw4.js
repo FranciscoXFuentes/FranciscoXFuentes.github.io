@@ -519,16 +519,21 @@ slider.addEventListener("input", function() {
         const input = document.getElementById("stateAbbreviation").value;
         const field = document.getElementById("stateName");
         // Fetch Data
-        let stObject = await fetch('states_titlecase.json');
-        const data = await stObject.json();
-        let newValue;
-        //Loop through the object til desired data and change the "stateName" field's value.
-        for (i = 0; i < data.length; i++) {
-            if (data[i].abbreviation === input) {
-                newValue = data[i].name;
-                field.textContent = newValue;
-                break;
+        try {
+            let stObject = await fetch('states_titlecase.json');
+            const data = await stObject.json();
+            let stateName;
+            //Loop through the object til desired data and change the "stateName" field's value.
+            for (i = 0; i < data.length; i++) {
+                if (data[i].abbreviation === input) {
+                    stateName = data[i].name;
+                    break;
+                }
             }
+            field.textContent = stateName;
+        }
+        catch {
+            field.textContent = "Error";
         }
     }
 
