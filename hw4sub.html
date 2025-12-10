@@ -57,5 +57,11 @@
                 </div>
             </footer>
         </div>
+        <!-- JavaScript code for the localedate in the header -->
+        <script>
+            const d = new Date();
+            let text = d.toLocaleDateString();
+            document.getElementById("today").innerHTML = text;
+        </script>
     </body>
 </html>
