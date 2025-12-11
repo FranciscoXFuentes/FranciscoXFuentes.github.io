@@ -183,7 +183,7 @@
         display: inline-block;
         cursor: pointer;
     }
-    #modalButton:hover {
+    #modalBtn:hover {
         background-color: #007bff;
         color: white;
         transition: .4s;
