@@ -8,7 +8,7 @@
 
 // Function(s) for getting user data and displaying it
 document.getElementById("inakeForm").addEventListener("submit", function(event) {
-    event.preventDefault():
+    event.preventDefault();
     let fname = document.getElementById("firstname").value;
     let minitial = document.getElementById("minitial").value;
     let lname = document.getElementById("lastname").value;
