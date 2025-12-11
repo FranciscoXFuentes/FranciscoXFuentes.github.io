@@ -701,7 +701,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             try{
                 const zip = document.getElementById("zip").value;
                 // API Fetch call with zip value
-                const response = await fetch("https://us-zipcode.api.smarty.com/lookup?key=254252967495540176&city=&state=&zipcode=" + zip);
+                const response = await fetch("https://us-zipcode.api.smarty.com/lookup?key=254252966418726078&city=&state=&zipcode=" + zip);
                 // Error handling
                 if (!response.ok) {
                     throw new Error("Could not fetch zip code data.");
