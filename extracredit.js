@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const closeModal = document.querySelector(".close-button");
 
     openModal.addEventListener('click', () => {
-        validateData();
+        reviewData();
         modal.showModal();
     })
 
