@@ -7,7 +7,7 @@
 */
 
 // Function(s) for getting user data and displaying it
-document.getElementById("intakeForm").addEventListener("submit", function(event) {
+document.getElementById("intakeForm").addEventListener("onsubmit", function(event) {
     event.preventDefault();
     let fname = document.getElementById("firstname").value;
     let minitial = document.getElementById("minitial").value;
