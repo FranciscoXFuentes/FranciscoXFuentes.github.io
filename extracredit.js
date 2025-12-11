@@ -9,8 +9,8 @@
 // Function(s) for getting user data and displaying it
 function reviewData() {
     const form = document.getElementById('intakeForm');
-    // const outputDiv = document.getElementById('dataReview');
-    // let outputHTML = '<span class="dataTable"><table><tr><th>Field</th><th>Value</th></tr>';
+    const outputDiv = document.getElementById('dataReview');
+    let outputHTML = '<span class="dataTable"><table><tr><th>Field</th><th>Value</th></tr>';
 
     // Loop through all elements checking for existing data
     for (let i = 0; i < form.elements.length; i++) {
