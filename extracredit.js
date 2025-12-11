@@ -662,61 +662,25 @@ slider.addEventListener("input", function() {
  }
 
 //(Extra Credit) Modal Popup
-document.addEventListener('DOMContentLoaded', (event) => {
-    const modal = document.querySelector("#modal");
-    const openModal = document.querySelector(".open-button");
-    const closeModal = document.querySelector(".close-button");
-    const submitForm = document.querySelector(".submit-button");
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const modal = document.querySelector("#modal");
+        const openModal = document.querySelector(".open-button");
+        const closeModal = document.querySelector(".close-button");
+        const submitForm = document.querySelector(".submit-button");
 
-    openModal.addEventListener('click', () => {
-        //reviewData();
-        modal.showModal();
-    })
+        openModal.addEventListener('click', () => {
+            //reviewData();
+            modal.showModal();
+        })
 
-    closeModal.addEventListener('click', () => {
-        modal.close();
-    })
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        })
 
-    submitForm.addEventListener('click', () => {
-        validateData();
-    })
-});
-    
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const modal = document.getElementById("locationModal");
-    const modalBtn = document.getElementById("modalBtn");
-    const modalSpan = document.getElementsByClassName("close")[0];
-    modalBtn.onclick = function() {
-        reviewData();
-        modal.style.display = "block";
-    }
-    modalSpan.onclick = function() {
-        modal.style.display = "none"
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
-    const modal = document.getElementById("locationModal");
-    const modalBtn = document.getElementById("modalBtn");
-    const modalSpan = document.getElementsByClassName("close")[0];
-    modalBtn.onclick = function() {
-        reviewData();
-        modal.style.display = "block";
-    }
-    modalSpan.onclick = function() {
-        modal.style.display = "none"
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-
-    }
+        submitForm.addEventListener('click', () => {
+            validateData();
+        })
+    });
 
 // (Extra Credit) Zip Code API From third party Smarty
 // Fetch API to input city and state based on zip code
