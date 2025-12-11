@@ -667,6 +667,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modalBtn = document.getElementById("modalBtn");
     const modalSpan = document.getElementsByClassName("close")[0];
     modalBtn.onclick = function() {
+        reviewData();
         modal.style.display = "block";
     }
     modalSpan.onclick = function() {
@@ -682,6 +683,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modalBtn = document.getElementById("modalBtn");
     const modalSpan = document.getElementsByClassName("close")[0];
     modalBtn.onclick = function() {
+        reviewData();
         modal.style.display = "block";
     }
     modalSpan.onclick = function() {
