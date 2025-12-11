@@ -571,20 +571,22 @@
                             <table width="80%">
                                 <tr>
                                     <td align="right">
-                                        <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
-                                        title="Click this button to review all data fields.">
+                                        <input type="button" class ="formButton" id="reviewFormButton" value="Submit" onclick="reviewData()"
+                                        title="Click this button to submit form.">
                                     </td>
+                                    <!--
                                     <td align="center">
                                         <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
                                         title="Click this button to validate all data fields.">
-                                    </td>
-                                    <td align="center">
-                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear Form"
+                                    </td>-->
+                                    <td align="left">
+                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear"
                                         title="Click this button to clear all data fields.">
                                     </td>
+                                    <!--
                                     <td align="left">
                                         <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" onclick="saveCookie(); saveLocalStorage();" disabled
-                                        title="Click this button to submit the form.">
+                                        title="Click this button to submit the form.">-->
                                     </td>
                                 </tr>
                             </table>
@@ -614,7 +616,8 @@
         </section>
 </main>
 
-<!--(Extra Credit) Modal Popup -->
+<!--(Extra Credit) Modal Popups -->
+    <!--Location Pop Up Modal-->
     <div id="locationModal" class="modal">
         <!--Content-->
         <div class="modal-content">
@@ -634,7 +637,62 @@
             </article>
         </div>
     </div>
-
+    <!--Submit Form Modal-->
+    <div id="submissionModal" class="modal">
+        <div class="modal-content">
+            <div class="modoalCloseBtn">
+                <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
+            </div>
+            <div class="modalBody">
+                <dl id="dataList">
+                    <div class = "listRow">
+                        <dt>Full Name: </dt>
+                        <dd id="modalName"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Date of Birth: </dt>
+                        <dd id="modalDOB"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Social Security Number: </dt>
+                        <dd id="modalSSN"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Address Line 1: </dt>
+                        <dd id="modalAddr1"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Address Line 2: </dt>
+                        <dd id="modalAddr2"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Zip, City, and State: </dt>
+                        <dd id="modalGeo"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Phone Number: </dt>
+                        <dd id="modalPhone"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Email Address: </dt>
+                        <dd id="modalEmail"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>User ID: </dt>
+                        <dd id="modalUserID"></dd>
+                    </div>
+                    <div class="listRow">
+                        <dt>Password: </dt>
+                        <dd id="modalPassword"></dd>
+                    </div>
+                </dl>
+            </div>
+            <div id="modalFooter">
+                <button id="goBack" class="formButton">Go Back</button>
+                <button id="confirmSub" class="formButton">Confirm</button>
+            </div>
+        </div>
+    </div>
 <!-- Footer Section -->
 <footer class="footer">
     <!-- Icons -->
