@@ -7,9 +7,7 @@
 */
 
 // Function(s) for getting user data and displaying it
-document.getElementById("intakeForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
+function reviewAndSubmit() {
     if (validateData() === 0) {
         let fname = document.getElementById("firstname").value;
         let minitial = document.getElementById("minitial").value;
@@ -74,7 +72,7 @@ document.getElementById("intakeForm").addEventListener("submit", function(event)
 
         document.getElementById("submissionModal").style.display = "flex";
     }
-});
+}
 
 // All Form Validation Functions
     // validation function for first name
