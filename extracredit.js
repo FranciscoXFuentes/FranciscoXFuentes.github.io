@@ -678,8 +678,9 @@ slider.addEventListener("input", function() {
         })
 
         submitForm.addEventListener('click', () => {
-            modal.close();
             validateData();
+            modal.close();
+            break;
         })
     });
 
