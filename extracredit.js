@@ -662,6 +662,19 @@ slider.addEventListener("input", function() {
  }
 
 //(Extra Credit) Modal Popup
+    const modal = document.querySelector("#submitModal");
+    const openModal = document.querySelector("modalBtn");
+    const closeModal = document.querySelector("#goBack");
+
+    openModal.addEventListener('click', () => {
+        modal.showModal();
+    })
+
+    closeModal.addEventListener('click', () => {
+        modal.close();
+    })
+
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.getElementById("locationModal");
     const modalBtn = document.getElementById("modalBtn");
