@@ -297,3 +297,6 @@
     }
 
 /*(Extra Credit) Modal Styling */
+    .modal::backdrop {
+        opacity: .4;
+    }
