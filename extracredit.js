@@ -668,11 +668,11 @@ slider.addEventListener("input", function() {
 
     openModal.addEventListener('click', () => {
         modal.showModal();
-    })
+    });
 
     closeModal.addEventListener('click', () => {
         modal.close();
-    })
+    });
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
