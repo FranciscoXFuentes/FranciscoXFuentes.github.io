@@ -571,10 +571,10 @@
                             <table width="80%">
                                 <tr>
                                     <td align="right">
-                                        <input type="button" class ="formButton" id="reviewFormButton" value="Submit"
-                                        onclick="reviewAndSubmit()"
+                                        <!--<input type="button" class ="formButton" id="reviewFormButton" value="Submit"
                                         data-bs-target="#submissionModal"
-                                        title="Click this button to submit form.">
+                                        title="Click this button to submit form.">-->
+                                        <button data-bs-target="#locationModal" class="formButton" id="modalBtn">Submit</button>
                                     </td>
                                     <!--
                                     <td align="center">
@@ -624,25 +624,6 @@
         <!--Content-->
         <div class="modal-content">
             <div class="modalCloseBtn">
-                <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
-            </div>
-            <article id="modalArticle">
-                <h2>Clinic Locations</h2>
-                <p>We are currently only operating at one clinic serving the Houston area.</p>
-                <h3>Evergreen Cardiovascular Center - Main Branch</h3>
-                <p>123 Main St, Houston, TX 77002</p>
-                <p>Hours: 6:00 AM - 5:00 PM</p>
-                <figure>
-                    <!-- Image sourced from https://www.freepik.com/free-photo/analog-landscape-city-with-buildings_31261380.htm#fromView=search&page=1&position=1&uuid=040a057f-d53c-47de-a047-c3f01706d5a9&query=medical+center+building-->
-                    <img src="analog-landscape-city-with-buildings.jpg" width="450" height="250" id="modalImage">
-                </figure>
-            </article>
-        </div>
-    </div>
-    <!--Submit Form Modal-->
-    <div id="submissionModal" class="modal">
-        <div class="modal-content">
-            <div class="modoalCloseBtn">
                 <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <div class="modalBody">
@@ -702,7 +683,6 @@
             <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="footer-button">Home</a>
             <a href="mailto:someone@example.com" class="footer-button">Contact</a>
             <!-- Use of "bootstrap" target for specific modal use. -->
-            <button data-bs-target="#locationModal" class="footer-button" id="modalBtn">Locations</button>
             <a href="" onclick="deleteCookie(); resetForm();" class="footer-button">Delete Cookies</a>
         </div>
         <p id="footerSocialP">Follow us on social media</p>
