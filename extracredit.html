@@ -570,24 +570,21 @@
                         <td colspan="2" align="center">
                             <table width="80%">
                                 <tr>
-                                    <!--<td align="right">
+                                    <td align="right">
                                         <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
                                         title="Click this button to review all data fields.">
-                                    </td>-->
+                                    </td>
                                     <td align="center">
-                                        <!--<input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
-                                        title="Click this button to validate all data fields.">-->
-                                        <!--Use of "bootstrap" target for specific modal use. -->
-                                        <button data-bs-target="#locationModal" class="footer-button" id="modalBtn" onclick="reviewData()">Locations</button>
+                                        <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
+                                        title="Click this button to validate all data fields.">
                                     </td>
                                     <td align="center">
                                         <input type="reset" class="formButton" id="clearFormButton" value="Clear Form"
                                         title="Click this button to clear all data fields.">
                                     </td>
-                                    <!--
                                     <td align="left">
                                         <input type="submit" class="formButton" id="submitFormButton" value="Submit Form" onclick="saveCookie(); saveLocalStorage();" disabled
-                                        title="Click this button to submit the form.">-->
+                                        title="Click this button to submit the form.">
                                     </td>
                                 </tr>
                             </table>
@@ -625,7 +622,7 @@
             <div class="modalBody">
                 <h2>Verify infromation before submitting</h2>
                 <!-- Data Review Section -->
-                <span class="dataTable" id="dataReview"></span>
+                <div class="dataTable" id="dataReview"></div>
             </div>
             <div id="modalFooter">
                 <button id="goBack" class="formButton">Go Back</button>
