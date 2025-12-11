@@ -498,7 +498,7 @@ function reviewData() {
             alert("Form contains errors. Please correct them before submitting.");
         }
         else {
-            document.getElementById("submitFormButton").disabled = false;
+            document.intakeForm.submit();
         }
     }
 // End of Form Validation Functions
@@ -666,6 +666,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modal = document.querySelector("#modal");
     const openModal = document.querySelector(".open-button");
     const closeModal = document.querySelector(".close-button");
+    const submitForm = document.querySelector(".submit-button");
 
     openModal.addEventListener('click', () => {
         //reviewData();
@@ -674,6 +675,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     closeModal.addEventListener('click', () => {
         modal.close();
+    })
+
+    submitForm.addEventListener('click', () => {
+        validateData();
     })
 });
     
