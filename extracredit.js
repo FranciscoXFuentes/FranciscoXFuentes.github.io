@@ -722,13 +722,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let password = document.getElementById("password").value;
 
         if(minitial !== "" && minitial !== null && minitial !== undefined) {
-            document.getElementById("modalName").textContent = fname + " " + minitial + " " + lname;
+            document.getElementById("modalName").innerHTML = fname + " " + minitial + " " + lname;
         }
         else {
-            document.getElementById("modalName").textContent = fname + " " + lname;
+            document.getElementById("modalName").innerHTML = fname + " " + lname;
         }
 
-        document.getElementById("modalDOB").textContent = dob;
+        document.getElementById("modalDOB").innerHTML = dob;
         
         function hideSSN(ssn) {
             const lastFour = ssn.slice(-4);
@@ -736,26 +736,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const obscuredPattern = "*".repeat(obscured);
             return obscuredPattern + lastFour;
         }
-        document.getElementById("modalSSN").textContent = hideSSN(ssn);
+        document.getElementById("modalSSN").innerHTML = hideSSN(ssn);
 
-        document.getElementById("modalAddr1").textContent = address1;
+        document.getElementById("modalAddr1").innerHTML = address1;
 
         if (address2 !== "" && address2 !== null && address2 !== undefined) {
-            document.getElementById("modalAddr2").textContent = address2;
+            document.getElementById("modalAddr2").innerHTML = address2;
         }
         else {
-            document.getElementById("modalAddr2").textContent = "None";
+            document.getElementById("modalAddr2").innerHTML = "None";
         }
 
-        document.getElementById("modalGeo").textContent = zip + ", " + city + ", " + state;
+        document.getElementById("modalGeo").innerHTML = zip + ", " + city + ", " + state;
 
-        document.getElementById("modalPhone").textContent = phone;
+        document.getElementById("modalPhone").innerHTML = phone;
 
-        document.getElementById("email").textContent = email;
+        document.getElementById("email").innerHTML = email;
 
-        document.getElementById("modalUserID").textContent = userID;
+        document.getElementById("modalUserID").innerHTML = userID;
 
-        document.getElementById("modalPassword").textContent = password;
+        document.getElementById("modalPassword").innerHTML = password;
         }
     }
     modalSpan.onclick = function() {
@@ -790,13 +790,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         let password = document.getElementById("password").value;
 
         if(minitial !== "" && minitial !== null && minitial !== undefined) {
-            document.getElementById("modalName").textContent = fname + " " + minitial + " " + lname;
+            document.getElementById("modalName").innerHTML = fname + " " + minitial + " " + lname;
         }
         else {
-            document.getElementById("modalName").textContent = fname + " " + lname;
+            document.getElementById("modalName").innerHTML = fname + " " + lname;
         }
 
-        document.getElementById("modalDOB").textContent = dob;
+        document.getElementById("modalDOB").innerHTML = dob;
         
         function hideSSN(ssn) {
             const lastFour = ssn.slice(-4);
@@ -804,26 +804,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const obscuredPattern = "*".repeat(obscured);
             return obscuredPattern + lastFour;
         }
-        document.getElementById("modalSSN").textContent = hideSSN(ssn);
+        document.getElementById("modalSSN").innerHTML = hideSSN(ssn);
 
-        document.getElementById("modalAddr1").textContent = address1;
+        document.getElementById("modalAddr1").innerHTML = address1;
 
         if (address2 !== "" && address2 !== null && address2 !== undefined) {
-            document.getElementById("modalAddr2").textContent = address2;
+            document.getElementById("modalAddr2").innerHTML = address2;
         }
         else {
-            document.getElementById("modalAddr2").textContent = "None";
+            document.getElementById("modalAddr2").innerHTML = "None";
         }
 
-        document.getElementById("modalGeo").textContent = zip + ", " + city + ", " + state;
+        document.getElementById("modalGeo").innerHTML = zip + ", " + city + ", " + state;
 
-        document.getElementById("modalPhone").textContent = phone;
+        document.getElementById("modalPhone").innerHTML = phone;
 
-        document.getElementById("email").textContent = email;
+        document.getElementById("email").innerHTML = email;
 
-        document.getElementById("modalUserID").textContent = userID;
+        document.getElementById("modalUserID").innerHTML = userID;
 
-        document.getElementById("modalPassword").textContent = password;
+        document.getElementById("modalPassword").innerHTML = password;
         }
     }
     modalSpan.onclick = function() {
