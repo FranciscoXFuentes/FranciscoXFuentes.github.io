@@ -314,19 +314,9 @@
         height: auto;
         width: fit-content;
         max-width: 60%;
-        text-align: left;
+        text-align: center;
         margin: auto;
         padding: 20px;
         border: 2px solid lightgrey;
         border-radius: 6px;
-    }
-    .modalCloseBtn {
-        text-align: right !important;
-    }
-    #modalImage {
-        /* float: center !important; */
-        display: block;
-        max-width: 100%;
-        height: auto;
-        margin: 10px auto 0;
     }
