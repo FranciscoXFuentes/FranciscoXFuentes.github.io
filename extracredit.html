@@ -570,12 +570,12 @@
                         <td colspan="2" align="center">
                             <table width="80%">
                                 <tr>
-                                    <!--<td align="right">
+                                    <td align="right">
                                         <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
                                         title="Click this button to review all data fields.">
-                                    </td>-->
+                                    </td>
                                     <td align="center">
-                                        <button data-bs-target="#locationModal" class="formButton" id="modalBtn">Submit</button>
+                                        <input target="#locationModal" class="formButton" id="modalBtn" onclick="reviewData()">Modal</button>
                                     </td>
                                     <td align="center">
                                         <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
@@ -628,7 +628,7 @@
                 <div class="dataTable" id="dataReview"></div>
             </div>
             <div id="modalFooter">
-                <button id="goBack" class="close">Go Back</button>
+                <button id="goBack" class="formButton">Go Back</button>
                 <button id="confirmSub" class="formButton">Confirm</button>
             </div>
         </div>
