@@ -669,7 +669,7 @@ slider.addEventListener("input", function() {
         const submitForm = document.querySelector(".submit-button");
 
         openModal.addEventListener('click', () => {
-            //reviewData();
+            reviewData();
             modal.showModal();
         })
 
