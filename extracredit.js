@@ -7,71 +7,35 @@
 */
 
 // Function(s) for getting user data and displaying it
-function reviewAndSubmit() {
-    if (validateData() === 0) {
-        let fname = document.getElementById("firstname").value;
-        let minitial = document.getElementById("minitial").value;
-        let lname = document.getElementById("lastname").value;
-        let dob = document.getElementById("dob").value;
-        let ssn = document.getElementById("ssn").value;
-        let address1 = document.getElementById("addr1").value;
-        let address2 = document.getElementById("addr2").value;
-        let zip = document.getElementById("zip").value;
-        let city = document.getElementById("city").value;
-        let state = document.getElementById("stateName").value;
-        let phone = document.getElementById("phone").value;
-        let email = document.getElementById("email").value;
-        let insured = document.getElementsByName("insurance_status").values;
-        let userID = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
+function reviewData() {
+    const form = document.getElementById('intakeForm');
+    // const outputDiv = document.getElementById('dataReview');
+    // let outputHTML = '<span class="dataTable"><table><tr><th>Field</th><th>Value</th></tr>';
 
-        if(minitial !== "" && minitial !== null && minitial !== undefined) {
-            document.getElementById("modalName").textContent = fname + " " + minitial + " " + lname;
-        }
-        else {
-            document.getElementById("modalName").textContent = fname + " " + lname;
-        }
-
-        document.getElementById("modalDOB").textContent = dob;
+    // Loop through all elements checking for existing data
+    for (let i = 0; i < form.elements.length; i++) {
+        const element = form.elements[i];
         
-        function hideSSN(ssn) {
-            const lastFour = ssn.slice(-4);
-            const obscured = ssn.length - 4;
-            const obscuredPattern = "*".repeat(obscured);
-            return obscuredPattern + lastFour;
+        // Input type filtering
+        if (element.type === "checkbox") {
+            if (element.checked) {
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
+            }
+            continue;
         }
-        document.getElementById("modalSSN").textContent = hideSSN(ssn);
-
-        document.getElementById("modalAddr1").textContent = address1;
-
-        if (address2 !== "" && address2 !== null && address2 !== undefined) {
-            document.getElementById("modalAddr2").textContent = address2;
+        if (element.type === "radio") {
+            if (element.checked) {
+                outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
+            }
+            continue;
         }
-        else {
-            document.getElementById("modalAddr2").textContent = "None";
+        if (element.name && element.value && element.type !== "button") {
+            outputHTML += `<tr><td>${element.name}</td><td>${element.value}</td></tr>`;
         }
-
-        document.getElementById("modalGeo").textContent = zip + ", " + city + ", " + state;
-
-        document.getElementById("modalPhone").textContent = phone;
-
-        document.getElementById("email").textContent = email;
-
-        document.getElementById("modalUserID").textContent = userID;
-
-        document.getElementById("modalPassword").textContent = password;
-
-        document.getElementById("goBack").addEventListener("click", function() {
-            document.getElementById("submissionModal").style.display = "none";
-        });
-
-        document.getElementById("confirmSub").addEventListener("click", function() {
-            document.getElementById("submissionModal").style.display = "none";
-            document.getElementById("intakeForm").submit();
-        });
-
-        document.getElementById("submissionModal").style.display = "flex";
     }
+
+    // Close the table
+    outputDiv.innerHTML = outputHTML + '</table></span>';
 }
 
 // All Form Validation Functions
@@ -704,59 +668,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modalSpan = document.getElementsByClassName("close")[0];
     modalBtn.onclick = function() {
         modal.style.display = "block";
-        if (validateData() === 0) {
-        let fname = document.getElementById("firstname").value;
-        let minitial = document.getElementById("minitial").value;
-        let lname = document.getElementById("lastname").value;
-        let dob = document.getElementById("dob").value;
-        let ssn = document.getElementById("ssn").value;
-        let address1 = document.getElementById("addr1").value;
-        let address2 = document.getElementById("addr2").value;
-        let zip = document.getElementById("zip").value;
-        let city = document.getElementById("city").value;
-        let state = document.getElementById("stateName").value;
-        let phone = document.getElementById("phone").value;
-        let email = document.getElementById("email").value;
-        let insured = document.getElementsByName("insurance_status").values;
-        let userID = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
-
-        if(minitial !== "" && minitial !== null && minitial !== undefined) {
-            document.getElementById("modalName").innerHTML = fname + " " + minitial + " " + lname;
-        }
-        else {
-            document.getElementById("modalName").innerHTML = fname + " " + lname;
-        }
-
-        document.getElementById("modalDOB").innerHTML = dob;
-        
-        function hideSSN(ssn) {
-            const lastFour = ssn.slice(-4);
-            const obscured = ssn.length - 4;
-            const obscuredPattern = "*".repeat(obscured);
-            return obscuredPattern + lastFour;
-        }
-        document.getElementById("modalSSN").innerHTML = hideSSN(ssn);
-
-        document.getElementById("modalAddr1").innerHTML = address1;
-
-        if (address2 !== "" && address2 !== null && address2 !== undefined) {
-            document.getElementById("modalAddr2").innerHTML = address2;
-        }
-        else {
-            document.getElementById("modalAddr2").innerHTML = "None";
-        }
-
-        document.getElementById("modalGeo").innerHTML = zip + ", " + city + ", " + state;
-
-        document.getElementById("modalPhone").innerHTML = phone;
-
-        document.getElementById("email").innerHTML = email;
-
-        document.getElementById("modalUserID").innerHTML = userID;
-
-        document.getElementById("modalPassword").innerHTML = password;
-        }
     }
     modalSpan.onclick = function() {
         modal.style.display = "none"
@@ -772,59 +683,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const modalSpan = document.getElementsByClassName("close")[0];
     modalBtn.onclick = function() {
         modal.style.display = "block";
-        if (validateData() === 0) {
-        let fname = document.getElementById("firstname").value;
-        let minitial = document.getElementById("minitial").value;
-        let lname = document.getElementById("lastname").value;
-        let dob = document.getElementById("dob").value;
-        let ssn = document.getElementById("ssn").value;
-        let address1 = document.getElementById("addr1").value;
-        let address2 = document.getElementById("addr2").value;
-        let zip = document.getElementById("zip").value;
-        let city = document.getElementById("city").value;
-        let state = document.getElementById("stateName").value;
-        let phone = document.getElementById("phone").value;
-        let email = document.getElementById("email").value;
-        let insured = document.getElementsByName("insurance_status").values;
-        let userID = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
-
-        if(minitial !== "" && minitial !== null && minitial !== undefined) {
-            document.getElementById("modalName").innerHTML = fname + " " + minitial + " " + lname;
-        }
-        else {
-            document.getElementById("modalName").innerHTML = fname + " " + lname;
-        }
-
-        document.getElementById("modalDOB").innerHTML = dob;
-        
-        function hideSSN(ssn) {
-            const lastFour = ssn.slice(-4);
-            const obscured = ssn.length - 4;
-            const obscuredPattern = "*".repeat(obscured);
-            return obscuredPattern + lastFour;
-        }
-        document.getElementById("modalSSN").innerHTML = hideSSN(ssn);
-
-        document.getElementById("modalAddr1").innerHTML = address1;
-
-        if (address2 !== "" && address2 !== null && address2 !== undefined) {
-            document.getElementById("modalAddr2").innerHTML = address2;
-        }
-        else {
-            document.getElementById("modalAddr2").innerHTML = "None";
-        }
-
-        document.getElementById("modalGeo").innerHTML = zip + ", " + city + ", " + state;
-
-        document.getElementById("modalPhone").innerHTML = phone;
-
-        document.getElementById("email").innerHTML = email;
-
-        document.getElementById("modalUserID").innerHTML = userID;
-
-        document.getElementById("modalPassword").innerHTML = password;
-        }
     }
     modalSpan.onclick = function() {
         modal.style.display = "none"

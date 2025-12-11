@@ -570,19 +570,18 @@
                         <td colspan="2" align="center">
                             <table width="80%">
                                 <tr>
-                                    <td align="right">
-                                        <!--<input type="button" class ="formButton" id="reviewFormButton" value="Submit"
-                                        data-bs-target="#submissionModal"
-                                        title="Click this button to submit form.">-->
-                                        <input type="button" data-bs-target="#locationModal" class="formButton" id="modalBtn" value="Review and Submit">
-                                    </td>
-                                    <!--
-                                    <td align="center">
-                                        <input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
-                                        title="Click this button to validate all data fields.">
+                                    <!--<td align="right">
+                                        <input type="button" class ="formButton" id="reviewFormButton" value="Get Data" onclick="reviewData()"
+                                        title="Click this button to review all data fields.">
                                     </td>-->
-                                    <td align="left">
-                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear"
+                                    <td align="center">
+                                        <!--<input type="button" class="formButton" id="validateInputButton" value="Validate Inputs" onclick="validateData()"
+                                        title="Click this button to validate all data fields.">-->
+                                        <!--Use of "bootstrap" target for specific modal use. -->
+                                        <button data-bs-target="#locationModal" class="footer-button" id="modalBtn">Locations</button>
+                                    </td>
+                                    <td align="center">
+                                        <input type="reset" class="formButton" id="clearFormButton" value="Clear Form"
                                         title="Click this button to clear all data fields.">
                                     </td>
                                     <!--
@@ -595,8 +594,6 @@
                         </td>
                 </table>
             </form>
-        <!-- Data Review Section -->
-            <div class="dataTable" id="dataReview"></div>
         </section>
     <!-- Location View -->
         <section id="location-section" class="main-content">
@@ -618,8 +615,7 @@
         </section>
 </main>
 
-<!--(Extra Credit) Modal Popups -->
-    <!--Location Pop Up Modal-->
+<!--(Extra Credit) Modal Popup -->
     <div id="locationModal" class="modal">
         <!--Content-->
         <div class="modal-content">
@@ -627,48 +623,9 @@
                 <span class="close"><i class="fa-solid fa-chevron-down"></i></span>
             </div>
             <div class="modalBody">
-                <dl id="dataList">
-                    <div class = "listRow">
-                        <dt>Full Name: </dt>
-                        <dd id="modalName"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Date of Birth: </dt>
-                        <dd id="modalDOB"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Social Security Number: </dt>
-                        <dd id="modalSSN"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Address Line 1: </dt>
-                        <dd id="modalAddr1"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Address Line 2: </dt>
-                        <dd id="modalAddr2"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Zip, City, and State: </dt>
-                        <dd id="modalGeo"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Phone Number: </dt>
-                        <dd id="modalPhone"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Email Address: </dt>
-                        <dd id="modalEmail"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>User ID: </dt>
-                        <dd id="modalUserID"></dd>
-                    </div>
-                    <div class="listRow">
-                        <dt>Password: </dt>
-                        <dd id="modalPassword"></dd>
-                    </div>
-                </dl>
+                <h2>Verify the infromation before submitting</h2>
+                <!-- Data Review Section -->
+                <div class="dataTable" id="dataReview"></div>
             </div>
             <div id="modalFooter">
                 <button id="goBack" class="formButton">Go Back</button>
@@ -676,13 +633,13 @@
             </div>
         </div>
     </div>
+
 <!-- Footer Section -->
 <footer class="footer">
     <!-- Icons -->
         <div id="footerLinks">
             <a href="#welcome-section" onclick="showSection('welcome-section'); return false;" class="footer-button">Home</a>
             <a href="mailto:someone@example.com" class="footer-button">Contact</a>
-            <!-- Use of "bootstrap" target for specific modal use. -->
             <a href="" onclick="deleteCookie(); resetForm();" class="footer-button">Delete Cookies</a>
         </div>
         <p id="footerSocialP">Follow us on social media</p>
