@@ -668,6 +668,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const closeModal = document.querySelector("#goBack");
 
     openModal.addEventListener('click', () => {
+        validateData();
         modal.showModal();
     })
 
